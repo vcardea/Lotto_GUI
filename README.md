@@ -5,6 +5,8 @@ Programma lotto con la gui, assegnato il 24/03/2023.
 
 ~~-Programma base del lotto;~~
 
+~~-Scheletro della finestra;~~
+
 -Finestra del lotto;
 
 -Eventi del lotto;
