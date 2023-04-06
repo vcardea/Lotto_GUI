@@ -22,25 +22,27 @@ public class FinestraLogin {
     private class GestorePulsante implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             username = jtf.getText();
+            usernameSet = true;
             if (username.length() < 5) {
                 JOptionPane.showMessageDialog(jf, "Lo username deve essere di almeno 5 caratteri", "Attenzione",
                         JOptionPane.WARNING_MESSAGE);
+                jtf.setText("");
+            } else {
+                jf.dispose();
             }
         }
     }
 
-    private static String username = new String("");
-    private static JFrame jf = new JFrame("Login");
-    private static JPanel jp = new JPanel();
-    private static JLabel jl = new JLabel("username", JLabel.LEFT);
-    private static GridLayout gl = new GridLayout(2, 1);
-    private static JButton jb = new JButton("OK");
-    private static JTextField jtf = new JTextField(15);
+    private boolean usernameSet = false;
+    private String username = new String();
+    private JFrame jf = new JFrame("Login");
+    private JPanel jp = new JPanel();
+    private JLabel jl = new JLabel("Username", JLabel.LEFT);
+    private GridLayout gl = new GridLayout(2, 1);
+    private JButton jb = new JButton("OK");
+    private JTextField jtf = new JTextField(15);
 
     public FinestraLogin() {
-        GestorePulsante gp = new FinestraLogin().new GestorePulsante(); // si lo so e' brutto ma utile
-        GestoreFinestra gf = new GestoreFinestra();
-
         // panel
         jp.add(jl);
         jp.add(jtf);
@@ -51,8 +53,8 @@ public class FinestraLogin {
         jf.add(jb); // aggiungi button
 
         // eventi
-        jf.addWindowListener(gf); // gestore finestra globale
-        jb.addActionListener(gp); // gestore button locale
+        jf.addWindowListener(new GestoreFinestra(jf)); // gestore finestra globale
+        jb.addActionListener(new GestorePulsante()); // gestore button locale
 
         // robe finali
         jf.setSize(350, 200);
@@ -62,5 +64,10 @@ public class FinestraLogin {
     public String getUsername()
     {
         return username;
+    }
+
+    public boolean isUsernameSet()
+    {
+        return usernameSet;
     }
 }

@@ -1,28 +1,93 @@
 package lotto.finestre.gestori;
 
+import javax.swing.JFrame;
+
 import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
 
 public class GestoreFinestra implements WindowListener {
-	public void windowIconified(WindowEvent evento) {
+	private JFrame jf = new JFrame();
+
+	/**
+	 * Costruttore.
+	 * Prende come parametro il jframe della
+	 * finestra considerata
+	 * 
+	 * @param jf jframe della finestra
+	 */
+	public GestoreFinestra(JFrame jf)
+	{
+		this.jf = jf;
 	}
 
-	public void windowDeiconified(WindowEvent evento) {
+	/**
+	 * Riduce a icona la finestra
+	 * 
+	 * @param we evento verificatosi
+	 */
+	public void windowIconified(WindowEvent we)
+	{
+		System.out.println(we.toString());
 	}
-
-	public void windowActivated(WindowEvent evento) {
+	
+	/**
+	 * Ripristina la finestra
+	 * 
+	 * @param we evento verificatosi
+	 */
+	public void windowDeiconified(WindowEvent we)
+	{
+		System.out.println(we.toString());
 	}
-
-	public void windowDeactivated(WindowEvent evento) {
+		
+	/**
+	 * Finestra attivata
+	 * 
+	 * @param we evento verificatosi
+	 */
+	public void windowActivated(WindowEvent we)
+	{
+		System.out.println(we.toString());
 	}
-
-	public void windowOpened(WindowEvent evento) {
+	
+	/**
+	 * Finestra disattivata
+	 * 
+	 * @param we evento verificatosi
+	 */
+	public void windowDeactivated(WindowEvent we)
+	{
+		System.out.println(we.toString());
 	}
-
-	public void windowClosed(WindowEvent evento) {
+		
+	/**
+	 * Finestra aperta
+	 * 
+	 * @param we evento verificatosi
+	 */
+	public void windowOpened(WindowEvent we)
+	{
+		System.out.println(we.toString());
 	}
-
-	public void windowClosing(WindowEvent evento) {
-		System.exit(0);
+		
+	/**
+	 * Finestra chiusa
+	 * 
+	 * @param we evento verificatosi
+	 */
+	public void windowClosed(WindowEvent we)
+	{
+		System.out.println(we.toString());
+	}
+		
+	/**
+	 * Finestra in chiusura
+	 * 
+	 * @param we evento verificatosi
+	 */
+	public void windowClosing(WindowEvent we)
+	{
+		System.out.println(we.toString());
+		jf.dispose();
 	}
 }

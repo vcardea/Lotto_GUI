@@ -1,4 +1,7 @@
 package lotto;
+
+import lotto.calcoli.CalcoloVincita;
+
 /**
  * GIOCO DEL DIECI E LOTTO
  * Realizzato da:

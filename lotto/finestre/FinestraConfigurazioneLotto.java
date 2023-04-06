@@ -1,16 +1,18 @@
 package lotto.finestre;
 
 import lotto.finestre.gestori.GestoreFinestra;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 
 public class FinestraConfigurazioneLotto {
 
@@ -36,6 +38,14 @@ public class FinestraConfigurazioneLotto {
                     jtf.setText("");
                 } else {
                     numeri = jcb.getSelectedIndex();
+                    int numeriScelti[] = new int[numeri];
+                    // Chiama FinestraInserimentoNumeri 
+                    /*
+                     * FinestraInserimentoNumeri riceve quanti numeri da giocare
+                     * Ritorna i numeri giocati dall'utente per chiamare poi
+                     * la finestra finale con i risultati
+                     */
+                    // Chiama FinestraOutput
                 }
             }
         }
@@ -59,8 +69,6 @@ public class FinestraConfigurazioneLotto {
     }
 
     public FinestraConfigurazioneLotto() {
-        GestorePulsante gp = new FinestraConfigurazioneLotto().new GestorePulsante(); // si lo so e' brutto ma utile
-        GestoreFinestra gf = new GestoreFinestra();
         setupCombo();
 
         // panel numero 1
@@ -78,8 +86,8 @@ public class FinestraConfigurazioneLotto {
         jf.add(jb); // aggiungi button
 
         // eventi
-        jf.addWindowListener(gf); // gestore finestra globale
-        jb.addActionListener(gp); // gestore button locale
+        jf.addWindowListener(new GestoreFinestra(jf)); // gestore finestra globale
+        jb.addActionListener(new GestorePulsante()); // gestore button locale
 
         // robe finali
         jf.setSize(350, 200);
