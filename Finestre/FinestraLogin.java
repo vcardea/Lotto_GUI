@@ -12,8 +12,9 @@ public class FinestraLogin {
         JPanel jp = new JPanel();
         JLabel jl1 = new JLabel("Gioco del lotto");
         JLabel jl2 = new JLabel("username", JLabel.LEFT);
-        // JButton jb = new JButton("OK");
-        // JTextField jtf = new JTextField(15);
+
+        JButton jb = new JButton("OK");
+        JTextField jtf = new JTextField(15);
 
         jp.add(jl1);
         jp.add(jl2);
