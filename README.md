@@ -1,7 +1,7 @@
 # Lotto_GUI
 Programma lotto con la GUI, assegnato il 24/03/2023.
 
-**TDL**: 
+**TODO**: 
 
 ~~-Programma base del lotto;~~
 
