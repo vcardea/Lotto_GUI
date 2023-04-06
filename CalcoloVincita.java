@@ -5,7 +5,7 @@
  * Francesco Rizzello
  * Vincenzo Cardea
  * Alessandro Serio
- */ 
+ */
 
 public class CalcoloVincita {
 	private float importo;

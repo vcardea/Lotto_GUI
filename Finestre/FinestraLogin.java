@@ -17,7 +17,7 @@ public class FinestraLogin {
      * per la gestione dei pulsanti, che secondo me e' meglio interna
      */
 
-    protected class GestorePulsante implements ActionListener {
+    private class GestorePulsante implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             username = jtf.getText();
             if (username.length() < 5) {
@@ -30,15 +30,15 @@ public class FinestraLogin {
         }
     }
 
-    static String username = new String("");
-    static JFrame jf = new JFrame("Login");
-    static JPanel jp = new JPanel();
-    static JLabel jl = new JLabel("username", JLabel.LEFT);
-    static GridLayout gl = new GridLayout(2, 1);
-    static JButton jb = new JButton("OK");
-    static JTextField jtf = new JTextField(15);
+    private static String username = new String("");
+    private static JFrame jf = new JFrame("Login");
+    private static JPanel jp = new JPanel();
+    private static JLabel jl = new JLabel("username", JLabel.LEFT);
+    private static GridLayout gl = new GridLayout(2, 1);
+    private static JButton jb = new JButton("OK");
+    private static JTextField jtf = new JTextField(15);
 
-    public static void main(String args[]) {
+    protected static void main(String args[]) {
         GestorePulsante gp = new FinestraLogin().new GestorePulsante(); // si lo so e' brutto ma utile
         GestoreFinestra gf = new GestoreFinestra();
 
