@@ -12,11 +12,6 @@ import javax.swing.JButton;
 
 public class FinestraLogin {
 
-    /**
-     * @author Cestello
-     * @author DajeCardea
-     */
-
     /*
      * fatta una inner class, cosi non dobbiamo fare tante file di classi
      * per la gestione dei pulsanti, che secondo me e' meglio interna
