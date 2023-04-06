@@ -13,10 +13,12 @@ import javax.swing.JComboBox;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
+import java.awt.event.WindowEvent;
 
 public class FinestraConfigurazioneLotto {
 
-    private class GestorePulsante implements ActionListener {
+    private class GestoreInterno implements ActionListener, WindowListener {
         public void actionPerformed(ActionEvent e) {
             String val = jtf.getText();
             if (val.isEmpty()) // controllo se l'input e' vuoto
@@ -46,29 +48,55 @@ public class FinestraConfigurazioneLotto {
                      * la finestra finale con i risultati
                      */
                     // Chiama FinestraOutput
+                    active = false;
+                    jf.dispose();
                 }
             }
         }
+
+        public void windowIconified(WindowEvent we) {}
+
+        public void windowDeiconified(WindowEvent we) {}
+
+        public void windowActivated(WindowEvent we) {}
+
+        public void windowDeactivated(WindowEvent we) {}
+        
+        public void windowOpened(WindowEvent we) {}
+        
+        public void windowClosed(WindowEvent we) {}
+        
+        public void windowClosing(WindowEvent we)
+        {
+            active = false;
+            jf.dispose();
+        }
     }
 
-    private static float importo = 0.0f;
-    private static int numeri = 0;
-    private static JFrame jf = new JFrame("Giocata");
-    private static JPanel jp1 = new JPanel();
-    private static JPanel jp2 = new JPanel();
-    private static JLabel jl1 = new JLabel("Inserire quanti numeri si vuole giocare");
-    private static JLabel jl2 = new JLabel("Inserire l'importo (da 2€ a 200€)");
-    private static GridLayout gl = new GridLayout(3, 2);
-    private static JButton jb = new JButton("Prosegui");
-    private static JComboBox<Integer> jcb = new JComboBox<Integer>();
-    private static JTextField jtf = new JTextField(6);
+    private float importo = 0.0f;
+    private int numeri = 0;
+    private JFrame jf = null;
+    private JPanel jp1 = new JPanel();
+    private JPanel jp2 = new JPanel();
+    private JLabel jl1 = new JLabel("Inserire quanti numeri si vuole giocare");
+    private JLabel jl2 = new JLabel("Inserire l'importo (da 2€ a 200€)");
+    private GridLayout gl = new GridLayout(3, 2);
+    private JButton jb = new JButton("Prosegui");
+    private JComboBox<Integer> jcb = new JComboBox<Integer>();
+    private JTextField jtf = new JTextField(6);
+    public boolean active;
 
-    private static void setupCombo() {
+    private void setupCombo() {
         for (int i = 1; i <= 10; ++i)
             jcb.addItem(i);
     }
 
     public FinestraConfigurazioneLotto() {
+        this.active = true;
+    }
+
+    public void creaFinestra() {
+        jf = new JFrame("Giocata");
         setupCombo();
 
         // panel numero 1
@@ -86,8 +114,8 @@ public class FinestraConfigurazioneLotto {
         jf.add(jb); // aggiungi button
 
         // eventi
-        jf.addWindowListener(new GestoreFinestra(jf)); // gestore finestra globale
-        jb.addActionListener(new GestorePulsante()); // gestore button locale
+        jf.addWindowListener(new GestoreInterno()); // gestore finestra globale
+        jb.addActionListener(new GestoreInterno()); // gestore button locale
 
         // robe finali
         jf.setSize(350, 200);
@@ -100,5 +128,10 @@ public class FinestraConfigurazioneLotto {
 
     public int getNumeri() {
         return numeri;
+    }
+    
+    public boolean isActive()
+    {
+        return this.active;
     }
 }

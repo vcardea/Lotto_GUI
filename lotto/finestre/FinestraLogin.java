@@ -22,12 +22,12 @@ public class FinestraLogin {
     private class GestorePulsante implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             username = jtf.getText();
-            usernameSet = true;
             if (username.length() < 5) {
                 JOptionPane.showMessageDialog(jf, "Lo username deve essere di almeno 5 caratteri", "Attenzione",
                         JOptionPane.WARNING_MESSAGE);
                 jtf.setText("");
             } else {
+                usernameSet = true;
                 jf.dispose();
             }
         }

@@ -1,7 +1,6 @@
 package lotto.finestre;
 
 import lotto.finestre.gestori.GestoreFinestra;
-import lotto.finestre.gestori.GestoreUscita;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,8 +15,17 @@ public class FinestraMenu {
     protected class GestoreInterno implements ActionListener {
         public void actionPerformed(ActionEvent ae) {
             String s = ae.getActionCommand();
-            if (s.equals("nuovapartita")) {
-                FinestraConfigurazioneLotto fcl = new FinestraConfigurazioneLotto();
+
+            if (fcl == null) nuovaPartitaOn = false;
+            else if (fcl.isActive()) nuovaPartitaOn = true;
+            else nuovaPartitaOn = false;
+
+            if (s.equals("nuovapartita") && !nuovaPartitaOn) {
+                fcl = new FinestraConfigurazioneLotto();
+                fcl.creaFinestra();
+            }
+            else if (s.equals("esci")) {
+                System.exit(0);
             }
         }
     }
@@ -30,6 +38,8 @@ public class FinestraMenu {
     private JButton jbEsci = new JButton("Esci");
     private JButton jbNuovaPartita = new JButton("Nuova Partita");
     private JLabel jlUsername;
+    private boolean nuovaPartitaOn;
+    FinestraConfigurazioneLotto fcl = null;
 
     public FinestraMenu(String username) {
         jlUsername = new JLabel(username, JLabel.LEFT);
@@ -51,11 +61,16 @@ public class FinestraMenu {
             jf.add(jp[i]);
         
         jbNuovaPartita.addActionListener(new GestoreInterno());
-        jbEsci.addActionListener(new GestoreUscita(jf));
+        jbEsci.addActionListener(new GestoreInterno());
         jf.addWindowListener(new GestoreFinestra(jf));
 
         jf.setLocation(300, 300);
         jf.setSize(400, 400);
         jf.setVisible(true);
+    }
+
+    public boolean isNuovaPartitaOn()
+    {
+        return nuovaPartitaOn;
     }
 }
