@@ -40,26 +40,6 @@ public class FinestraInserimentoNumeri {
                 if (cb[i] == e.getSource()) {
                     flag = true;
                     ++contatore;
-                    if (contatore == numeri + 1) {
-                        JOptionPane.showMessageDialog(jf, "Hai gia' inserito tutti i numeri",
-                                "Attenzione",
-                                JOptionPane.WARNING_MESSAGE);
-                        --contatore;
-                        cb[i].setSelected(false);
-                    } else {
-                        flags[i] = true;
-                        int j = 0;
-                        boolean flag2 = false;
-                        do {
-                            if (-1 == V[j]) {
-                                V[j] = i + 1;
-                                flag2 = true;
-                            }
-                            ++j;
-                        } while (j < numeri && !flag2);
-                    }
-                    ++i;
-                } else {
                     if (flags[i]) {
                         flags[i] = false;
                         int j = 0;
@@ -68,16 +48,30 @@ public class FinestraInserimentoNumeri {
                             if (i == V[j]) {
                                 V[j] = -1;
                                 flag2 = true;
-                                System.out.println("Settato -1 a " + i);
                             }
                             ++j;
                         } while (j < numeri && !flag2);
+                        contatore -= 2;
+                    } else if (contatore == numeri + 1) {
                         --contatore;
+                        cb[i].setSelected(false);
+                        // JOptionPane.showMessageDialog(null, "Hai gia' inserito tutti i numeri",
+                        // "Attenzione", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        flags[i] = true;
+                        int j = 0;
+                        boolean flag2 = false;
+                        do {
+                            if (-1 == V[j]) {
+                                V[j] = i;
+                                flag2 = true;
+                            }
+                            ++j;
+                        } while (j < numeri && !flag2);
                     }
                 }
                 ++i;
-                System.out.println(contatore);
-            } while (i < 90 && !flag);
+            } while (!flag && i < 90);
         }
     }
 
