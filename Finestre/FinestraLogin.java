@@ -8,10 +8,14 @@ import javax.swing.JTextField;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 
 public class FinestraLogin {
+
+    /**
+     * @author Cestello
+     * @author DajeCardea
+     */
 
     /*
      * fatta una inner class, cosi non dobbiamo fare tante file di classi
@@ -20,16 +24,18 @@ public class FinestraLogin {
 
     protected class GestorePulsante implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String username = jtf.getText();
+            username = jtf.getText();
             if (username.length() < 5) {
                 JOptionPane.showMessageDialog(jf, "Lo username deve essere di almeno 5 caratteri", "Attenzione",
                         JOptionPane.WARNING_MESSAGE);
-            } else {
-                // CHIAMA ALTRA FINESTRA
+            } else { // TODO
+                // SI COLLEGA ALL'ALTRA FINESTRA
+                System.exit(0);
             }
         }
     }
 
+    static String username = new String("");
     static JFrame jf = new JFrame("Login");
     static JPanel jp = new JPanel();
     static JLabel jl = new JLabel("username", JLabel.LEFT);
@@ -39,7 +45,7 @@ public class FinestraLogin {
 
     public static void main(String args[]) {
         GestorePulsante gp = new FinestraLogin().new GestorePulsante(); // si lo so e' brutto ma utile
-        GestoreFinestra g = new GestoreFinestra();
+        GestoreFinestra gf = new GestoreFinestra();
 
         // panel
         jp.add(jl);
@@ -51,7 +57,7 @@ public class FinestraLogin {
         jf.add(jb); // aggiungi button
 
         // eventi
-        jf.addWindowListener(g); // gestore finestra globale
+        jf.addWindowListener(gf); // gestore finestra globale
         jb.addActionListener(gp); // gestore button locale
 
         // robe finali
