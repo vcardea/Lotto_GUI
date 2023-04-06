@@ -127,8 +127,10 @@ public class FinestraInserimentoNumeri {
         jf.setVisible(true);
     }
 
-    public int[] getNumeri() {
-        return V;
+    public void getNumeri(int numeriScelti[]) {
+        for (int i = 0; i < 10; ++i) {
+            numeriScelti[i] = V[i];
+        }
     }
 
     public boolean getFlag() {
