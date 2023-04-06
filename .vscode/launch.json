@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Finestra",
+            "request": "launch",
+            "mainClass": "Finestre.Finestra",
+            "projectName": "Lotto_GUI_91e180e4"
+        },
+        {
+            "type": "java",
             "name": "FinestraLogin",
             "request": "launch",
             "mainClass": "Finestre.FinestraLogin",
