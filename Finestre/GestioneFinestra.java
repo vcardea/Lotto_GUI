@@ -1,4 +1,4 @@
-package Finestre;
+package finestre;
 
 import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;

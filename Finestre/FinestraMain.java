@@ -1,4 +1,4 @@
-package Finestre;
+package finestre;
 
 public class FinestraMain {
     

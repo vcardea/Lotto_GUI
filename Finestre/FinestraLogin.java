@@ -1,4 +1,4 @@
-package Finestre;
+package finestre;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
