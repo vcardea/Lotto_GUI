@@ -44,12 +44,12 @@ public class FinestraConfigurazioneLotto {
                      * la finestra finale con i risultati
                      */
                     // Chiama FinestraOutput
-                    numeri = jcb.getSelectedIndex();
+
+                    // TODO fix del movimento alla finestra inserimento numeri
+                    numeri = jcb.getSelectedIndex() + 1;
                     int numeriScelti[] = new int[10];
                     FinestraInserimentoNumeri fin = new FinestraInserimentoNumeri(numeri);
                     fin.creaFinestra();
-                    while (!fin.getFlag()) {
-                    }
                     fin.getNumeri(numeriScelti);
                     for (int i = 0; i < 10; ++i)
                         System.out.println("t: " + numeriScelti[i]);

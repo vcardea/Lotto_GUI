@@ -25,7 +25,6 @@ public class FinestraInserimentoNumeri {
                             "Errore",
                             JOptionPane.ERROR_MESSAGE);
                 else {
-                    flag = true;
                     jf.dispose();
                 }
             }
@@ -75,7 +74,6 @@ public class FinestraInserimentoNumeri {
         }
     }
 
-    private static boolean flag = false;
     private static int[] V = new int[10];
     private static boolean[] flags = new boolean[90];
     private static int contatore = 0;
@@ -96,6 +94,7 @@ public class FinestraInserimentoNumeri {
             cb[i - 1] = new JCheckBox("" + i);
             cb[i - 1].addItemListener(new FinestraInserimentoNumeri(numeri).new GestoreJCB());
             flags[i - 1] = false;
+            jp2.add(cb[i - 1]);
         }
     }
 
@@ -104,13 +103,11 @@ public class FinestraInserimentoNumeri {
     }
 
     public void creaFinestra() {
-        setup();
 
         // panel
         jp1.add(jl);
         jp2.setLayout(glP);
-        for (int i = 0; i < 90; ++i)
-            jp2.add(cb[i]);
+        setup();
 
         // frame
         jf.setLayout(gl); // setta il layout
@@ -131,9 +128,5 @@ public class FinestraInserimentoNumeri {
         for (int i = 0; i < 10; ++i) {
             numeriScelti[i] = V[i];
         }
-    }
-
-    public boolean getFlag() {
-        return flag;
     }
 }
