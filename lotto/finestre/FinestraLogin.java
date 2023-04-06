@@ -1,14 +1,16 @@
-package finestre;
+package lotto.finestre;
+
+import lotto.finestre.gestori.GestoreFinestra;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
 public class FinestraLogin {
 
@@ -23,9 +25,6 @@ public class FinestraLogin {
             if (username.length() < 5) {
                 JOptionPane.showMessageDialog(jf, "Lo username deve essere di almeno 5 caratteri", "Attenzione",
                         JOptionPane.WARNING_MESSAGE);
-            } else { // TODO
-                // SI COLLEGA ALL'ALTRA FINESTRA
-                System.exit(0);
             }
         }
     }
@@ -38,7 +37,7 @@ public class FinestraLogin {
     private static JButton jb = new JButton("OK");
     private static JTextField jtf = new JTextField(15);
 
-    protected static void main(String args[]) {
+    public FinestraLogin() {
         GestorePulsante gp = new FinestraLogin().new GestorePulsante(); // si lo so e' brutto ma utile
         GestoreFinestra gf = new GestoreFinestra();
 
@@ -60,4 +59,8 @@ public class FinestraLogin {
         jf.setVisible(true);
     }
 
+    public String getUsername()
+    {
+        return username;
+    }
 }

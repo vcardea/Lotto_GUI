@@ -1,4 +1,4 @@
-package finestre;
+package lotto.finestre;
 
 public class FinestraInserimentoNumeri {
 

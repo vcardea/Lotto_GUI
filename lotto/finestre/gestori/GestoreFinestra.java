@@ -1,9 +1,9 @@
-package finestre;
+package lotto.finestre.gestori;
 
 import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
 
-class GestoreFinestra implements WindowListener {
+public class GestoreFinestra implements WindowListener {
 	public void windowIconified(WindowEvent evento) {
 	}
 
