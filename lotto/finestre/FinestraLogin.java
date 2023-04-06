@@ -61,13 +61,11 @@ public class FinestraLogin {
         jf.setVisible(true);
     }
 
-    public String getUsername()
-    {
+    public String getUsername() {
         return username;
     }
 
-    public boolean isUsernameSet()
-    {
+    public boolean isUsernameSet() {
         return usernameSet;
     }
 }

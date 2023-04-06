@@ -1,19 +1,19 @@
 package lotto.finestre;
 
 import lotto.finestre.gestori.GestoreFinestra;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
 
 public class FinestraInserimentoNumeri {
 
@@ -25,7 +25,7 @@ public class FinestraInserimentoNumeri {
                             "Errore",
                             JOptionPane.ERROR_MESSAGE);
                 else {
-                    // TODO
+                    flag = true;
                     jf.dispose();
                 }
             }
@@ -75,6 +75,7 @@ public class FinestraInserimentoNumeri {
         }
     }
 
+    private static boolean flag = false;
     private static int[] V = new int[10];
     private static boolean[] flags = new boolean[90];
     private static int contatore = 0;
@@ -90,17 +91,19 @@ public class FinestraInserimentoNumeri {
 
     private static void setup() {
         for (int i = 1; i <= 90; ++i) {
-            if (i <= 10)
+            if (i <= numeri)
                 V[i - 1] = -1;
             cb[i - 1] = new JCheckBox("" + i);
-            cb[i - 1].addItemListener(new FinestraInserimentoNumeri().new GestoreJCB());
+            cb[i - 1].addItemListener(new FinestraInserimentoNumeri(numeri).new GestoreJCB());
             flags[i - 1] = false;
         }
     }
 
-    public static void main(String args[]) {
-        int n = 7;
+    public FinestraInserimentoNumeri(int n) {
         numeri = n;
+    }
+
+    public void creaFinestra() {
         setup();
 
         // panel
@@ -117,11 +120,18 @@ public class FinestraInserimentoNumeri {
 
         // eventi
         jf.addWindowListener(new GestoreFinestra(jf)); // gestore finestra globale
-        jb.addActionListener(new FinestraInserimentoNumeri().new GestorePulsante()); // gestore button locale
+        jb.addActionListener(new FinestraInserimentoNumeri(numeri).new GestorePulsante()); // gestore button locale
 
         // robe finali
         jf.setSize(350, 200);
         jf.setVisible(true);
     }
 
+    public int[] getNumeri() {
+        return V;
+    }
+
+    public boolean getFlag() {
+        return flag;
+    }
 }

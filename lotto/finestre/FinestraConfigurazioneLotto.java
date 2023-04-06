@@ -1,7 +1,5 @@
 package lotto.finestre;
 
-import lotto.finestre.gestori.GestoreFinestra;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -39,35 +37,45 @@ public class FinestraConfigurazioneLotto {
                             JOptionPane.WARNING_MESSAGE);
                     jtf.setText("");
                 } else {
-                    numeri = jcb.getSelectedIndex();
-                    int numeriScelti[] = new int[numeri];
-                    // Chiama FinestraInserimentoNumeri 
+                    // Chiama FinestraInserimentoNumeri
                     /*
                      * FinestraInserimentoNumeri riceve quanti numeri da giocare
                      * Ritorna i numeri giocati dall'utente per chiamare poi
                      * la finestra finale con i risultati
                      */
                     // Chiama FinestraOutput
+                    numeri = jcb.getSelectedIndex();
+                    int numeriScelti[] = new int[10];
+                    FinestraInserimentoNumeri fin = new FinestraInserimentoNumeri(numeri);
+                    fin.creaFinestra();
+                    numeriScelti = fin.getNumeri();
+                    for (int i = 0; i < 10; ++i)
+                        System.out.println("t: " + numeriScelti[i]);
                     active = false;
                     jf.dispose();
                 }
             }
         }
 
-        public void windowIconified(WindowEvent we) {}
+        public void windowIconified(WindowEvent we) {
+        }
 
-        public void windowDeiconified(WindowEvent we) {}
+        public void windowDeiconified(WindowEvent we) {
+        }
 
-        public void windowActivated(WindowEvent we) {}
+        public void windowActivated(WindowEvent we) {
+        }
 
-        public void windowDeactivated(WindowEvent we) {}
-        
-        public void windowOpened(WindowEvent we) {}
-        
-        public void windowClosed(WindowEvent we) {}
-        
-        public void windowClosing(WindowEvent we)
-        {
+        public void windowDeactivated(WindowEvent we) {
+        }
+
+        public void windowOpened(WindowEvent we) {
+        }
+
+        public void windowClosed(WindowEvent we) {
+        }
+
+        public void windowClosing(WindowEvent we) {
             active = false;
             jf.dispose();
         }
@@ -129,9 +137,8 @@ public class FinestraConfigurazioneLotto {
     public int getNumeri() {
         return numeri;
     }
-    
-    public boolean isActive()
-    {
+
+    public boolean isActive() {
         return this.active;
     }
 }

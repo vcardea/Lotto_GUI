@@ -8,10 +8,9 @@ public class LottoMain {
     private static FinestraLogin fl = new FinestraLogin();
     private static Utente u = new Utente();
     private static FinestraMenu fm;
-    
+
     public static void main(String args[]) {
-        while (!fl.isUsernameSet())
-        {
+        while (!fl.isUsernameSet()) {
             // Apre la finestra del login
             u.setUsername(fl.getUsername());
         }
