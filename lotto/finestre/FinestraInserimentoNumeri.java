@@ -18,6 +18,16 @@ import java.awt.event.ItemListener;
 public class FinestraInserimentoNumeri {
 
     private class GestorePulsante implements ActionListener {
+        private void reset() {
+            for (int i = 0; i < 90; ++i) {
+                if (i < numeri)
+                    V[i] = -1;
+                cb[i].setSelected(false);
+                flags[i] = false;
+            }
+            contatore = 0;
+        }
+
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("Prosegui")) {
                 if (contatore != numeri)
@@ -25,6 +35,7 @@ public class FinestraInserimentoNumeri {
                             "Errore",
                             JOptionPane.ERROR_MESSAGE);
                 else {
+                    reset();
                     jf.dispose();
                 }
             }
@@ -33,6 +44,7 @@ public class FinestraInserimentoNumeri {
 
     private class GestoreJCB implements ItemListener {
         public void itemStateChanged(ItemEvent e) {
+            System.out.println("NUMERI: " + numeri);
             boolean flag = false;
             int i = 0;
             do {
@@ -85,7 +97,7 @@ public class FinestraInserimentoNumeri {
     private static GridLayout gl = new GridLayout(3, 1);
     private static GridLayout glP = new GridLayout(10, 1);
     private static JButton jb = new JButton("Prosegui");
-    private static JCheckBox[] cb = new JCheckBox[90];
+    private static JCheckBox[] cb;
 
     private static void setup() {
         for (int i = 1; i <= 90; ++i) {
@@ -107,6 +119,7 @@ public class FinestraInserimentoNumeri {
         // panel
         jp1.add(jl);
         jp2.setLayout(glP);
+        cb = new JCheckBox[90];
         setup();
 
         // frame
