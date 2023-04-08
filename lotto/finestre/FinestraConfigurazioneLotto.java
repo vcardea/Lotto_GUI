@@ -19,16 +19,17 @@ public class FinestraConfigurazioneLotto {
     private class GestoreInterno implements ActionListener, WindowListener {
         private void errore() {
             JOptionPane.showMessageDialog(jf, "L'importo deve essere tra 2€ -> 200€, a scatti di 0.50€",
-                "Attenzione",
-                JOptionPane.WARNING_MESSAGE);
-                jtf.setText("");
+                    "Attenzione",
+                    JOptionPane.WARNING_MESSAGE);
+            jtf.setText("");
         }
 
         public void actionPerformed(ActionEvent e) {
             String val = jtf.getText();
 
             // Controlla se l'input e' vuoto
-            if (val.isEmpty()) errore();
+            if (val.isEmpty())
+                errore();
             else {
                 // Controlla se l'input e' un numero
                 try {
@@ -62,6 +63,7 @@ public class FinestraConfigurazioneLotto {
         }
 
         public void windowIconified(WindowEvent we) {
+
         }
 
         public void windowDeiconified(WindowEvent we) {
