@@ -20,9 +20,9 @@ public class FinestraInserimentoNumeri {
     private class GestorePulsante implements ActionListener {
         private void reset() {
             for (int i = 0; i < 90; ++i) {
-                if (i < numeri)
+                if (i < 10)
                     V[i] = -1;
-                cb[i].setSelected(false);
+                jp2.remove(cb[i]);
                 flags[i] = false;
             }
             contatore = 0;
@@ -35,6 +35,7 @@ public class FinestraInserimentoNumeri {
                             "Errore",
                             JOptionPane.ERROR_MESSAGE);
                 else {
+                    System.out.println("SI STO ENTRANDO");
                     reset();
                     jf.dispose();
                 }
@@ -100,13 +101,13 @@ public class FinestraInserimentoNumeri {
     private static JCheckBox[] cb;
 
     private static void setup() {
-        for (int i = 1; i <= 90; ++i) {
-            if (i <= numeri)
-                V[i - 1] = -1;
-            cb[i - 1] = new JCheckBox("" + i);
-            cb[i - 1].addItemListener(new FinestraInserimentoNumeri(numeri).new GestoreJCB());
-            flags[i - 1] = false;
-            jp2.add(cb[i - 1]);
+        for (int i = 0; i < 90; ++i) {
+            if (i < 10)
+                V[i] = -1;
+            cb[i] = new JCheckBox("" + i + 1);
+            cb[i].addItemListener(new FinestraInserimentoNumeri(numeri).new GestoreJCB());
+            flags[i] = false;
+            jp2.add(cb[i]);
         }
     }
 

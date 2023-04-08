@@ -51,8 +51,6 @@ public class FinestraConfigurazioneLotto {
                     FinestraInserimentoNumeri fin = new FinestraInserimentoNumeri(numeri);
                     fin.creaFinestra();
                     fin.getNumeri(numeriScelti);
-                    for (int i = 0; i < 10; ++i)
-                        System.out.println("t: " + numeriScelti[i]);
                     active = false;
                     jf.dispose();
                 }
