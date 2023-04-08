@@ -104,7 +104,7 @@ public class FinestraInserimentoNumeri {
         for (int i = 0; i < 90; ++i) {
             if (i < 10)
                 V[i] = -1;
-            cb[i] = new JCheckBox("" + i + 1);
+            cb[i] = new JCheckBox("" + (i + 1));
             cb[i].addItemListener(new FinestraInserimentoNumeri(numeri).new GestoreJCB());
             flags[i] = false;
             jp2.add(cb[i]);

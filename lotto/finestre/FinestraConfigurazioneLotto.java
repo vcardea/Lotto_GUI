@@ -17,25 +17,29 @@ import java.awt.event.WindowEvent;
 public class FinestraConfigurazioneLotto {
 
     private class GestoreInterno implements ActionListener, WindowListener {
+        private void errore() {
+            JOptionPane.showMessageDialog(jf, "L'importo deve essere tra 2€ -> 200€, a scatti di 0.50€",
+                "Attenzione",
+                JOptionPane.WARNING_MESSAGE);
+                jtf.setText("");
+        }
+
         public void actionPerformed(ActionEvent e) {
             String val = jtf.getText();
-            if (val.isEmpty()) // controllo se l'input e' vuoto
-                JOptionPane.showMessageDialog(jf, "L'importo deve essere tra 2€ -> 200€, a scatti di 0.50€",
-                        "Attenzione",
-                        JOptionPane.WARNING_MESSAGE);
+
+            // Controlla se l'input e' vuoto
+            if (val.isEmpty()) errore();
             else {
+                // Controlla se l'input e' un numero
                 try {
-                    importo = Float.valueOf(val); // controllo se l'input e' un numero
+                    importo = Float.valueOf(val);
                 } catch (NumberFormatException nfe) {
                     importo = 0.0f;
                 }
 
-                if (importo < 2 || importo > 200 || importo % 0.50 != 0) { // controllo se l'importo e' nella giusta
-                                                                           // modalita'
-                    JOptionPane.showMessageDialog(jf, "L'importo deve essere tra 2€ -> 200€, a scatti di 0.50€",
-                            "Attenzione",
-                            JOptionPane.WARNING_MESSAGE);
-                    jtf.setText("");
+                // Controlla il formato dell'importo
+                if (importo < 2 || importo > 200 || importo % 0.50 != 0) {
+                    errore();
                 } else {
                     // Chiama FinestraInserimentoNumeri
                     /*
