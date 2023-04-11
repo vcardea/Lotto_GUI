@@ -41,7 +41,7 @@ public class FinestraMenu {
     private JButton jbNuovaPartita = new JButton("Nuova Partita");
     private JLabel jlUsername;
     private boolean nuovaPartitaOn;
-    FinestraConfigurazioneLotto fcl = null;
+    private FinestraConfigurazioneLotto fcl = null;
 
     public FinestraMenu(String username) {
         jlUsername = new JLabel(username, JLabel.LEFT);

@@ -22,7 +22,7 @@ public class Lotto
   public static final byte MINSCELTE = 1;
 
   // Istanziazione dell'oggetto per l'input controllato
-  private static Input input = new Input();
+  // private static Input input = new Input();
 
   /**
    * Presentazione del programma
@@ -85,7 +85,7 @@ public class Lotto
       // Controllo sull'input
       do {
         ripeti = false;
-        numeri[j] = input.scan(">: Inserire un numero da giocare (" + (j + 1) + "): ", MINSCELTE, NUMERI);
+        // numeri[j] = input.scan(">: Inserire un numero da giocare (" + (j + 1) + "): ", MINSCELTE, NUMERI);
         if (checkNumeri[numeri[j] - 1])
         {
           System.out.println(">! Numero gia' inserito.\n");
@@ -195,13 +195,13 @@ public class Lotto
     estrai(checkEstrazioni);
     
     // Quantità di numeri da giocare
-    numeriGiocati = input.scan(">: Inserire la quantita' di numeri da giocare: ", MINSCELTE, MAXSCELTE);
+    // numeriGiocati = input.scan(">: Inserire la quantita' di numeri da giocare: ", MINSCELTE, MAXSCELTE);
 
     // Dichiarazione dell'array che contiene i numeri giocati
     byte numeri[] = new byte[numeriGiocati];
 	
     // Importo giocato
-    importo = input.scan(1, MAXPUNTATA, 0.50f);
+    // importo = input.scan(1, MAXPUNTATA, 0.50f);
 
     // Conteggio dei numeri indovinati
     indovinati = contaNumeri(gong, numeri, checkNumeri, checkEstrazioni);

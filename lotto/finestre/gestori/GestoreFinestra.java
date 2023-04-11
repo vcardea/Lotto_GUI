@@ -24,54 +24,42 @@ public class GestoreFinestra implements WindowListener {
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowIconified(WindowEvent we) {
-		// System.out.println(we.toString());
-	}
+	public void windowIconified(WindowEvent we) {}
 
 	/**
 	 * Ripristina la finestra
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowDeiconified(WindowEvent we) {
-		// System.out.println(we.toString());
-	}
+	public void windowDeiconified(WindowEvent we) {}
 
 	/**
 	 * Finestra attivata
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowActivated(WindowEvent we) {
-		// System.out.println(we.toString());
-	}
+	public void windowActivated(WindowEvent we) {}
 
 	/**
 	 * Finestra disattivata
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowDeactivated(WindowEvent we) {
-		// System.out.println(we.toString());
-	}
+	public void windowDeactivated(WindowEvent we) {}
 
 	/**
 	 * Finestra aperta
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowOpened(WindowEvent we) {
-		// System.out.println(we.toString());
-	}
+	public void windowOpened(WindowEvent we) {}
 
 	/**
 	 * Finestra chiusa
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowClosed(WindowEvent we) {
-		// System.out.println(we.toString());
-	}
+	public void windowClosed(WindowEvent we) {}
 
 	/**
 	 * Finestra in chiusura
@@ -79,7 +67,6 @@ public class GestoreFinestra implements WindowListener {
 	 * @param we evento verificatosi
 	 */
 	public void windowClosing(WindowEvent we) {
-		// System.out.println(we.toString());
 		jf.dispose();
 	}
 }

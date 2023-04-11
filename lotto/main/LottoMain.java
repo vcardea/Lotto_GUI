@@ -12,7 +12,7 @@ public class LottoMain {
 
     public static void main(String args[]) {
         while (!fl.isUsernameSet()) {
-            // Apre la finestra del login
+            // Apre la finestra del login e imposta il nome utente
             u.setUsername(fl.getUsername());
         }
 
