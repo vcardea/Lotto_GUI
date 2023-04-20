@@ -51,13 +51,13 @@ public class FinestraConfigurazioneLotto {
                     // Chiama FinestraOutput
 
                     // TODO fix del movimento alla finestra inserimento numeri
-                    numeri = jcb.getSelectedIndex() + 1;
-                    int numeriScelti[] = new int[10];
-                    FinestraInserimentoNumeri fin = new FinestraInserimentoNumeri(numeri);
-                    fin.creaFinestra();
-                    fin.getNumeri(numeriScelti);
-                    active = false;
-                    jf.dispose();
+                    // numeri = jcb.getSelectedIndex() + 1;
+                    // int numeriScelti[] = new int[10];
+                    // FinestraInserimentoNumeri fin = new FinestraInserimentoNumeri(numeri);
+                    // fin.creaFinestra();
+                    // fin.getNumeri(numeriScelti);
+                    // active = false;
+                    // jf.dispose();
                 }
             }
         }

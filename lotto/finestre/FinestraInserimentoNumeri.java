@@ -5,9 +5,8 @@ import lotto.finestre.gestori.GestoreFinestra;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JList;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -17,11 +16,13 @@ public class FinestraInserimentoNumeri {
 
     private class GestorePulsante implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            jf.dispose();
+            if (e.getActionCommand().equals("Prosegui")) {
+                jf.dispose();
+            }
         }
     }
 
-    private int[] numeri_totali = new int[10];
+    private int numeri_array[] = new int[90];
     private int numeri = 0;
     private JFrame jf = new JFrame("Giocata");
     private JPanel jp1 = new JPanel();
@@ -30,21 +31,25 @@ public class FinestraInserimentoNumeri {
     private GridLayout gl = new GridLayout(3, 1);
     private GridLayout glP = new GridLayout(10, 1);
     private JButton jb = new JButton("Prosegui");
-    private JList lista;
+    private JList<Integer> jl1 = new JList<Integer>();
 
-    private static void setup() {
-
+    public FinestraInserimentoNumeri(int numeri) {
+        this.numeri = numeri;
     }
 
-    public FinestraInserimentoNumeri(int n) {
-        numeri = n;
+    private void setup() {
+        for(int i = 0; i < 90; ++i) {
+            numeri_array[i] = i + 1;
+        }
+        jl1.setSelectedIndices(numeri_array);
     }
 
     public void creaFinestra() {
         // panel
-        jp1.add(jl);
-        jp2.setLayout(glP);
         setup();
+        jp1.add(jl);
+        jp2.add(jl1);
+        jp2.setLayout(glP);
 
         // frame
         jf.setLayout(gl); // setta il layout
@@ -60,5 +65,11 @@ public class FinestraInserimentoNumeri {
         jf.setSize(350, 200);
         jf.setVisible(true);
     }
-
+    
+    /*
+    public void getNumeri(int numeriScelti[]) {
+        for (int i = 0; i < 10; ++i) {
+            numeriScelti[i] = V[i];
+        }
+    } */
 }
