@@ -29,17 +29,23 @@ public class FinestraFinale {
     private JPanel[] jp = new JPanel[PANELS];
     private JLabel jlTitolo = new JLabel("RISULTATO FINALE");
     private JLabel jlNumeriEstratti = new JLabel("Numeri estratti");
-    private JLabel jlEstratti = new JLabel();
     private JLabel jlNumeriIndovinati = new JLabel("Numeri indovinati");
-    private JLabel jlIndovinati = new JLabel();
     private JLabel jlTitoloGuadagno = new JLabel("Guadagno (spesa - guadagno lordo)");
-    private JLabel jlGuadagno = new JLabel();
     private JButton jbChiudi = new JButton("Chiudi");
 
     /*
-     * Costruttore. Genera la finestra iniziale.
+     * Costruttore. Genera la finestra e manipola i numeri estratti e scelti
      */
     public FinestraFinale(int[] numeriEstratti, int[] numeriIndovinati, int importo) {
+        creaFinestra();
+
+        // 
+    }
+
+    /**
+     * Genera la finestra iniziale.
+     */
+    private void creaFinestra() {
         // Imposta il layout
         jf.setLayout(gl);
 
@@ -51,11 +57,8 @@ public class FinestraFinale {
         // Aggiunge componenti al pannello
         jp[0].add(jlTitolo, JLabel.CENTER);
         jp[1].add(jlNumeriEstratti, JLabel.CENTER);
-        jp[1].add(jlEstratti, JLabel.CENTER);
         jp[2].add(jlNumeriIndovinati, JLabel.CENTER);
-        jp[2].add(jlIndovinati, JLabel.CENTER);
         jp[3].add(jlTitoloGuadagno, JLabel.CENTER);
-        jp[3].add(jlGuadagno, JLabel.CENTER);
         jp[4].add(jbChiudi, BorderLayout.CENTER);
 
         // Pulsante di chiusura
