@@ -39,7 +39,7 @@ public class FinestraFinale {
     public FinestraFinale(int[] numeriEstratti, int[] numeriIndovinati, int importo) {
         creaFinestra();
 
-        // 
+        //
     }
 
     /**
