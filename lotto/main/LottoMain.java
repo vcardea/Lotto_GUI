@@ -1,7 +1,6 @@
 package lotto.main;
 
 import lotto.finestre.FinestraLogin;
-
 import lotto.finestre.FinestraMenu;
 import lotto.utente.Utente;
 
