@@ -1,3 +1,4 @@
+:: Diverse compilazioni
 javac lotto/finestre/gestori/GestoreFinestra.java
 javac lotto/finestre/gestori/GestoreUscita.java
 
@@ -13,4 +14,5 @@ javac lotto/utente/Utente.java
 
 javac lotto/main/LottoMain.java
 
+:: L'effettiva apertura
 java lotto/main/LottoMain
