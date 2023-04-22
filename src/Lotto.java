@@ -1,19 +1,18 @@
-package lotto;
+package src;
 
-import lotto.calcoli.CalcoloVincita;
+import src.calcoli.CalcoloVincita;
 
 /**
  * GIOCO DEL DIECI E LOTTO
  * Realizzato da:
- *  Matteo De Vito
- *  Francesco Rizzello
- *  Vincenzo Cardea
- *  Alessandro Serio
-*/
+ * Matteo De Vito
+ * Francesco Rizzello
+ * Vincenzo Cardea
+ * Alessandro Serio
+ */
 
 // Classe principale
-public class Lotto
-{
+public class Lotto {
   // Attributi costanti e pubblici
   public static final short MAXPUNTATA = 200;
   public static final byte NUMERI = 90;
@@ -27,19 +26,16 @@ public class Lotto
   /**
    * Presentazione del programma
    */
-  private static void presentazione()
-  {
+  private static void presentazione() {
     System.out.println(">> DIECI E LOTTO <<\n");
   }
-  
+
   /**
    * Metodo per il popolamento degli array di boolean
    */
-  private static void popola(boolean checkEstrazioni[], boolean checkNumeri[])
-  {
+  private static void popola(boolean checkEstrazioni[], boolean checkNumeri[]) {
     // Popolamento degli array di boolean
-    for (byte i = 0; i < NUMERI; i++)
-    {
+    for (byte i = 0; i < NUMERI; i++) {
       checkEstrazioni[i] = false;
       checkNumeri[i] = false;
     }
@@ -48,20 +44,20 @@ public class Lotto
   /**
    * Metodo per l'estrazione dei numeri vincenti
    */
-  private static void estrai(boolean checkEstrazioni[])
-  {
+  private static void estrai(boolean checkEstrazioni[]) {
     // Attributi locali
     boolean ripeti;
     byte estrazione = 0;
 
     // Estrazione dei numeri pseudo-casuali
-    for (byte i = 0; i < ESTRAZIONI; i++)
-    {
+    for (byte i = 0; i < ESTRAZIONI; i++) {
       do {
         ripeti = false;
         estrazione = (byte) (Math.random() * 90);
-        if (checkEstrazioni[estrazione]) ripeti = true;
-        else checkEstrazioni[estrazione] = true;
+        if (checkEstrazioni[estrazione])
+          ripeti = true;
+        else
+          checkEstrazioni[estrazione] = true;
       } while (!checkEstrazioni[estrazione] || ripeti);
     }
   }
@@ -69,8 +65,7 @@ public class Lotto
   /**
    * Metodo che conta prende in input i numeri giocati e conta quelli indovinati
    */
-  private static byte contaNumeri(byte gong, byte numeri[], boolean checkNumeri[], boolean checkEstrazioni[])
-  {
+  private static byte contaNumeri(byte gong, byte numeri[], boolean checkNumeri[], boolean checkEstrazioni[]) {
     // Dichiarazione attributi locali
     byte j;
     byte indovinati;
@@ -80,20 +75,19 @@ public class Lotto
     j = 0;
     indovinati = 0;
 
-    while (j < numeri.length)
-    {
+    while (j < numeri.length) {
       // Controllo sull'input
       do {
         ripeti = false;
-        // numeri[j] = input.scan(">: Inserire un numero da giocare (" + (j + 1) + "): ", MINSCELTE, NUMERI);
-        if (checkNumeri[numeri[j] - 1])
-        {
+        // numeri[j] = input.scan(">: Inserire un numero da giocare (" + (j + 1) + "):
+        // ", MINSCELTE, NUMERI);
+        if (checkNumeri[numeri[j] - 1]) {
           System.out.println(">! Numero gia' inserito.\n");
           ripeti = true;
-        }
-        else checkNumeri[numeri[j] - 1] = true;
+        } else
+          checkNumeri[numeri[j] - 1] = true;
       } while (!checkNumeri[numeri[j] - 1] || ripeti);
-	  
+
       // Conta se il numero inserito corrisponde
       // ad uno estratto
       if (checkEstrazioni[numeri[j] - 1])
@@ -108,8 +102,7 @@ public class Lotto
   /**
    * Metodo che controlla se il numero gong sia stato indovinato
    */
-  private static boolean gongTrovato(byte gong, byte numeri[])
-  {
+  private static boolean gongTrovato(byte gong, byte numeri[]) {
     byte j;
 
     j = 0;
@@ -123,12 +116,12 @@ public class Lotto
   }
 
   /**
-   * Metodo per la visualizzazione a video della vincita e dei numeri vincenti 
+   * Metodo per la visualizzazione a video della vincita e dei numeri vincenti
    */
-  private static void visualizzaVincita(float importo, byte contatore, byte gong, boolean gongTrovato, byte numeri[], boolean checkEstrazioni[])
-  {
+  private static void visualizzaVincita(float importo, byte contatore, byte gong, boolean gongTrovato, byte numeri[],
+      boolean checkEstrazioni[]) {
     byte j;
-    
+
     if (gongTrovato)
       importo += 65.0f;
 
@@ -139,34 +132,33 @@ public class Lotto
     // Visualizzazione dei numeri vincenti
     j = 0;
     System.out.println(">: Numeri vincenti:\n");
-    for (byte i = 0; i < NUMERI; i++)
-    {
-      if (checkEstrazioni[i])
-      {
+    for (byte i = 0; i < NUMERI; i++) {
+      if (checkEstrazioni[i]) {
         System.out.print("\t" + (i + 1));
-        if (j % 4 == 3) System.out.println("\n");
+        if (j % 4 == 3)
+          System.out.println("\n");
         j++;
       }
     }
 
     // Controlla che il numero gong sia stato indovinato
     visualizzaGong(gong, gongTrovato);
-  } 
+  }
 
   /**
    * Metodo che comunica che il numero gong sia stato indovinato
    */
-  private static void visualizzaGong(byte gong, boolean gongTrovato)
-  {
-    if (gongTrovato) System.out.println(">! GONG VINTO -> " + gong);
-    else System.out.println(">: IL GONG ERA -> " + gong);
+  private static void visualizzaGong(byte gong, boolean gongTrovato) {
+    if (gongTrovato)
+      System.out.println(">! GONG VINTO -> " + gong);
+    else
+      System.out.println(">: IL GONG ERA -> " + gong);
   }
 
   /**
    * Metodo principale
    */
-  public static void main(String args[])
-  {
+  public static void main(String args[]) {
     // Istanziazione e allocazione degli oggetti
     boolean checkEstrazioni[] = new boolean[NUMERI];
     boolean checkNumeri[] = new boolean[NUMERI];
@@ -190,16 +182,17 @@ public class Lotto
 
     // Popola gli array di boolean
     popola(checkEstrazioni, checkNumeri);
-    
+
     // Effettua le estrazioni
     estrai(checkEstrazioni);
-    
+
     // Quantità di numeri da giocare
-    // numeriGiocati = input.scan(">: Inserire la quantita' di numeri da giocare: ", MINSCELTE, MAXSCELTE);
+    // numeriGiocati = input.scan(">: Inserire la quantita' di numeri da giocare: ",
+    // MINSCELTE, MAXSCELTE);
 
     // Dichiarazione dell'array che contiene i numeri giocati
     byte numeri[] = new byte[numeriGiocati];
-	
+
     // Importo giocato
     // importo = input.scan(1, MAXPUNTATA, 0.50f);
 
@@ -213,7 +206,7 @@ public class Lotto
     CalcoloVincita vincita = new CalcoloVincita(numeriGiocati, importo, indovinati);
     importo = vincita.getVincita();
 
-    // Visualizza 
+    // Visualizza
     visualizzaVincita(importo, indovinati, gong, gongTrovato, numeri, checkEstrazioni);
   }
 }

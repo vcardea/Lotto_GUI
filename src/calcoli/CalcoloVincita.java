@@ -1,4 +1,5 @@
-package lotto.calcoli;
+package src.calcoli;
+
 /**
  * GIOCO DEL DIECI E LOTTO
  * Realizzato da:

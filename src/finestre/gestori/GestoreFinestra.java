@@ -1,4 +1,4 @@
-package lotto.finestre.gestori;
+package src.finestre.gestori;
 
 import javax.swing.JFrame;
 
@@ -24,42 +24,48 @@ public class GestoreFinestra implements WindowListener {
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowIconified(WindowEvent we) {}
+	public void windowIconified(WindowEvent we) {
+	}
 
 	/**
 	 * Ripristina la finestra
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowDeiconified(WindowEvent we) {}
+	public void windowDeiconified(WindowEvent we) {
+	}
 
 	/**
 	 * Finestra attivata
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowActivated(WindowEvent we) {}
+	public void windowActivated(WindowEvent we) {
+	}
 
 	/**
 	 * Finestra disattivata
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowDeactivated(WindowEvent we) {}
+	public void windowDeactivated(WindowEvent we) {
+	}
 
 	/**
 	 * Finestra aperta
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowOpened(WindowEvent we) {}
+	public void windowOpened(WindowEvent we) {
+	}
 
 	/**
 	 * Finestra chiusa
 	 * 
 	 * @param we evento verificatosi
 	 */
-	public void windowClosed(WindowEvent we) {}
+	public void windowClosed(WindowEvent we) {
+	}
 
 	/**
 	 * Finestra in chiusura

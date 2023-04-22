@@ -1,9 +1,10 @@
-package lotto.finestre;
-
-import lotto.finestre.gestori.GestoreFinestra;
+package src.finestre;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import src.finestre.gestori.GestoreFinestra;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 

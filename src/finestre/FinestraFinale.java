@@ -1,4 +1,4 @@
-package lotto.finestre;
+package src.finestre;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

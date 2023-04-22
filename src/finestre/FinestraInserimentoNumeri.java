@@ -1,9 +1,10 @@
-package lotto.finestre;
-
-import lotto.finestre.gestori.GestoreFinestra;
+package src.finestre;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import src.finestre.gestori.GestoreFinestra;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -38,7 +39,7 @@ public class FinestraInserimentoNumeri {
     }
 
     private void setup() {
-        for(int i = 0; i < 90; ++i) {
+        for (int i = 0; i < 90; ++i) {
             numeri_array[i] = i + 1;
         }
         jl1.setSelectedIndices(numeri_array);
@@ -65,11 +66,12 @@ public class FinestraInserimentoNumeri {
         jf.setSize(350, 200);
         jf.setVisible(true);
     }
-    
+
     /*
-    public void getNumeri(int numeriScelti[]) {
-        for (int i = 0; i < 10; ++i) {
-            numeriScelti[i] = V[i];
-        }
-    } */
+     * public void getNumeri(int numeriScelti[]) {
+     * for (int i = 0; i < 10; ++i) {
+     * numeriScelti[i] = V[i];
+     * }
+     * }
+     */
 }

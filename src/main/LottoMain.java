@@ -1,8 +1,8 @@
-package lotto.main;
+package src.main;
 
-import lotto.finestre.FinestraLogin;
-import lotto.finestre.FinestraMenu;
-import lotto.utente.Utente;
+import src.finestre.FinestraLogin;
+import src.finestre.FinestraMenu;
+import src.utente.Utente;
 
 public class LottoMain {
     private static FinestraLogin fl = new FinestraLogin();
@@ -15,7 +15,7 @@ public class LottoMain {
             u.setUsername(fl.getUsername());
         }
 
-        // Apre la finestra del menu principale 
+        // Apre la finestra del menu principale
         fm = new FinestraMenu(u.getUsername());
     }
 }

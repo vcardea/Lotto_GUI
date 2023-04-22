@@ -1,18 +1,18 @@
-:: Diverse compilazioni
-javac lotto/finestre/gestori/GestoreFinestra.java
-javac lotto/finestre/gestori/GestoreUscita.java
+:: Divsrccompilazioni
+javac src/finestre/gestori/GestoreUscita.java
+javac src/finestre/gestori/GestoreFinestra.java
 
-javac lotto/finestre/FinestraConfigurazioneLotto.java
-javac lotto/finestre/FinestraFinale.java
-javac lotto/finestre/FinestraInserimentoNumeri.java
-javac lotto/finestre/FinestraLogin.java
-javac lotto/finestre/FinestraMenu.java
+javac src/finestre/FinestraConfigurazioneLotto.java
+javac src/finestre/FinestraFinale.java
+javac src/finestre/FinestraInserimentoNumeri.java
+javac src/finestre/FinestraLogin.java
+javac src/finestre/FinestraMenu.java
 
-javac lotto/calcoli/CalcoloVincita.java
+javac src/calcoli/CalcoloVincita.java
 
-javac lotto/utente/Utente.java
+javac src/utente/Utente.java
 
-javac lotto/main/LottoMain.java
+javac src/main/LottoMain.java
 
 :: L'effettiva apertura
-java lotto/main/LottoMain
+java src/main/LottoMain

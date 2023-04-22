@@ -1,4 +1,4 @@
-package lotto.utente;
+package src.utente;
 
 public class Utente {
     private String username;
