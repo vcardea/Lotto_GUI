@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LottoMain",
+            "request": "launch",
+            "mainClass": "src.main.LottoMain",
+            "projectName": "Lotto_GUI_91e180e4"
+        },
+        {
+            "type": "java",
             "name": "FinestraInserimentoNumeri",
             "request": "launch",
             "mainClass": "lotto.finestre.FinestraInserimentoNumeri",

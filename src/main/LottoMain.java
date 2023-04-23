@@ -17,5 +17,6 @@ public class LottoMain {
 
         // Apre la finestra del menu principale
         fm = new FinestraMenu(u.getUsername());
+        fm = null;
     }
 }

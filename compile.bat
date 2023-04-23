@@ -1,4 +1,4 @@
-:: Divsrccompilazioni
+:: Diverse ccompilazioni
 javac src/finestre/gestori/GestoreUscita.java
 javac src/finestre/gestori/GestoreFinestra.java
 
