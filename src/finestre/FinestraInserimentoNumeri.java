@@ -16,7 +16,7 @@ public class FinestraInserimentoNumeri {
 
     private static boolean numeri_scelti[] = new boolean[90];
     private static int contatore;
-    private int numeri = 0;
+    private byte numeri = 0;
     private float importo;
     private JFrame jf = new JFrame("Giocata");
     private JPanel jp1 = new JPanel();
@@ -52,7 +52,7 @@ public class FinestraInserimentoNumeri {
                 if (numeri != contatore) {
                     errore(false);
                 } else {
-                    FinestraFinale ff = new FinestraFinale(numeri_scelti, importo);
+                    FinestraFinale ff = new FinestraFinale(numeri_scelti, importo, numeri);
                     reset();
                     jf.dispose();
                 }
@@ -74,7 +74,7 @@ public class FinestraInserimentoNumeri {
         }
     }
 
-    public FinestraInserimentoNumeri(int numeri, float importo) {
+    public FinestraInserimentoNumeri(byte numeri, float importo) {
         this.numeri = numeri;
         this.importo = importo;
         creaFinestra();

@@ -2,6 +2,9 @@ package src.finestre;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import src.calcoli.CalcoloVincita;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
@@ -9,6 +12,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import java.util.Vector;
 
 public class FinestraFinale {
     /*
@@ -24,7 +29,32 @@ public class FinestraFinale {
         }
     }
 
+    private void estrai() {
+        // Attributi locali
+        boolean ripeti;
+        byte estrazione = 0;
+
+        // Estrazione dei numeri pseudo-casuali
+        for (byte i = 0; i < ESTRAZIONI; i++) {
+            do {
+                ripeti = false;
+                estrazione = (byte) (Math.random() * 90);
+                if (checkEstrazioni[estrazione])
+                    ripeti = true;
+                else
+                    checkEstrazioni[estrazione] = true;
+            } while (!checkEstrazioni[estrazione] || ripeti);
+        }
+    }
+
+    private static final byte ESTRAZIONI = 20;
+    private boolean[] checkEstrazioni = new boolean[90];
+    private Vector<Byte> numeriIndovinati = new Vector<Byte>();
+
+    private byte contNumeriVinti = 0;
     private float importo;
+    private float soldiVinti = 0.0f;
+
     private final byte PANELS = 5;
     private JFrame jf = new JFrame();
     private GridLayout gl = new GridLayout(PANELS, 1);
@@ -38,8 +68,18 @@ public class FinestraFinale {
     /*
      * Costruttore. Genera la finestra e manipola i numeri estratti e scelti
      */
-    public FinestraFinale(boolean[] numeriEstratti, float importo) {
+
+    public FinestraFinale(boolean[] numeriScelti, float importo, byte numeri) {
         this.importo = importo;
+        estrai();
+        for (byte i = 0; i < 90; ++i) {
+            if (numeriScelti[i] && checkEstrazioni[i]) {
+                numeriIndovinati.addElement((byte) (i + 1));
+                ++contNumeriVinti;
+            }
+        }
+        CalcoloVincita cv = new CalcoloVincita(numeri, importo, contNumeriVinti);
+        soldiVinti = cv.getVincita();
         creaFinestra();
     }
 

@@ -43,7 +43,7 @@ public class FinestraConfigurazioneLotto {
                 if (importo < 2 || importo > 200 || importo % 0.50 != 0) {
                     errore();
                 } else {
-                    numeri = jcb.getSelectedIndex() + 1;
+                    numeri = (byte) (jcb.getSelectedIndex() + 1);
                     FinestraInserimentoNumeri fin = new FinestraInserimentoNumeri(numeri, importo);
                     jf.dispose();
                 }
@@ -52,7 +52,7 @@ public class FinestraConfigurazioneLotto {
     }
 
     private float importo = 0.0f;
-    private int numeri = 0;
+    private byte numeri = 0;
     private JFrame jf = null;
     private JPanel jp1 = new JPanel();
     private JPanel jp2 = new JPanel();
