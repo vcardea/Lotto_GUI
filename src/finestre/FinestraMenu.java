@@ -1,10 +1,9 @@
 package src.finestre;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import src.finestre.gestori.GestoreFinestra;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -28,7 +27,6 @@ public class FinestraMenu {
 
     private static JFrame jf = new JFrame();
     private GridLayout gl = new GridLayout(5, 1);
-    // private GridLayout usernameGl = new GridLayout(1, 3);
     private GridLayout centralGl = new GridLayout(2, 1, 5, 5);
     private JPanel jp[] = new JPanel[5];
     private JButton jbEsci = new JButton("Esci");

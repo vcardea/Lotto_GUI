@@ -9,6 +9,13 @@
             "name": "LottoMain",
             "request": "launch",
             "mainClass": "src.main.LottoMain",
+            "projectName": "Lotto_GUI_c41d991d"
+        },
+        {
+            "type": "java",
+            "name": "LottoMain",
+            "request": "launch",
+            "mainClass": "src.main.LottoMain",
             "projectName": "Lotto_GUI_91e180e4"
         },
         {
