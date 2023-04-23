@@ -23,6 +23,7 @@ public class FinestraFinale {
         }
     }
 
+    private float importo;
     private final byte PANELS = 5;
     private JFrame jf = new JFrame();
     private GridLayout gl = new GridLayout(PANELS, 1);
@@ -36,16 +37,15 @@ public class FinestraFinale {
     /*
      * Costruttore. Genera la finestra e manipola i numeri estratti e scelti
      */
-    public FinestraFinale(int[] numeriEstratti, int[] numeriIndovinati, int importo) {
+    public FinestraFinale(boolean[] numeriEstratti, float importo) {
+        this.importo = importo;
         creaFinestra();
-
-        //
     }
 
     /**
      * Genera la finestra iniziale.
      */
-    private void creaFinestra() {
+    public void creaFinestra() {
         // Imposta il layout
         jf.setLayout(gl);
 

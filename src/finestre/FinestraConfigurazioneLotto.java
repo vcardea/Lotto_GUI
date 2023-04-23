@@ -42,21 +42,8 @@ public class FinestraConfigurazioneLotto {
                 if (importo < 2 || importo > 200 || importo % 0.50 != 0) {
                     errore();
                 } else {
-                    // Chiama FinestraInserimentoNumeri
-                    /*
-                     * FinestraInserimentoNumeri riceve quanti numeri da giocare
-                     * Ritorna i numeri giocati dall'utente per chiamare poi
-                     * la finestra finale con i risultati
-                     */
-                    // Chiama FinestraOutput
-
-                    // TODO fix del movimento alla finestra inserimento numeri
                     numeri = jcb.getSelectedIndex() + 1;
-                    // int numeriScelti[] = new int[10];
-                    FinestraInserimentoNumeri fin = new FinestraInserimentoNumeri(numeri);
-                    fin.creaFinestra();
-                    // fin.getNumeri(numeriScelti);
-                    // active = false;
+                    FinestraInserimentoNumeri fin = new FinestraInserimentoNumeri(numeri, importo);
                     jf.dispose();
                 }
             }

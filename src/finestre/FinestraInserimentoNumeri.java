@@ -15,8 +15,9 @@ import java.awt.event.ActionListener;
 public class FinestraInserimentoNumeri {
 
     private static boolean numeri_scelti[] = new boolean[90];
-    private int numeri = 0;
     private static int contatore;
+    private int numeri = 0;
+    private float importo;
     private JFrame jf = new JFrame("Giocata");
     private JPanel jp1 = new JPanel();
     private JPanel jp2 = new JPanel();
@@ -39,20 +40,23 @@ public class FinestraInserimentoNumeri {
             }
         }
 
-        private void display() {
+        private void reset() {
             for (int i = 0; i < 90; ++i)
                 if (numeri_scelti[i])
-                    System.out.println(i + " acceso");
+                    numeri_scelti[i] = false;
+            contatore = 0;
         }
 
         public void actionPerformed(ActionEvent e) {
             String comando = e.getActionCommand();
-            System.out.println("Entro inizio: " + contatore);
             if (comando.equals("Prosegui")) {
                 if (numeri != contatore) {
                     errore(false);
                 } else {
-                    System.out.print("Ucciditi va bene");
+                    FinestraFinale ff = new FinestraFinale(numeri_scelti, importo);
+                    ff.creaFinestra();
+                    reset();
+                    jf.dispose();
                 }
             } else {
                 int numero = Integer.parseInt(comando);
@@ -65,18 +69,17 @@ public class FinestraInserimentoNumeri {
                         ++contatore;
                     }
                 } else {
-                    System.out.println("TOLGO");
                     numeri_scelti[numero] = false;
                     --contatore;
                 }
-                display();
             }
-
         }
     }
 
-    public FinestraInserimentoNumeri(int numeri) {
+    public FinestraInserimentoNumeri(int numeri, float importo) {
         this.numeri = numeri;
+        this.importo = importo;
+        creaFinestra();
     }
 
     private void setup() { // setta la lista
@@ -85,7 +88,7 @@ public class FinestraInserimentoNumeri {
             numeri_scelti[i - 1] = false;
             JButton btnNumero = new JButton(Integer.toString(i));
             btnNumero.setActionCommand(Integer.toString(i));
-            btnNumero.addActionListener(new FinestraInserimentoNumeri(numeri).new GestorePulsante());
+            btnNumero.addActionListener(new GestorePulsante());
             jp2.add(btnNumero);
         }
     }
@@ -103,18 +106,10 @@ public class FinestraInserimentoNumeri {
 
         // eventi
         jf.addWindowListener(new GestoreFinestra(jf)); // gestore finestra globale
-        jb.addActionListener(new FinestraInserimentoNumeri(numeri).new GestorePulsante()); // gestore button locale
+        jb.addActionListener(new GestorePulsante()); // gestore button
 
         // robe finali
         jf.setSize(350, 200);
         jf.setVisible(true);
     }
-
-    /*
-     * public void getNumeri(int numeriScelti[]) {
-     * for (int i = 0; i < 10; ++i) {
-     * numeriScelti[i] = V[i];
-     * }
-     * }
-     */
 }
