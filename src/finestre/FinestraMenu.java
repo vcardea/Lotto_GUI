@@ -17,23 +17,16 @@ public class FinestraMenu {
         public void actionPerformed(ActionEvent ae) {
             String s = ae.getActionCommand();
 
-            if (fcl == null)
-                nuovaPartitaOn = false;
-            else if (fcl.isActive())
-                nuovaPartitaOn = true;
-            else
-                nuovaPartitaOn = false;
-
-            if (s.equals("nuovapartita") && !nuovaPartitaOn) {
+            if (s.equals("nuovapartita")) {
                 fcl = new FinestraConfigurazioneLotto();
-                fcl.creaFinestra();
+                jf.setVisible(false);
             } else if (s.equals("esci")) {
                 System.exit(0);
             }
         }
     }
 
-    private JFrame jf = new JFrame();
+    private static JFrame jf = new JFrame();
     private GridLayout gl = new GridLayout(5, 1);
     // private GridLayout usernameGl = new GridLayout(1, 3);
     private GridLayout centralGl = new GridLayout(2, 1, 5, 5);
@@ -74,5 +67,9 @@ public class FinestraMenu {
 
     public boolean isNuovaPartitaOn() {
         return nuovaPartitaOn;
+    }
+
+    public static void apriFinestra() {
+        jf.setVisible(true);
     }
 }

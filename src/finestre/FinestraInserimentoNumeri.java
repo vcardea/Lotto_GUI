@@ -1,6 +1,6 @@
 package src.finestre;
 
-import src.finestre.gestori.GestoreFinestra;
+import src.finestre.gestori.GestoreFinestra_ND;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,7 +27,6 @@ public class FinestraInserimentoNumeri {
     private JButton jb = new JButton("Prosegui");
 
     private class GestorePulsante implements ActionListener {
-
         private void errore(boolean tipo) {
             if (tipo) {
                 JOptionPane.showMessageDialog(jf, "Hai gia' inserito tutti i numeri",
@@ -54,7 +53,6 @@ public class FinestraInserimentoNumeri {
                     errore(false);
                 } else {
                     FinestraFinale ff = new FinestraFinale(numeri_scelti, importo);
-                    ff.creaFinestra();
                     reset();
                     jf.dispose();
                 }
@@ -105,7 +103,7 @@ public class FinestraInserimentoNumeri {
         jf.add(jb); // aggiungi button
 
         // eventi
-        jf.addWindowListener(new GestoreFinestra(jf)); // gestore finestra globale
+        jf.addWindowListener(new GestoreFinestra_ND(jf)); // gestore finestra globale
         jb.addActionListener(new GestorePulsante()); // gestore button
 
         // robe finali

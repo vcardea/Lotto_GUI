@@ -5,18 +5,19 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import src.finestre.gestori.GestoreFinestra_ND;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowListener;
-import java.awt.event.WindowEvent;
 
 public class FinestraConfigurazioneLotto {
 
-    private class GestoreInterno implements ActionListener, WindowListener {
+    private class GestoreInterno implements ActionListener {
         private void errore() {
             JOptionPane.showMessageDialog(jf, "L'importo deve essere tra 2€ -> 200€, a scatti di 0.50€",
                     "Attenzione",
@@ -48,30 +49,6 @@ public class FinestraConfigurazioneLotto {
                 }
             }
         }
-
-        public void windowIconified(WindowEvent we) {
-
-        }
-
-        public void windowDeiconified(WindowEvent we) {
-        }
-
-        public void windowActivated(WindowEvent we) {
-        }
-
-        public void windowDeactivated(WindowEvent we) {
-        }
-
-        public void windowOpened(WindowEvent we) {
-        }
-
-        public void windowClosed(WindowEvent we) {
-        }
-
-        public void windowClosing(WindowEvent we) {
-            active = false;
-            jf.dispose();
-        }
     }
 
     private float importo = 0.0f;
@@ -85,7 +62,6 @@ public class FinestraConfigurazioneLotto {
     private JButton jb = new JButton("Prosegui");
     private JComboBox<Integer> jcb = new JComboBox<Integer>();
     private JTextField jtf = new JTextField(6);
-    public boolean active;
 
     private void setupCombo() {
         for (int i = 1; i <= 10; ++i)
@@ -93,7 +69,7 @@ public class FinestraConfigurazioneLotto {
     }
 
     public FinestraConfigurazioneLotto() {
-        this.active = true;
+        creaFinestra();
     }
 
     public void creaFinestra() {
@@ -115,7 +91,7 @@ public class FinestraConfigurazioneLotto {
         jf.add(jb); // aggiungi button
 
         // eventi
-        jf.addWindowListener(new GestoreInterno()); // gestore finestra globale
+        jf.addWindowListener(new GestoreFinestra_ND(jf)); // gestore finestra globale
         jb.addActionListener(new GestoreInterno()); // gestore button locale
 
         // robe finali
@@ -129,9 +105,5 @@ public class FinestraConfigurazioneLotto {
 
     public int getNumeri() {
         return numeri;
-    }
-
-    public boolean isActive() {
-        return this.active;
     }
 }

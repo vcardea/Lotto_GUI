@@ -18,6 +18,7 @@ public class FinestraFinale {
         public void actionPerformed(ActionEvent ae) {
             String s = ae.getActionCommand();
             if (s.equals("chiudi")) {
+                FinestraMenu.apriFinestra();
                 jf.dispose();
             }
         }
