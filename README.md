@@ -13,5 +13,7 @@ Programma lotto con la GUI, assegnato il 24/03/2023.
 
 -Log del lotto;
 
+-Aggiunte varie;
+
 05/04/2023
 Creazione scheletro del programma.
