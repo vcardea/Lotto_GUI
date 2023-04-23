@@ -1,13 +1,12 @@
 package src.finestre;
 
+import src.finestre.gestori.GestoreFinestra;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
-import src.finestre.gestori.GestoreFinestra;
-
 import javax.swing.JButton;
 
 import java.awt.GridLayout;
@@ -25,8 +24,10 @@ public class FinestraLogin {
         public void actionPerformed(ActionEvent e) {
             username = jtf.getText();
             if (username.length() < 5) {
-                JOptionPane.showMessageDialog(jf, "Lo username deve essere di almeno 5 caratteri", "Attenzione",
-                        JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(jf,
+                    "Lo username deve essere di almeno 5 caratteri",
+                    "Attenzione",
+                    JOptionPane.WARNING_MESSAGE);
                 jtf.setText("");
             } else {
                 usernameSet = true;

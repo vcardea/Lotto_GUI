@@ -14,9 +14,9 @@ import java.awt.event.ActionListener;
 
 public class FinestraInserimentoNumeri {
 
-    private boolean numeri_scelti[] = new boolean[90];
+    private static boolean numeri_scelti[] = new boolean[90];
     private int numeri = 0;
-    private int contatore;
+    private static int contatore;
     private JFrame jf = new JFrame("Giocata");
     private JPanel jp1 = new JPanel();
     private JPanel jp2 = new JPanel();
