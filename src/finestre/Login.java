@@ -13,7 +13,11 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FinestraLogin {
+/*
+ * TODO capire perché l'applicazione rimane in background nonostante
+ * il gestore finestra sia stato impostato
+*/
+public class Login {
 
     private class GestorePulsante implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -41,7 +45,7 @@ public class FinestraLogin {
     private JButton jb = new JButton("OK");
     private JTextField jtf = new JTextField(15);
 
-    public FinestraLogin() {
+    public Login() {
         // Componenti
         for (int i = 0; i < PANELS; i++) {
             jp[i] = new JPanel();

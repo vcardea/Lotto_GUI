@@ -1,6 +1,6 @@
 package src.finestre;
 
-import src.finestre.gestori.GestoreFinestra_ND;
+import src.finestre.gestori.GestoreFinestraND;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,7 +12,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FinestraInserimentoNumeri {
+public class InserimentoNumeri {
 
     private static boolean numeri_scelti[] = new boolean[90];
     private static int contatore;
@@ -52,7 +52,7 @@ public class FinestraInserimentoNumeri {
                 if (numeri != contatore) {
                     errore(false);
                 } else {
-                    FinestraFinale ff = new FinestraFinale(numeri_scelti, importo, numeri);
+                    Finale f = new Finale(numeri_scelti, importo, numeri);
                     reset();
                     jf.dispose();
                 }
@@ -74,7 +74,7 @@ public class FinestraInserimentoNumeri {
         }
     }
 
-    public FinestraInserimentoNumeri(byte numeri, float importo) {
+    public InserimentoNumeri(byte numeri, float importo) {
         this.numeri = numeri;
         this.importo = importo;
         creaFinestra();
@@ -103,7 +103,7 @@ public class FinestraInserimentoNumeri {
         jf.add(jb); // aggiungi button
 
         // eventi
-        jf.addWindowListener(new GestoreFinestra_ND(jf)); // gestore finestra globale
+        jf.addWindowListener(new GestoreFinestraND(jf)); // gestore finestra globale
         jb.addActionListener(new GestorePulsante()); // gestore button
 
         // robe finali

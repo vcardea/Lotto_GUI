@@ -1,13 +1,13 @@
 package src.main;
 
-import src.finestre.FinestraLogin;
-import src.finestre.FinestraMenu;
+import src.finestre.Login;
+import src.finestre.Menu;
 import src.utente.Utente;
 
 public class LottoMain {
-    private static FinestraLogin fl = new FinestraLogin();
+    private static Login fl = new Login();
     private static Utente u = new Utente();
-    private static FinestraMenu fm;
+    private static Menu m;
 
     public static void main(String args[]) {
         while (!fl.isUsernameSet()) {
@@ -16,7 +16,7 @@ public class LottoMain {
         }
 
         // Apre la finestra del menu principale
-        fm = new FinestraMenu(u.getUsername());
-        fm = null;
+        m = new Menu(u.getUsername());
+        m = null;
     }
 }

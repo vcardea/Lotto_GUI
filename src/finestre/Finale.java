@@ -1,10 +1,10 @@
 package src.finestre;
 
+import src.calcoli.CalcoloVincita;
+import src.finestre.gestori.GestoreFinestraND;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import src.calcoli.CalcoloVincita;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 
 import java.util.Vector;
 
-public class FinestraFinale {
+public class Finale {
     /*
      * Classe interna per la gestione dei pulsanti
      */
@@ -23,7 +23,7 @@ public class FinestraFinale {
         public void actionPerformed(ActionEvent ae) {
             String s = ae.getActionCommand();
             if (s.equals("chiudi")) {
-                FinestraMenu.apriFinestra();
+                Menu.apriFinestra();
                 jf.dispose();
             }
         }
@@ -70,7 +70,7 @@ public class FinestraFinale {
      * Costruttore. Genera la finestra e manipola i numeri estratti e scelti
      */
 
-    public FinestraFinale(boolean[] numeriScelti, float importo, byte numeri) {
+    public Finale(boolean[] numeriScelti, float importo, byte numeri) {
         this.importo = importo;
         estrai();
         for (byte i = 0; i < 90; ++i) {
@@ -116,7 +116,7 @@ public class FinestraFinale {
         }
 
         // Imposta ulteriori dettagli del frame
-        // jf.addWindowListener(new GestoreFinestra());
+        jf.addWindowListener(new GestoreFinestraND(jf));
         // jf.setSize(400, 400);
         jf.pack();
         jf.setVisible(true);

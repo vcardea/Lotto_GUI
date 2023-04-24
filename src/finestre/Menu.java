@@ -11,13 +11,13 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class FinestraMenu {
+public class Menu {
     protected class GestoreInterno implements ActionListener {
         public void actionPerformed(ActionEvent ae) {
             String s = ae.getActionCommand();
 
             if (s.equals("nuovapartita")) {
-                fcl = new FinestraConfigurazioneLotto();
+                cl = new ConfigurazioneLotto();
                 jf.setVisible(false);
             } else if (s.equals("esci")) {
                 System.exit(0);
@@ -33,9 +33,9 @@ public class FinestraMenu {
     private JButton jbNuovaPartita = new JButton("Nuova Partita");
     private JLabel jlUsername;
     private boolean nuovaPartitaOn;
-    private FinestraConfigurazioneLotto fcl = null;
+    private ConfigurazioneLotto cl = null;
 
-    public FinestraMenu(String username) {
+    public Menu(String username) {
         jlUsername = new JLabel(username, JLabel.LEFT);
 
         jbEsci.setActionCommand("esci");

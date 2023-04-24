@@ -1,13 +1,12 @@
 package src.finestre;
 
+import src.finestre.gestori.GestoreFinestraND;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
-import src.finestre.gestori.GestoreFinestra_ND;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
@@ -15,7 +14,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FinestraConfigurazioneLotto {
+public class ConfigurazioneLotto {
 
     private class GestoreInterno implements ActionListener {
         private void errore() {
@@ -44,7 +43,7 @@ public class FinestraConfigurazioneLotto {
                     errore();
                 } else {
                     numeri = (byte) (jcb.getSelectedIndex() + 1);
-                    FinestraInserimentoNumeri fin = new FinestraInserimentoNumeri(numeri, importo);
+                    InserimentoNumeri in = new InserimentoNumeri(numeri, importo);
                     jf.dispose();
                 }
             }
@@ -68,7 +67,7 @@ public class FinestraConfigurazioneLotto {
             jcb.addItem(i);
     }
 
-    public FinestraConfigurazioneLotto() {
+    public ConfigurazioneLotto() {
         creaFinestra();
     }
 
@@ -91,7 +90,7 @@ public class FinestraConfigurazioneLotto {
         jf.add(jb); // aggiungi button
 
         // eventi
-        jf.addWindowListener(new GestoreFinestra_ND(jf)); // gestore finestra globale
+        jf.addWindowListener(new GestoreFinestraND(jf)); // gestore finestra globale
         jb.addActionListener(new GestoreInterno()); // gestore button locale
 
         // robe finali

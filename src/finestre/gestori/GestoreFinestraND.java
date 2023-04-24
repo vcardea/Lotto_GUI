@@ -1,20 +1,20 @@
 package src.finestre.gestori;
 
-/**
- * ND = Non Destructive
- * GestoreFinestra_ND.java
- * Gestore finestra particolare:
- *  serve nelle classi: FinestraInserimentoNumeri, FinestraConfigurazioneNumeri
- *  nel caso si chiuda con la X, per aprire il menu
- */
-import javax.swing.JFrame;
+import src.finestre.Menu;
 
-import src.finestre.FinestraMenu;
+import javax.swing.JFrame;
 
 import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
 
-public class GestoreFinestra_ND implements WindowListener {
+/**
+ * ND = Non Destructive
+ * GestoreFinestra_ND.java
+ * Gestore finestra particolare:
+ *  serve nelle classi: FinestraInserimentoNumeri, FinestraConfigurazioneNumeri, FinestraFinale
+ *  nel caso si chiuda con la X, per aprire il menu
+ */
+public class GestoreFinestraND implements WindowListener {
     private JFrame jf = new JFrame();
 
     /**
@@ -24,7 +24,7 @@ public class GestoreFinestra_ND implements WindowListener {
      * 
      * @param jf jframe della finestra
      */
-    public GestoreFinestra_ND(JFrame jf) {
+    public GestoreFinestraND(JFrame jf) {
         this.jf = jf;
     }
 
@@ -82,7 +82,7 @@ public class GestoreFinestra_ND implements WindowListener {
      * @param we evento verificatosi
      */
     public void windowClosing(WindowEvent we) {
-        FinestraMenu.apriFinestra();
+        Menu.apriFinestra();
         jf.dispose();
     }
 }
