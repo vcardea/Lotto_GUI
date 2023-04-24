@@ -58,6 +58,7 @@ public class FinestraFinale {
     private final byte PANELS = 5;
     private JFrame jf = new JFrame();
     private GridLayout gl = new GridLayout(PANELS, 1);
+    private GridLayout glP = new GridLayout(2, 5);
     private JPanel[] jp = new JPanel[PANELS];
     private JLabel jlTitolo = new JLabel("RISULTATO FINALE");
     private JLabel jlNumeriEstratti = new JLabel("Numeri estratti");
@@ -91,9 +92,12 @@ public class FinestraFinale {
         jf.setLayout(gl);
 
         // Inizializza i pannelli
-        for (int i = 0; i < jp.length; i++) {
-            jp[i] = new JPanel();
+        for (int i = 1; i < jp.length - 1; i++) {
+            jp[i] = new JPanel(glP);
         }
+
+        jp[0] = new JPanel();
+        jp[4] = new JPanel();
 
         // Aggiunge componenti al pannello
         jp[0].add(jlTitolo, JLabel.CENTER);
