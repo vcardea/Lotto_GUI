@@ -1,6 +1,6 @@
 package src.finestre;
 
-import src.finestre.gestori.GestoreFinestra;
+import src.finestre.gestori.GestoreFinestraFN;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,10 +13,6 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
- * TODO capire perché l'applicazione rimane in background nonostante
- * il gestore finestra sia stato impostato
-*/
 public class Login {
 
     private class GestorePulsante implements ActionListener {
@@ -63,7 +59,7 @@ public class Login {
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
-        jf.addWindowListener(new GestoreFinestra(jf));
+        jf.addWindowListener(new GestoreFinestraFN(jf));
         jf.setSize(400, 400);
         jf.setVisible(true);
         jf.getContentPane();
