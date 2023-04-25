@@ -55,21 +55,19 @@ public class Finale {
     private float importo;
     private float soldiVinti = 0.0f;
 
-    private final byte PANELS = 5;
+    private final byte PANELS = 3;
     private JFrame jf = new JFrame();
-    private GridLayout gl = new GridLayout(PANELS, 1);
-    private GridLayout glP = new GridLayout(2, 5);
     private JPanel[] jp = new JPanel[PANELS];
-    private JLabel jlTitolo = new JLabel("RISULTATO FINALE");
-    private JLabel jlNumeriEstratti = new JLabel("Numeri estratti");
-    private JLabel jlNumeriIndovinati = new JLabel("Numeri indovinati");
-    private JLabel jlTitoloGuadagno = new JLabel("Guadagno (spesa - guadagno lordo)");
+    private GridLayout gl = new GridLayout(6, 1);
+    private JLabel jlTitolo = new JLabel("RISULTATO FINALE", JLabel.CENTER);
+    private JLabel jlNumeriEstratti = new JLabel("Numeri estratti", JLabel.CENTER);
+    private JLabel jlNumeriIndovinati = new JLabel("Numeri indovinati", JLabel.CENTER);
+    private JLabel jlTitoloGuadagno = new JLabel("Guadagno (spesa - guadagno lordo)", JLabel.CENTER);
     private JButton jbChiudi = new JButton("Chiudi");
 
     /*
      * Costruttore. Genera la finestra e manipola i numeri estratti e scelti
      */
-
     public Finale(boolean[] numeriScelti, float importo, byte numeri) {
         this.importo = importo;
         estrai();
@@ -89,36 +87,38 @@ public class Finale {
      */
     public void creaFinestra() {
         // Imposta il layout
-        jf.setLayout(gl);
+        jf.setLayout(new BorderLayout());
 
         // Inizializza i pannelli
-        for (int i = 1; i < jp.length - 1; i++) {
-            jp[i] = new JPanel(glP);
+        for (int i = 0; i < jp.length; i++) {
+            jp[i] = new JPanel();
         }
 
-        jp[0] = new JPanel();
-        jp[4] = new JPanel();
+        // Imposta il layout del pannello centrale
+        jp[1].setLayout(gl);
 
         // Aggiunge componenti al pannello
-        jp[0].add(jlTitolo, JLabel.CENTER);
-        jp[1].add(jlNumeriEstratti, JLabel.CENTER);
-        jp[2].add(jlNumeriIndovinati, JLabel.CENTER);
-        jp[3].add(jlTitoloGuadagno, JLabel.CENTER);
-        jp[4].add(jbChiudi, BorderLayout.CENTER);
+        jp[0].add(jlTitolo);
+        jp[1].add(jlNumeriEstratti);
+        jp[1].add(new JLabel("1 2 3\n4 5 6\n7 8 9", JLabel.CENTER));
+        jp[1].add(jlNumeriIndovinati);
+        jp[1].add(new JLabel("Secondo"));
+        jp[1].add(jlTitoloGuadagno);
+        jp[1].add(new JLabel("Terzo"));
+        jp[2].add(jbChiudi, BorderLayout.CENTER);
+        
+        // Aggiungi i panelli al frame
+        jf.add(jp[0], BorderLayout.NORTH);
+        jf.add(jp[1], BorderLayout.CENTER);
+        jf.add(jp[2], BorderLayout.SOUTH);
 
         // Pulsante di chiusura
         jbChiudi.setActionCommand("chiudi");
         jbChiudi.addActionListener(new GestoreInterno());
 
-        // Aggiungi i pannelli al frame
-        for (int i = 0; i < jp.length; i++) {
-            jf.add(jp[i]);
-        }
-
         // Imposta ulteriori dettagli del frame
         jf.addWindowListener(new GestoreFinestraND(jf));
-        // jf.setSize(400, 400);
-        jf.pack();
+        jf.setSize(400, 400);
         jf.setVisible(true);
     }
 }
