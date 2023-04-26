@@ -42,8 +42,10 @@ public class Finale {
                 estrazione = (byte) (Math.random() * 90);
                 if (checkEstrazioni[estrazione])
                     ripeti = true;
-                else
+                else {
                     checkEstrazioni[estrazione] = true;
+                    numeriEstratti.addElement(estrazione);
+                }
             } while (!checkEstrazioni[estrazione] || ripeti);
         }
     }
@@ -51,7 +53,7 @@ public class Finale {
     private static final byte ESTRAZIONI = 20;
     private boolean[] checkEstrazioni = new boolean[90];
     private Vector<Byte> numeriIndovinati = new Vector<Byte>();
-
+    private Vector<Byte> numeriEstratti = new Vector<Byte>();
     private byte contNumeriVinti = 0;
     private float vincita = 0.0f;
 
