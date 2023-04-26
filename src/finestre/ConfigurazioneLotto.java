@@ -56,15 +56,16 @@ public class ConfigurazioneLotto {
     private JPanel jp1 = new JPanel();
     private JPanel jp2 = new JPanel();
     private JLabel jl1 = new JLabel("Inserire quanti numeri si vuole giocare");
-    private JLabel jl2 = new JLabel("Inserire l'importo (da 2€ a 200€)");
+    private JLabel jl2 = new JLabel("Inserire l'importo (da 2 a 200 euro)");
     private GridLayout gl = new GridLayout(3, 2);
     private JButton jb = new JButton("Prosegui");
     private JComboBox<Integer> jcb = new JComboBox<Integer>();
     private JTextField jtf = new JTextField(6);
 
     private void setupCombo() {
-        for (int i = 1; i <= 10; ++i)
+        for (int i = 1; i <= 10; ++i) {
             jcb.addItem(i);
+        }
     }
 
     public ConfigurazioneLotto() {
@@ -94,7 +95,7 @@ public class ConfigurazioneLotto {
         jb.addActionListener(new GestoreInterno()); // gestore button locale
 
         // robe finali
-        jf.setSize(350, 200);
+        jf.setSize(400, 400);
         jf.setVisible(true);
     }
 

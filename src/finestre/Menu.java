@@ -1,6 +1,7 @@
 package src.finestre;
 
 import src.finestre.gestori.GestoreFinestra;
+import src.finestre.gestori.GestoreUscita;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,8 +21,6 @@ public class Menu {
             if (s.equals("nuovapartita")) {
                 cl = new ConfigurazioneLotto();
                 jf.setVisible(false);
-            } else if (s.equals("esci")) {
-                System.exit(0);
             }
         }
     }
@@ -49,12 +48,8 @@ public class Menu {
         jf.add(jlUsername, BorderLayout.NORTH);
         jf.add(jp, BorderLayout.CENTER);
 
-        // Imposta dimensione pulsanti
-        jbNuovaPartita.setPreferredSize(new java.awt.Dimension(30, 30));
-        jbEsci.setPreferredSize(new java.awt.Dimension(30, 30));
-
         jbNuovaPartita.addActionListener(new GestoreInterno());
-        jbEsci.addActionListener(new GestoreInterno());
+        jbEsci.addActionListener(new GestoreUscita(jf));
         jf.addWindowListener(new GestoreFinestra(jf));
 
         jf.setLocation(300, 300);

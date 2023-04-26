@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import java.awt.BorderLayout;
@@ -26,14 +27,14 @@ public class Login {
                     JOptionPane.WARNING_MESSAGE);
                 jtf.setText("");
             } else {
-                usernameSet = true;
+                // Apre la finestra del menu principale
+                Menu m = new Menu(jtf.getText());
                 jf.dispose();
             }
         }
     }
 
     private final byte PANELS = 3;
-    private boolean usernameSet = false;
     private String username = new String();
     private JFrame jf = new JFrame("Login");
     private JPanel[] jp = new JPanel[PANELS];
@@ -43,6 +44,8 @@ public class Login {
     private JTextField jtf = new JTextField(15);
 
     public Login() {
+        jf.setIconImage(new ImageIcon("../img/logo.png").getImage());
+
         // Componenti
         for (int i = 0; i < PANELS; i++) {
             jp[i] = new JPanel();
@@ -70,10 +73,6 @@ public class Login {
 
     public String getUsername() {
         return username;
-    }
-
-    public boolean isUsernameSet() {
-        return usernameSet;
     }
 
     private boolean isUsernameValid(String username) {
