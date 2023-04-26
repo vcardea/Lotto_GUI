@@ -10,6 +10,7 @@ import java.time.Clock;
 import java.time.ZoneId;
 
 public class Log {
+
     private static Vector<Byte> converti(boolean[] bScelti) {
         Vector<Byte> scelti = new Vector<Byte>();
         for (int i = 0; i < bScelti.length; i++) {
@@ -20,15 +21,24 @@ public class Log {
         return scelti;
     }
 
-    public static int leggiPartite(String INPUT) {
-        FileIO fio = new FileIO(INPUT, "");
+    private static String leggi(String INPUT) {
+        FileInput fio = new FileInput(INPUT);
         String linea = fio.read();
         StringTokenizer st = new StringTokenizer(linea, " ");
 
-        linea = st.nextToken();
+        return st.nextToken();
+    }
+
+    public static int leggiPartite(String linea) {
         int start = linea.indexOf(":") + 2;
         linea = linea.substring(start, linea.length() - 2);
-        int partite = Integer.valueOf(linea).intValue();
+
+        int partite = 0;
+        try {
+            partite = Integer.valueOf(linea).intValue();
+        } catch (NumberFormatException nfe) {
+            System.err.println(">! Errore nella lettura dei dati.");
+        }
 
         return partite;
     }
@@ -43,26 +53,26 @@ public class Log {
          * MediaVincite = VincitaTotale / Partite
          * Scrivi dati (sovrascrivi)
          */
+        final String INPUT = "src/log/users/" + Menu.username + "/Dati" + Menu.username + ".txt";
+        final String OUTPUT = "src/log/users/" + Menu.username + "/Log" + Menu.username + ".txt";
+        FileIO fio = new FileIO(INPUT, OUTPUT);
     }
 
     public static void scriviLog(float importo, float vincita, boolean[] bScelti, Vector<Byte> indovinati) {
-        /*
-         * Converti scelti
-         * Scrivi (appendi)
-         */
         final String INPUT = "src/log/users/" + Menu.username + "/Dati" + Menu.username + ".txt";
         final String OUTPUT = "src/log/users/" + Menu.username + "/Log" + Menu.username + ".txt";
         FileIO fio = new FileIO(INPUT, OUTPUT);
         Vector<Byte> scelti = converti(bScelti);
         Collections.sort(scelti);
 
-        String linea = new String("");
         ZoneId zi = ZoneId.of("Europe/Rome");
         Clock c = Clock.tickSeconds(zi);
         String data = c.instant().atZone(zi).toString().substring(0, 19);
-        int partite = leggiPartite(INPUT);
-        // int partite = 1;
-        linea += "<" + Menu.username + "[" + data + "]" + ">[Partite:[" + partite + "]] [Importo:[" + importo;
+
+        String linea = leggi(INPUT);
+        int partite = leggiPartite(linea);
+
+        linea = "<" + Menu.username + "[" + data + "]" + ">[Partite:[" + partite + "]] [Importo:[" + importo;
         linea += "]] [Vincita:[" + vincita + "]] [NumeriScelti:" + scelti + "] [NumeriIndovinati:" + indovinati + "]";
 
         fio.write(linea, false);
