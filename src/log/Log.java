@@ -9,6 +9,7 @@ import java.nio.file.Files;
 
 import java.util.StringTokenizer;
 import java.util.Collections;
+import java.util.NoSuchElementException;
 import java.util.Vector;
 
 import java.time.Clock;
@@ -39,13 +40,19 @@ public class Log {
 
     private static int leggiDato(String linea) {
         StringTokenizer st = new StringTokenizer(linea, " ");
-        linea = st.nextToken();
+        
+        try {
+            linea = st.nextToken();
+        } catch (NoSuchElementException nse) {
+            System.err.println(">! Prossimo token non esistente.");
+        }
+
         int start = linea.indexOf(":") + 2;
         linea = linea.substring(start, linea.length() - 2);
 
         int partite = 0;
         try {
-            partite = Integer.valueOf(linea).intValue();
+            partite = (Integer) Integer.valueOf(linea).intValue();
         } catch (NumberFormatException nfe) {
             System.err.println(">! Errore nella lettura dei dati.");
         }
@@ -56,14 +63,18 @@ public class Log {
     private static float leggiDato(String linea, int shift) {
         StringTokenizer st = new StringTokenizer(linea, " ");
         for (int i = 0; i < shift; i++) {
-            linea = st.nextToken();
+            try {
+                linea = st.nextToken();
+            } catch (NoSuchElementException nse) {
+                System.err.println(">! Prossimo token non esistente.");
+            }
         }
         int start = linea.indexOf(":") + 2;
         linea = linea.substring(start, linea.length() - 2);
 
         float dato = 0.0f;
         try {
-            dato = Float.valueOf(linea).floatValue();
+            dato = (Float) Float.valueOf(linea).floatValue();
         } catch (NumberFormatException nfe) {
             System.err.println(">! Errore nella lettura dei dati.");
         }
@@ -99,10 +110,13 @@ public class Log {
          */
         final String INPUT = "src/log/users/" + Menu.username + "/Dati" + Menu.username + ".txt";
         final String OUTPUT = "src/log/users/" + Menu.username + "/Log" + Menu.username + ".txt";
-        FileOutput fio = new FileOutput(OUTPUT);
+        FileOutput fo = new FileOutput(OUTPUT);
 
         String linea = leggi(INPUT);
-        System.err.print(linea); //
+        
+        // DEBUG
+        System.err.print(linea);
+        
         int partite = leggiDato(linea) + 1;
         importo += leggiDato(linea, 2);
         vincita += leggiDato(linea, 3);
@@ -111,7 +125,7 @@ public class Log {
 
         linea = generaDato(partite, importo, vincita, guadagnoTotale, mediaVincite);
 
-        fio.write(linea, false);
+        fo.write(linea, false);
     }
 
     public static void scriviLog(float importo, float vincita, boolean[] bScelti, Vector<Byte> indovinati) {
@@ -138,6 +152,6 @@ public class Log {
         linea = "<" + Menu.username + "[" + getDate() + "]" + ">[Partite:[" + partite + "]] [Importo:[" + importo;
         linea += "]] [Vincita:[" + vincita + "]] [NumeriScelti:" + scelti + "] [NumeriIndovinati:" + indovinati + "]";
 
-        fio.write(linea, false);
+        fio.write(linea, true);
     }
 }

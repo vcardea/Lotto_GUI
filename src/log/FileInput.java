@@ -58,7 +58,7 @@ public class FileInput {
                     fo.write(linea, false);
                 }
             } catch (IOException ioe) {
-                System.err.println(">! Errore durante la lectura del file " + INPUT);
+                System.err.println(">! Errore durante la lettura del file " + INPUT);
             }
             closeInput();
         }
