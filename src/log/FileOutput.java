@@ -4,13 +4,12 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 
-public class FileIO extends FileInput {
+public class FileOutput {
     private final String OUTPUT;
     private FileWriter fw;
     private PrintWriter pw;
     
-    public FileIO(String INPUT, String OUTPUT) {
-        super(INPUT);
+    public FileOutput(String OUTPUT) {
         this.OUTPUT = OUTPUT;
     }
 
