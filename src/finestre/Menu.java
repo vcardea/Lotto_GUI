@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,9 +27,8 @@ public class Menu {
     }
 
     private static JFrame jf = new JFrame();
-    private GridLayout gl = new GridLayout(5, 1);
-    private GridLayout centralGl = new GridLayout(2, 1, 5, 5);
-    private JPanel jp[] = new JPanel[5];
+    private GridLayout gl = new GridLayout(2, 1, 5, 5);
+    private JPanel jp = new JPanel();
     private JButton jbEsci = new JButton("Esci");
     private JButton jbNuovaPartita = new JButton("Nuova Partita");
     private JLabel jlUsername;
@@ -36,23 +36,22 @@ public class Menu {
     private ConfigurazioneLotto cl = null;
 
     public Menu(String username) {
-        jlUsername = new JLabel(username, JLabel.LEFT);
+        jlUsername = new JLabel(username, JLabel.CENTER);
 
         jbEsci.setActionCommand("esci");
         jbNuovaPartita.setActionCommand("nuovapartita");
-        jf.setLayout(gl);
+        jf.setLayout(new BorderLayout());
 
-        for (int i = 0; i < 5; i++)
-            jp[i] = new JPanel();
+        jp.setLayout(gl);
+        jp.add(jbNuovaPartita);
+        jp.add(jbEsci);
 
-        // jp[0].setLayout(usernameGl);
-        jp[0].add(jlUsername);
-        jp[2].setLayout(centralGl);
-        jp[2].add(jbNuovaPartita);
-        jp[2].add(jbEsci);
+        jf.add(jlUsername, BorderLayout.NORTH);
+        jf.add(jp, BorderLayout.CENTER);
 
-        for (int i = 0; i < 5; i++)
-            jf.add(jp[i]);
+        // Imposta dimensione pulsanti
+        jbNuovaPartita.setPreferredSize(new java.awt.Dimension(30, 30));
+        jbEsci.setPreferredSize(new java.awt.Dimension(30, 30));
 
         jbNuovaPartita.addActionListener(new GestoreInterno());
         jbEsci.addActionListener(new GestoreInterno());

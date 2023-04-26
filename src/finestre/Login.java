@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -37,7 +38,7 @@ public class Login {
     private JFrame jf = new JFrame("Login");
     private JPanel[] jp = new JPanel[PANELS];
     private JLabel jlTitolo = new JLabel("INSERISCI IL NOME UTENTE", JLabel.CENTER);
-    private JLabel jlUsername = new JLabel("Username", JLabel.CENTER);
+    private JLabel jlUsername = new JLabel("Username ", JLabel.CENTER);
     private JButton jb = new JButton("OK");
     private JTextField jtf = new JTextField(15);
 
@@ -46,6 +47,8 @@ public class Login {
         for (int i = 0; i < PANELS; i++) {
             jp[i] = new JPanel();
         }
+
+        jp[1].setLayout(new GridBagLayout());
 
         jp[0].add(jlTitolo);
         jp[1].add(jlUsername);
