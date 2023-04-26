@@ -11,7 +11,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -35,8 +37,10 @@ public class Login {
     }
 
     private final byte PANELS = 3;
+    private final Dimension RESOLUTION = Toolkit.getDefaultToolkit().getScreenSize();
+    // private final Dimension 
     private String username = new String();
-    private JFrame jf = new JFrame("Login");
+    private JFrame jf = new JFrame("Gioco del 10eLotto");
     private JPanel[] jp = new JPanel[PANELS];
     private JLabel jlTitolo = new JLabel("INSERISCI IL NOME UTENTE", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("Username ", JLabel.CENTER);
@@ -66,6 +70,7 @@ public class Login {
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
         jf.addWindowListener(new GestoreFinestraFN(jf));
+        jf.setLocation(((int)RESOLUTION.getWidth() / 2) - 200, ((int)RESOLUTION.getHeight() / 2) - 200);
         jf.setSize(400, 400);
         jf.setVisible(true);
         jf.getContentPane();
