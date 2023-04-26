@@ -1,5 +1,6 @@
 package src.finestre;
 
+import src.log.Log;
 import src.calcoli.CalcoloVincita;
 import src.finestre.gestori.GestoreFinestraND;
 
@@ -52,8 +53,7 @@ public class Finale {
     private Vector<Byte> numeriIndovinati = new Vector<Byte>();
 
     private byte contNumeriVinti = 0;
-    private float importo;
-    private float soldiVinti = 0.0f;
+    private float vincita = 0.0f;
 
     private final byte PANELS = 3;
     private JFrame jf = new JFrame();
@@ -69,7 +69,6 @@ public class Finale {
      * Costruttore. Genera la finestra e manipola i numeri estratti e scelti
      */
     public Finale(boolean[] numeriScelti, float importo, byte numeri) {
-        this.importo = importo;
         estrai();
         for (byte i = 0; i < 90; ++i) {
             if (numeriScelti[i] && checkEstrazioni[i]) {
@@ -78,7 +77,9 @@ public class Finale {
             }
         }
         CalcoloVincita cv = new CalcoloVincita(numeri, importo, contNumeriVinti);
-        soldiVinti = cv.getVincita();
+        vincita = cv.getVincita();
+        Log.scriviLog(importo, vincita, numeriScelti, numeriIndovinati);
+        Log.aggiornaDati(importo, vincita);
         creaFinestra();
     }
 

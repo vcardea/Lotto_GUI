@@ -25,15 +25,17 @@ public class Menu {
         }
     }
 
-    private static JFrame jf = new JFrame();
+    private static JFrame jf = new JFrame("Gioco del 10eLotto");
+    public static String username = new String();
     private GridLayout gl = new GridLayout(2, 1, 5, 5);
     private JPanel jp = new JPanel();
     private JButton jbEsci = new JButton("Esci");
     private JButton jbNuovaPartita = new JButton("Nuova Partita");
-    private JLabel jlUsername;
+    public JLabel jlUsername;
     private ConfigurazioneLotto cl = null;
 
     public Menu(String username) {
+        Menu.username = username;
         jlUsername = new JLabel(username, JLabel.CENTER);
 
         jbEsci.setActionCommand("esci");
