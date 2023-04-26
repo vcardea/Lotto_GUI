@@ -1,8 +1,13 @@
 package src.log;
 
+import src.finestre.Menu;
+
+import java.util.StringTokenizer;
+import java.util.Collections;
 import java.util.Vector;
 
-import src.finestre.Menu;
+import java.time.Clock;
+import java.time.ZoneId;
 
 public class Log {
     private static Vector<Byte> converti(boolean[] bScelti) {
@@ -15,13 +20,17 @@ public class Log {
         return scelti;
     }
 
-    public static void scriviLog(float importo, float vincita, boolean[] bScelti, Vector<Byte> indovinati) {
-        /*
-         * Converti scelti
-         * Scrivi (appendi)
-         */
-        FileIO fio = new FileIO("Log" + Menu.username + ".txt", "Dati" + Menu.username + ".txt");
-        Vector<Byte> scelti = converti(bScelti);
+    public static int leggiPartite(String INPUT) {
+        FileIO fio = new FileIO(INPUT, "");
+        String linea = fio.read();
+        StringTokenizer st = new StringTokenizer(linea, " ");
+
+        linea = st.nextToken();
+        int start = linea.indexOf(":") + 2;
+        linea = linea.substring(start, linea.length() - 2);
+        int partite = Integer.valueOf(linea).intValue();
+
+        return partite;
     }
 
     public static void aggiornaDati(float importo, float vincita) {
@@ -34,5 +43,25 @@ public class Log {
          * MediaVincite = VincitaTotale / Partite
          * Scrivi dati (sovrascrivi)
          */
+    }
+
+    public static void scriviLog(float importo, float vincita, boolean[] bScelti, Vector<Byte> indovinati) {
+        /*
+         * Converti scelti
+         * Scrivi (appendi)
+         */
+        final String INPUT = "./users/" + Menu.username + "/Log" + Menu.username + ".txt";
+        final String OUTPUT = "./users/" + Menu.username + "/Dati" + Menu.username + ".txt";
+        FileIO fio = new FileIO(INPUT, OUTPUT);
+        Vector<Byte> scelti = converti(bScelti);
+        Collections.sort(scelti);
+
+        String linea = new String("");
+        ZoneId zi = ZoneId.of("Europe/Rome");
+        Clock c = Clock.tickSeconds(zi);
+        String data = c.instant().atZone(zi).toString();
+        int partite = leggiPartite(INPUT);
+        linea += "<" + Menu.username + "[" + data + "]" + ">[ Partite:[" + partite + "]] [Importo:[" + importo;
+        linea += "]] [Vincita:[" + vincita + "]] [NumeriScelti:[" + scelti + "]";
     }
 }
