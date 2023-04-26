@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "P",
+            "request": "launch",
+            "mainClass": "src.log.P",
+            "projectName": "Lotto_GUI_c41d991d"
+        },
+        {
+            "type": "java",
             "name": "Prova",
             "request": "launch",
             "mainClass": "src.log.Prova",

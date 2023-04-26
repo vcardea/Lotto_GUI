@@ -35,7 +35,7 @@ public class FileIO {
             fw = new FileWriter(OUTPUT, append);
             pw = new PrintWriter(fw);
         } catch (IOException ioe) {
-            System.err.println(">! Errore durante l'apertura del file " + INPUT);
+            System.err.println(">! Errore durante l'apertura del file " + OUTPUT);
             return false;
         }
         return true;

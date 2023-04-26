@@ -50,8 +50,8 @@ public class Log {
          * Converti scelti
          * Scrivi (appendi)
          */
-        final String INPUT = "./users/" + Menu.username + "/Log" + Menu.username + ".txt";
-        final String OUTPUT = "./users/" + Menu.username + "/Dati" + Menu.username + ".txt";
+        final String INPUT = "src/log/users/" + Menu.username + "/Dati" + Menu.username + ".txt";
+        final String OUTPUT = "src/log/users/" + Menu.username + "/Log" + Menu.username + ".txt";
         FileIO fio = new FileIO(INPUT, OUTPUT);
         Vector<Byte> scelti = converti(bScelti);
         Collections.sort(scelti);
@@ -59,9 +59,12 @@ public class Log {
         String linea = new String("");
         ZoneId zi = ZoneId.of("Europe/Rome");
         Clock c = Clock.tickSeconds(zi);
-        String data = c.instant().atZone(zi).toString();
+        String data = c.instant().atZone(zi).toString().substring(0, 19);
         int partite = leggiPartite(INPUT);
-        linea += "<" + Menu.username + "[" + data + "]" + ">[ Partite:[" + partite + "]] [Importo:[" + importo;
-        linea += "]] [Vincita:[" + vincita + "]] [NumeriScelti:[" + scelti + "]";
+        // int partite = 1;
+        linea += "<" + Menu.username + "[" + data + "]" + ">[Partite:[" + partite + "]] [Importo:[" + importo;
+        linea += "]] [Vincita:[" + vincita + "]] [NumeriScelti:" + scelti + "] [NumeriIndovinati:" + indovinati + "]";
+
+        fio.write(linea, false);
     }
 }
