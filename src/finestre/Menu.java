@@ -31,7 +31,6 @@ public class Menu {
     private JButton jbEsci = new JButton("Esci");
     private JButton jbNuovaPartita = new JButton("Nuova Partita");
     private JLabel jlUsername;
-    private boolean nuovaPartitaOn;
     private ConfigurazioneLotto cl = null;
 
     public Menu(String username) {
@@ -55,10 +54,6 @@ public class Menu {
         jf.setLocation(300, 300);
         jf.setSize(400, 400);
         jf.setVisible(true);
-    }
-
-    public boolean isNuovaPartitaOn() {
-        return nuovaPartitaOn;
     }
 
     public static void apriFinestra() {
