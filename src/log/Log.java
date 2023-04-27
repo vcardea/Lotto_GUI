@@ -31,7 +31,7 @@ public class Log {
     private static String getDate() {
         ZoneId zi = ZoneId.of("Europe/Rome");
         Clock c = Clock.tickSeconds(zi);
-        return c.instant().atZone(zi).toString().substring(0, 19);
+        return c.instant().atZone(zi).toString();
     }
 
     private static String leggi(final String INPUT) {
@@ -56,7 +56,7 @@ public class Log {
         linea = linea.substring(start, linea.length() - 2);
 
         try {
-            dato = (Float) Float.valueOf(linea).floatValue();
+            dato = Float.valueOf(linea).floatValue();
         } catch (NumberFormatException nfe) {
             System.err.println(">! Errore nella lettura dei dati.");
             dato = 0.0f;
@@ -65,14 +65,26 @@ public class Log {
         return dato;
     }
 
-    private static void controllaSeEsiste(final String CARTELLA) {
+    private static void controllaSeEsiste(final String CARTELLA, final String INPUT) {
         File dir = new File(CARTELLA);
+        File f = new File(INPUT);
 
         if (!dir.exists()) {
             try {
                 Files.createDirectories(dir.toPath());
             } catch (IOException ioe) {
                 System.err.println(">! Errore nella creazione della directory.");
+            }
+        }
+
+        if (!f.exists()) {
+            try {
+                Files.createFile(f.toPath());
+                FileOutput fo = new FileOutput(INPUT);
+                String linea = Log.generaDati(0, 0.0f, 0.0f, 0.0f, 0.0f);
+                fo.write(linea, false);
+            } catch (IOException ioe) {
+                System.err.println(">! Errore durante la creazione del file " + INPUT);
             }
         }
     }
@@ -89,7 +101,7 @@ public class Log {
         float guadagnoTotale;
         float mediaVincite;
 
-        guadagnoTotale = vincita - importo;
+        guadagnoTotale = (float) vincita - importo;
         mediaVincite = (float) vincita / partite;
 
         linea = generaDati(partite, importo, vincita, guadagnoTotale, mediaVincite);
@@ -109,23 +121,24 @@ public class Log {
         final String INPUT = CARTELLA + "/Dati" + Menu.username + ".txt";
         Vector<Byte> scelti = new Vector<Byte>();
         FileOutput fo = new FileOutput(OUTPUT);
-        String linea = new String();
+        String log = new String();
+        String dati = new String();
         int partite;
         
-        controllaSeEsiste(CARTELLA);
+        controllaSeEsiste(CARTELLA, INPUT);
 
         scelti = converti(bScelti);
         Collections.sort(scelti);
         Collections.sort(indovinati);
 
-        linea = leggi(INPUT);
-        partite = (int) leggiDato(linea, 1) + 1;
-        linea = generaLog(partite, importo, vincita, scelti, indovinati);
+        dati = leggi(INPUT);
+        partite = (int) leggiDato(dati, 1) + 1;
+        log = generaLog(partite, importo, vincita, scelti, indovinati);
         
-        importo += leggiDato(linea, 2);
-        vincita += leggiDato(linea, 3);
+        importo += leggiDato(dati, 2);
+        vincita += leggiDato(dati, 3);
         aggiornaDati(partite, importo, vincita, INPUT);
         
-        fo.write(linea, true);
+        fo.write(log, true);
     }
 }

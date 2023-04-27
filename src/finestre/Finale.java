@@ -64,7 +64,7 @@ public class Finale {
     private JLabel jlTitolo = new JLabel("RISULTATO FINALE", JLabel.CENTER);
     private JLabel jlNumeriEstratti = new JLabel("Numeri estratti", JLabel.CENTER);
     private JLabel jlNumeriIndovinati = new JLabel("Numeri indovinati", JLabel.CENTER);
-    private JLabel jlTitoloGuadagno = new JLabel("Guadagno (spesa - guadagno lordo)", JLabel.CENTER);
+    private JLabel jlTitoloGuadagno = new JLabel("Guadagno (importo - vincita)", JLabel.CENTER);
     private JButton jbChiudi = new JButton("Chiudi");
 
     /*
