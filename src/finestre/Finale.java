@@ -81,7 +81,6 @@ public class Finale {
         CalcoloVincita cv = new CalcoloVincita(numeri, importo, contNumeriVinti);
         vincita = cv.getVincita();
         Log.scriviLog(importo, vincita, numeriScelti, numeriIndovinati);
-        Log.aggiornaDati(importo, vincita);
         creaFinestra();
     }
 

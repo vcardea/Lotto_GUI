@@ -23,7 +23,7 @@ public class FileInput {
             try {
                 Files.createFile(f.toPath());
                 FileOutput fo = new FileOutput(INPUT);
-                String linea = Log.generaDato(0, 0.0f, 0.0f, 0.0f, 0.0f);
+                String linea = Log.generaDati(0, 0.0f, 0.0f, 0.0f, 0.0f);
                 fo.write(linea, false);
             } catch (IOException ioe) {
                 System.err.println(">! Errore durante la creazione del file " + INPUT);

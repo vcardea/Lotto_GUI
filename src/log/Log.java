@@ -19,6 +19,7 @@ public class Log {
 
     private static Vector<Byte> converti(boolean[] bScelti) {
         Vector<Byte> scelti = new Vector<Byte>();
+
         for (int i = 0; i < bScelti.length; i++) {
             if (bScelti[i]) {
                 scelti.add(Byte.valueOf("" + (i + 1)).byteValue());
@@ -33,34 +34,40 @@ public class Log {
         return c.instant().atZone(zi).toString().substring(0, 19);
     }
 
-    private static String leggi(String INPUT) {
+    private static String leggi(final String INPUT) {
         FileInput fi = new FileInput(INPUT);
         return fi.read();
     }
 
-    private static float leggiDato(String linea, int shift) {
+    private static float leggiDato(String linea, int token) {
         StringTokenizer st = new StringTokenizer(linea, " ");
-        for (int i = 0; i < 3 + shift; i++) {
+        float dato;
+        int start;
+
+        for (int i = 0; i < token; i++) {
             try {
                 linea = st.nextToken();
             } catch (NoSuchElementException nse) {
                 System.err.println(">! File dati danneggiato.");
             }
         }
-        int start = linea.indexOf(":") + 2;
+        
+        start = linea.indexOf("=") + 2;
         linea = linea.substring(start, linea.length() - 2);
 
-        float dato = 0.0f;
         try {
             dato = (Float) Float.valueOf(linea).floatValue();
         } catch (NumberFormatException nfe) {
             System.err.println(">! Errore nella lettura dei dati.");
+            dato = 0.0f;
         }
 
         return dato;
     }
 
-    private static void controllaSeEsiste(File dir) {
+    private static void controllaSeEsiste(final String CARTELLA) {
+        File dir = new File(CARTELLA);
+
         if (!dir.exists()) {
             try {
                 Files.createDirectories(dir.toPath());
@@ -70,55 +77,55 @@ public class Log {
         }
     }
 
-    public static String generaDato(int partite, float importo, float vincita, float guadagnoTotale, float mediaVincite) {
-        String linea = "<" + Menu.username + "[" + getDate() + "]" + ">[Partite:[" + partite + "]] [ImportoTotale:[" + importo;
-        linea += "]] [VincitaTotale:[" + vincita + "]] [GuadagnoTotale:[" + guadagnoTotale + "]] [MediaVincite:[" + mediaVincite + "]] ";
+    private static String generaLog(int partite, float importo, float vincita, Vector<Byte> scelti, Vector<Byte> indovinati) {
+        String linea = "<" + Menu.username + "[" + getDate() + "]" + ">[PartitaNumero=[" + partite + "]] [Importo=[" + importo;
+        linea += "]] [Vincita=[" + vincita + "]] [NumeriScelti=" + scelti + "] [NumeriIndovinati=" + indovinati + "] ";
         return linea;
     }
 
-    public static String generaLog(int partite, float importo, float vincita, Vector<Byte> scelti, Vector<Byte> indovinati) {
-        String linea = "<" + Menu.username + "[" + getDate() + "]" + ">[Partite:[" + partite + "]] [Importo:[" + importo;
-        linea += "]] [Vincita:[" + vincita + "]] [NumeriScelti:" + scelti + "] [NumeriIndovinati:" + indovinati + "] ";
-        return linea;
-    }
+    private static void aggiornaDati(int partite, float importo, float vincita, final String INPUT) {
+        FileOutput fo = new FileOutput(INPUT);
+        String linea = new String();
+        float guadagnoTotale;
+        float mediaVincite;
 
-    public static void aggiornaDati(float importo, float vincita) {
-        final String INPUT = "src/log/users/" + Menu.username + "/Dati" + Menu.username + ".txt";
-        final String OUTPUT = "src/log/users/" + Menu.username + "/Log" + Menu.username + ".txt";
-        FileOutput fo = new FileOutput(OUTPUT);
+        guadagnoTotale = vincita - importo;
+        mediaVincite = (float) vincita / partite;
 
-        String linea = leggi(INPUT);
-        
-        int partite = (int) leggiDato(linea, 0) + 1;
-        importo += leggiDato(linea, 1);
-        vincita += leggiDato(linea, 2);
-        float guadagnoTotale = vincita - importo;
-        float mediaVincite = (float) vincita / partite;
-
-        linea = generaDato(partite, importo, vincita, guadagnoTotale, mediaVincite);
-
+        linea = generaDati(partite, importo, vincita, guadagnoTotale, mediaVincite);
         fo.write(linea, false);
     }
 
+    public static String generaDati(int partite, float importo, float vincita, float guadagnoTotale, float mediaVincite) {
+        String linea = "<" + Menu.username + "[" + getDate() + "]" + ">[PartiteGiocate=[" + partite + "]] ";
+        linea += "[ImportoTotale=[" + importo + "]] [VincitaTotale=[" + vincita + "]] ";
+        linea += "[GuadagnoTotale=[" + guadagnoTotale + "]] [MediaVincite=[" + mediaVincite + "]] ";
+        return linea;
+    }
+
     public static void scriviLog(float importo, float vincita, boolean[] bScelti, Vector<Byte> indovinati) {
-        String OUTPUT = "src/log/users/" + Menu.username + "/Log" + Menu.username + ".txt";
+        final String OUTPUT = "src/log/users/" + Menu.username + "/Log" + Menu.username + ".txt";
+        final String CARTELLA = "src/log/users/" + Menu.username;
+        final String INPUT = CARTELLA + "/Dati" + Menu.username + ".txt";
+        Vector<Byte> scelti = new Vector<Byte>();
+        FileOutput fo = new FileOutput(OUTPUT);
+        String linea = new String();
+        int partite;
+        
+        controllaSeEsiste(CARTELLA);
 
-        String INPUT = "src/log/users/" + Menu.username;
-        File dir = new File(INPUT);
-        controllaSeEsiste(dir);
-        INPUT += "/Dati" + Menu.username + ".txt";
-
-        FileOutput fo = new FileOutput(OUTPUT);  
-
-        Vector<Byte> scelti = converti(bScelti);
+        scelti = converti(bScelti);
         Collections.sort(scelti);
         Collections.sort(indovinati);
 
-        String linea = leggi(INPUT);
-        int partite = (int) leggiDato(linea, 0);
-
+        linea = leggi(INPUT);
+        partite = (int) leggiDato(linea, 1) + 1;
         linea = generaLog(partite, importo, vincita, scelti, indovinati);
-
+        
+        importo += leggiDato(linea, 2);
+        vincita += leggiDato(linea, 3);
+        aggiornaDati(partite, importo, vincita, INPUT);
+        
         fo.write(linea, true);
     }
 }
