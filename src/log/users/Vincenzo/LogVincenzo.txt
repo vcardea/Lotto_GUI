@@ -1,0 +1,1 @@
+<Vincenzo[2023-04-27T13:24:14]>[Partite:[1]] [ImportoTotale:[3.5]] [VincitaTotale:[0.0]] [GuadagnoTotale:[-3.5]] [MediaVincite:[0.0]] 

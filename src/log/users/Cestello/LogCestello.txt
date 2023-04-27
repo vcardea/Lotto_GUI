@@ -1,1 +1,0 @@
-<Cestello[2023-04-27T00:14:23]>[Partite:[1]] [ImportoTotale:[20.0]] [VincitaTotale:[0.0]] [GuadagnoTotale:[-20.0]] [MediaVincite:[0.0]]

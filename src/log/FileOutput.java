@@ -35,6 +35,10 @@ public class FileOutput {
     public void write(String LINE, boolean append) {
         if (openOutput(append)) {
             pw.println(LINE);
+            pw.flush();
+            if (pw.checkError()) {
+                System.err.println(">! Errore durante la scrittura su file " + OUTPUT);
+            }
             closeOutput();
         }
     }

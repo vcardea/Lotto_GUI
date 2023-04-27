@@ -38,35 +38,13 @@ public class Log {
         return fi.read();
     }
 
-    private static int leggiDato(String linea) {
-        StringTokenizer st = new StringTokenizer(linea, " ");
-        
-        try {
-            linea = st.nextToken();
-        } catch (NoSuchElementException nse) {
-            System.err.println(">! Prossimo token non esistente.");
-        }
-
-        int start = linea.indexOf(":") + 2;
-        linea = linea.substring(start, linea.length() - 2);
-
-        int partite = 0;
-        try {
-            partite = (Integer) Integer.valueOf(linea).intValue();
-        } catch (NumberFormatException nfe) {
-            System.err.println(">! Errore nella lettura dei dati.");
-        }
-
-        return partite;
-    }
-
     private static float leggiDato(String linea, int shift) {
         StringTokenizer st = new StringTokenizer(linea, " ");
-        for (int i = 0; i < shift; i++) {
+        for (int i = 0; i < 3 + shift; i++) {
             try {
                 linea = st.nextToken();
             } catch (NoSuchElementException nse) {
-                System.err.println(">! Prossimo token non esistente.");
+                System.err.println(">! File dati danneggiato.");
             }
         }
         int start = linea.indexOf(":") + 2;
@@ -94,32 +72,26 @@ public class Log {
 
     public static String generaDato(int partite, float importo, float vincita, float guadagnoTotale, float mediaVincite) {
         String linea = "<" + Menu.username + "[" + getDate() + "]" + ">[Partite:[" + partite + "]] [ImportoTotale:[" + importo;
-        linea += "]] [VincitaTotale:[" + vincita + "]] [GuadagnoTotale:[" + guadagnoTotale + "]] [MediaVincite:[" + mediaVincite + "]]";
+        linea += "]] [VincitaTotale:[" + vincita + "]] [GuadagnoTotale:[" + guadagnoTotale + "]] [MediaVincite:[" + mediaVincite + "]] ";
+        return linea;
+    }
+
+    public static String generaLog(int partite, float importo, float vincita, Vector<Byte> scelti, Vector<Byte> indovinati) {
+        String linea = "<" + Menu.username + "[" + getDate() + "]" + ">[Partite:[" + partite + "]] [Importo:[" + importo;
+        linea += "]] [Vincita:[" + vincita + "]] [NumeriScelti:" + scelti + "] [NumeriIndovinati:" + indovinati + "] ";
         return linea;
     }
 
     public static void aggiornaDati(float importo, float vincita) {
-        /*
-         * Recupera i dati (Partite, ImportoTotale, VincitaTotale, GuadagnoTotale, MediaVincite)
-         * Partite++;
-         * ImportoTotale += importo;
-         * VincitaTotale += vincita;
-         * GuadagnoTotale += VincitaTotale - ImportoTotale;
-         * MediaVincite = VincitaTotale / Partite
-         * Scrivi dati (sovrascrivi)
-         */
         final String INPUT = "src/log/users/" + Menu.username + "/Dati" + Menu.username + ".txt";
         final String OUTPUT = "src/log/users/" + Menu.username + "/Log" + Menu.username + ".txt";
         FileOutput fo = new FileOutput(OUTPUT);
 
         String linea = leggi(INPUT);
         
-        // DEBUG
-        System.err.print(linea);
-        
-        int partite = leggiDato(linea) + 1;
-        importo += leggiDato(linea, 2);
-        vincita += leggiDato(linea, 3);
+        int partite = (int) leggiDato(linea, 0) + 1;
+        importo += leggiDato(linea, 1);
+        vincita += leggiDato(linea, 2);
         float guadagnoTotale = vincita - importo;
         float mediaVincite = (float) vincita / partite;
 
@@ -129,29 +101,24 @@ public class Log {
     }
 
     public static void scriviLog(float importo, float vincita, boolean[] bScelti, Vector<Byte> indovinati) {
+        String OUTPUT = "src/log/users/" + Menu.username + "/Log" + Menu.username + ".txt";
+
         String INPUT = "src/log/users/" + Menu.username;
-        String OUTPUT = "src/log/users/" + Menu.username;
-        
         File dir = new File(INPUT);
         controllaSeEsiste(dir);
         INPUT += "/Dati" + Menu.username + ".txt";
 
-        dir = new File(OUTPUT);
-        controllaSeEsiste(dir);
-        OUTPUT += "/Log" + Menu.username + ".txt";
-
-        FileOutput fio = new FileOutput(OUTPUT);  
+        FileOutput fo = new FileOutput(OUTPUT);  
 
         Vector<Byte> scelti = converti(bScelti);
         Collections.sort(scelti);
         Collections.sort(indovinati);
 
         String linea = leggi(INPUT);
-        int partite = leggiDato(linea);
+        int partite = (int) leggiDato(linea, 0);
 
-        linea = "<" + Menu.username + "[" + getDate() + "]" + ">[Partite:[" + partite + "]] [Importo:[" + importo;
-        linea += "]] [Vincita:[" + vincita + "]] [NumeriScelti:" + scelti + "] [NumeriIndovinati:" + indovinati + "]";
+        linea = generaLog(partite, importo, vincita, scelti, indovinati);
 
-        fio.write(linea, true);
+        fo.write(linea, true);
     }
 }

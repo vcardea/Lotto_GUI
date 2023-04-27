@@ -22,6 +22,9 @@ public class FileInput {
         if (!f.exists()) {
             try {
                 Files.createFile(f.toPath());
+                FileOutput fo = new FileOutput(INPUT);
+                String linea = Log.generaDato(0, 0.0f, 0.0f, 0.0f, 0.0f);
+                fo.write(linea, false);
             } catch (IOException ioe) {
                 System.err.println(">! Errore durante la creazione del file " + INPUT);
                 return false;
@@ -52,11 +55,6 @@ public class FileInput {
         if (openInput()) {
             try {
                 line = br.readLine();
-                if (line == null) {
-                    FileOutput fo = new FileOutput(INPUT);
-                    String linea = Log.generaDato(0, 0.0f, 0.0f, 0.0f, 0.0f);
-                    fo.write(linea, false);
-                }
             } catch (IOException ioe) {
                 System.err.println(">! Errore durante la lettura del file " + INPUT);
             }
