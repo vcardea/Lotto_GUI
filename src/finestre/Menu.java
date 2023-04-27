@@ -2,6 +2,8 @@ package src.finestre;
 
 import src.finestre.gestori.GestoreFinestra;
 import src.finestre.gestori.GestoreUscita;
+import src.img.Icona;
+import src.utente.Utente;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,7 +11,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -25,6 +29,11 @@ public class Menu {
         }
     }
 
+    private final Dimension RESOLUTION = Toolkit.getDefaultToolkit().getScreenSize();
+    private final int WIDTH = 600;
+    private final int HEIGHT = 600;
+    private final int LOCATIONX = ((int)RESOLUTION.getWidth() / 2) - (WIDTH / 2);
+    private final int LOCATIONY = ((int)RESOLUTION.getHeight() / 2) - (HEIGHT / 2);
     private static JFrame jf = new JFrame("Gioco del 10eLotto");
     public static String username = new String();
     private GridLayout gl = new GridLayout(2, 1, 5, 5);
@@ -35,27 +44,28 @@ public class Menu {
     private ConfigurazioneLotto cl = null;
 
     public Menu(String username) {
-        Menu.username = username;
+        Utente.username = username;
         jlUsername = new JLabel(username, JLabel.CENTER);
 
-        jbEsci.setActionCommand("esci");
-        jbNuovaPartita.setActionCommand("nuovapartita");
         jf.setLayout(new BorderLayout());
 
         jp.setLayout(gl);
         jp.add(jbNuovaPartita);
         jp.add(jbEsci);
 
+        jbEsci.addActionListener(new GestoreUscita(jf));
+        jbEsci.setActionCommand("esci");
+        jbNuovaPartita.addActionListener(new GestoreInterno());
+        jbNuovaPartita.setActionCommand("nuovapartita");
+        
+        jf.addWindowListener(new GestoreFinestra(jf));
         jf.add(jlUsername, BorderLayout.NORTH);
         jf.add(jp, BorderLayout.CENTER);
-
-        jbNuovaPartita.addActionListener(new GestoreInterno());
-        jbEsci.addActionListener(new GestoreUscita(jf));
-        jf.addWindowListener(new GestoreFinestra(jf));
-
-        jf.setLocation(300, 300);
-        jf.setSize(400, 400);
+        jf.setLocation(LOCATIONX, LOCATIONY);
+        jf.setSize(WIDTH, HEIGHT);
         jf.setVisible(true);
+        jf.setIconImage(Icona.icon.getImage());
+        jf.getContentPane();
     }
 
     public static void apriFinestra() {

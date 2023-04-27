@@ -1,6 +1,7 @@
 package src.finestre;
 
 import src.finestre.gestori.GestoreFinestraND;
+import src.img.Icona;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,7 +11,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -50,6 +53,11 @@ public class ConfigurazioneLotto {
         }
     }
 
+    private final Dimension RESOLUTION = Toolkit.getDefaultToolkit().getScreenSize();
+    private final int WIDTH = 600;
+    private final int HEIGHT = 600;
+    private final int LOCATIONX = ((int)RESOLUTION.getWidth() / 2) - (WIDTH / 2);
+    private final int LOCATIONY = ((int)RESOLUTION.getHeight() / 2) - (HEIGHT / 2);
     private float importo = 0.0f;
     private byte numeri = 0;
     private JFrame jf = null;
@@ -73,7 +81,7 @@ public class ConfigurazioneLotto {
     }
 
     public void creaFinestra() {
-        jf = new JFrame("Giocata");
+        jf = new JFrame("Gioco del 10eLotto");
         setupCombo();
 
         // panel numero 1
@@ -84,19 +92,18 @@ public class ConfigurazioneLotto {
         jp2.add(jl2);
         jp2.add(jtf);
 
-        // frame
-        jf.setLayout(gl); // setta il layout
-        jf.add(jp1); // aggiungi primo panel
-        jf.add(jp2); // aggiungi secondo panel
-        jf.add(jb); // aggiungi button
+        jb.addActionListener(new GestoreInterno());
 
-        // eventi
-        jf.addWindowListener(new GestoreFinestraND(jf)); // gestore finestra globale
-        jb.addActionListener(new GestoreInterno()); // gestore button locale
-
-        // robe finali
-        jf.setSize(400, 400);
+        jf.addWindowListener(new GestoreFinestraND(jf));
+        jf.setLayout(gl);
+        jf.add(jp1);
+        jf.add(jp2);
+        jf.add(jb);
+        jf.setLocation(LOCATIONX, LOCATIONY);
+        jf.setSize(WIDTH, HEIGHT);
         jf.setVisible(true);
+        jf.setIconImage(Icona.icon.getImage());
+        jf.getContentPane();
     }
 
     public float getImporto() {

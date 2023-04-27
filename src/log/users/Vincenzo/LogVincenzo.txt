@@ -1,3 +1,4 @@
 <Vincenzo[2023-04-27T22:38:30+02:00[Europe/Rome]]>[PartitaNumero=[1]] [Importo=[2.0]] [Vincita=[0.0]] [NumeriScelti=[46]] [NumeriIndovinati=[]] 
 <Vincenzo[2023-04-27T22:38:37+02:00[Europe/Rome]]>[PartitaNumero=[2]] [Importo=[3.0]] [Vincita=[0.0]] [NumeriScelti=[68]] [NumeriIndovinati=[]] 
 <Vincenzo[2023-04-27T22:38:45+02:00[Europe/Rome]]>[PartitaNumero=[3]] [Importo=[5.0]] [Vincita=[0.0]] [NumeriScelti=[12, 43, 47]] [NumeriIndovinati=[]] 
+<Vincenzo[2023-04-27T23:12:24+02:00[Europe/Rome]]>[PartitaNumero=[4]] [Importo=[2.0]] [Vincita=[6.0]] [NumeriScelti=[27]] [NumeriIndovinati=[27]] 

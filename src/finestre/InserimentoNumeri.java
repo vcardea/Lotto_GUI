@@ -1,6 +1,7 @@
 package src.finestre;
 
 import src.finestre.gestori.GestoreFinestraND;
+import src.img.Icona;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -8,17 +9,24 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InserimentoNumeri {
 
+    private final Dimension RESOLUTION = Toolkit.getDefaultToolkit().getScreenSize();
+    private final int WIDTH = 600;
+    private final int HEIGHT = 600;
+    private final int LOCATIONX = ((int)RESOLUTION.getWidth() / 2) - (WIDTH / 2);
+    private final int LOCATIONY = ((int)RESOLUTION.getHeight() / 2) - (HEIGHT / 2);
     private static boolean numeri_scelti[] = new boolean[90];
     private static int contatore;
     private byte numeri = 0;
     private float importo;
-    private JFrame jf = new JFrame("Giocata");
+    private JFrame jf = new JFrame("Gioco del 10eLotto");
     private JPanel jp1 = new JPanel();
     private JPanel jp2 = new JPanel();
     private JLabel jl = new JLabel("Inserisci i numeri");
@@ -92,22 +100,22 @@ public class InserimentoNumeri {
     }
 
     public void creaFinestra() {
-        // panel
         setup();
-        jp1.add(jl); // etichetta
+
+        jp1.add(jl);
         jp2.setLayout(gl_scelte);
-        // frame
-        jf.setLayout(gl); // setta il layout
-        jf.add(jp1); // aggiungi panel
-        jf.add(jp2); // aggiungi lista
-        jf.add(jb); // aggiungi button
 
-        // eventi
-        jf.addWindowListener(new GestoreFinestraND(jf)); // gestore finestra globale
-        jb.addActionListener(new GestorePulsante()); // gestore button
+        jb.addActionListener(new GestorePulsante());
 
-        // robe finali
-        jf.setSize(350, 200);
+        jf.addWindowListener(new GestoreFinestraND(jf));
+        jf.setLayout(gl);
+        jf.add(jp1);
+        jf.add(jp2);
+        jf.add(jb);
+        jf.setSize(WIDTH, HEIGHT);
+        jf.setLocation(LOCATIONX, LOCATIONY);
         jf.setVisible(true);
+        jf.setIconImage(Icona.icon.getImage());
+        jf.getContentPane();
     }
 }

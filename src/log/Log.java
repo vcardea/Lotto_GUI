@@ -1,6 +1,6 @@
 package src.log;
 
-import src.finestre.Menu;
+import src.utente.Utente;
 
 import java.io.File;
 import java.io.IOException;
@@ -90,7 +90,7 @@ public class Log {
     }
 
     private static String generaLog(int partite, float importo, float vincita, Vector<Byte> scelti, Vector<Byte> indovinati) {
-        String linea = "<" + Menu.username + "[" + getDate() + "]" + ">[PartitaNumero=[" + partite + "]] [Importo=[" + importo;
+        String linea = "<" + Utente.username + "[" + getDate() + "]" + ">[PartitaNumero=[" + partite + "]] [Importo=[" + importo;
         linea += "]] [Vincita=[" + vincita + "]] [NumeriScelti=" + scelti + "] [NumeriIndovinati=" + indovinati + "] ";
         return linea;
     }
@@ -109,16 +109,16 @@ public class Log {
     }
 
     public static String generaDati(int partite, float importo, float vincita, float guadagnoTotale, float mediaVincite) {
-        String linea = "<" + Menu.username + "[" + getDate() + "]" + ">[PartiteGiocate=[" + partite + "]] ";
+        String linea = "<" + Utente.username + "[" + getDate() + "]" + ">[PartiteGiocate=[" + partite + "]] ";
         linea += "[ImportoTotale=[" + importo + "]] [VincitaTotale=[" + vincita + "]] ";
         linea += "[GuadagnoTotale=[" + guadagnoTotale + "]] [MediaVincite=[" + mediaVincite + "]] ";
         return linea;
     }
 
     public static void scriviLog(float importo, float vincita, boolean[] bScelti, Vector<Byte> indovinati) {
-        final String OUTPUT = "src/log/users/" + Menu.username + "/Log" + Menu.username + ".txt";
-        final String CARTELLA = "src/log/users/" + Menu.username;
-        final String INPUT = CARTELLA + "/Dati" + Menu.username + ".txt";
+        final String OUTPUT = "src/log/users/" + Utente.username + "/Log" + Utente.username + ".txt";
+        final String CARTELLA = "src/log/users/" + Utente.username;
+        final String INPUT = CARTELLA + "/Dati" + Utente.username + ".txt";
         Vector<Byte> scelti = new Vector<Byte>();
         FileOutput fo = new FileOutput(OUTPUT);
         String log = new String();

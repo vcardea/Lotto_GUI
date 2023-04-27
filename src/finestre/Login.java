@@ -1,13 +1,13 @@
 package src.finestre;
 
 import src.finestre.gestori.GestoreFinestraFN;
+import src.img.Icona;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import java.awt.BorderLayout;
@@ -38,7 +38,10 @@ public class Login {
 
     private final byte PANELS = 3;
     private final Dimension RESOLUTION = Toolkit.getDefaultToolkit().getScreenSize();
-    // private final Dimension 
+    private final int WIDTH = 600;
+    private final int HEIGHT = 600;
+    private final int LOCATIONX = ((int)RESOLUTION.getWidth() / 2) - (WIDTH / 2);
+    private final int LOCATIONY = ((int)RESOLUTION.getHeight() / 2) - (HEIGHT / 2);
     private String username = new String();
     private JFrame jf = new JFrame("Gioco del 10eLotto");
     private JPanel[] jp = new JPanel[PANELS];
@@ -48,8 +51,6 @@ public class Login {
     private JTextField jtf = new JTextField(15);
 
     public Login() {
-        jf.setIconImage(new ImageIcon("../img/logo.png").getImage());
-
         // Componenti
         for (int i = 0; i < PANELS; i++) {
             jp[i] = new JPanel();
@@ -65,14 +66,15 @@ public class Login {
         jb.addActionListener(new GestorePulsante());
 
         // Frame
+        jf.addWindowListener(new GestoreFinestraFN(jf));
         jf.setLayout(new BorderLayout());
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
-        jf.addWindowListener(new GestoreFinestraFN(jf));
-        jf.setLocation(((int)RESOLUTION.getWidth() / 2) - 200, ((int)RESOLUTION.getHeight() / 2) - 200);
-        jf.setSize(400, 400);
+        jf.setLocation(LOCATIONX, LOCATIONY);
+        jf.setSize(WIDTH, HEIGHT);
         jf.setVisible(true);
+        jf.setIconImage(Icona.icon.getImage());
         jf.getContentPane();
     }
 
