@@ -1,7 +1,6 @@
 package src.finestre;
 
 import src.finestre.gestori.GestoreFinestraND;
-import src.img.Icona;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,19 +8,12 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InserimentoNumeri {
 
-    private final Dimension RESOLUTION = Toolkit.getDefaultToolkit().getScreenSize();
-    private final int WIDTH = 600;
-    private final int HEIGHT = 600;
-    private final int LOCATIONX = ((int)RESOLUTION.getWidth() / 2) - (WIDTH / 2);
-    private final int LOCATIONY = ((int)RESOLUTION.getHeight() / 2) - (HEIGHT / 2);
     private static boolean numeri_scelti[] = new boolean[90];
     private static int contatore;
     private byte numeri = 0;
@@ -112,10 +104,10 @@ public class InserimentoNumeri {
         jf.add(jp1);
         jf.add(jp2);
         jf.add(jb);
-        jf.setSize(WIDTH, HEIGHT);
-        jf.setLocation(LOCATIONX, LOCATIONY);
+        jf.setSize(UtilitiesFinestra.WIDTH, UtilitiesFinestra.HEIGHT);
+        jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
         jf.setVisible(true);
-        jf.setIconImage(Icona.icon.getImage());
+        jf.setIconImage(UtilitiesFinestra.icon.getImage());
         jf.getContentPane();
     }
 }

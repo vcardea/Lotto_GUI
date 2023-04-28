@@ -108,11 +108,6 @@ public class Finale {
         jp[1].add(jlTitoloGuadagno);
         jp[1].add(new JLabel("Terzo"));
         jp[2].add(jbChiudi, BorderLayout.CENTER);
-        
-        // Aggiungi i panelli al frame
-        jf.add(jp[0], BorderLayout.NORTH);
-        jf.add(jp[1], BorderLayout.CENTER);
-        jf.add(jp[2], BorderLayout.SOUTH);
 
         // Pulsante di chiusura
         jbChiudi.setActionCommand("chiudi");
@@ -120,7 +115,13 @@ public class Finale {
 
         // Imposta ulteriori dettagli del frame
         jf.addWindowListener(new GestoreFinestraND(jf));
-        jf.setSize(400, 400);
+        jf.add(jp[0], BorderLayout.NORTH);
+        jf.add(jp[1], BorderLayout.CENTER);
+        jf.add(jp[2], BorderLayout.SOUTH);
+        jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
+        jf.setSize(UtilitiesFinestra.WIDTH, UtilitiesFinestra.HEIGHT);
+        jf.setIconImage(UtilitiesFinestra.icon.getImage());
         jf.setVisible(true);
+        jf.getContentPane();
     }
 }
