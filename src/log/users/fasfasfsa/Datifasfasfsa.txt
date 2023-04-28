@@ -1,1 +1,0 @@
-<fasfasfsa[2023-04-28T20:20:27+02:00[Europe/Rome]]>[PartiteGiocate=[1]] [ImportoTotale=[2.0]] [VincitaTotale=[0.0]] [GuadagnoTotale=[-2.0]] [MediaVincite=[0.0]] 
