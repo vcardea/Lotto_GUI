@@ -73,7 +73,7 @@ public class ConfigurazioneLotto {
     }
 
     public void creaFinestra() {
-        jf = new JFrame("Gioco del 10eLotto");
+        jf = new JFrame(UtilitiesFinestra.TITOLO);
         setupCombo();
 
         // panel numero 1

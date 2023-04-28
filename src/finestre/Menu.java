@@ -26,7 +26,7 @@ public class Menu {
         }
     }
 
-    private static JFrame jf = new JFrame("Gioco del 10eLotto");
+    private static JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
     public static String username = new String();
     private GridLayout gl = new GridLayout(2, 1, 5, 5);
     private JPanel jp = new JPanel();

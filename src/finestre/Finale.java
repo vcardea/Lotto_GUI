@@ -58,7 +58,7 @@ public class Finale {
     private float vincita = 0.0f;
 
     private final byte PANELS = 3;
-    private JFrame jf = new JFrame();
+    private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
     private JPanel[] jp = new JPanel[PANELS];
     private GridLayout gl = new GridLayout(6, 1);
     private JLabel jlTitolo = new JLabel("RISULTATO FINALE", JLabel.CENTER);

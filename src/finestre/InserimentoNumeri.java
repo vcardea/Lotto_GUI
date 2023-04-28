@@ -18,7 +18,7 @@ public class InserimentoNumeri {
     private static int contatore;
     private byte numeri = 0;
     private float importo;
-    private JFrame jf = new JFrame("Gioco del 10eLotto");
+    private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
     private JPanel jp1 = new JPanel();
     private JPanel jp2 = new JPanel();
     private JLabel jl = new JLabel("Inserisci i numeri");

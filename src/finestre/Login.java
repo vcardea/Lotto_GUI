@@ -36,9 +36,9 @@ public class Login {
     private final byte PANELS = 3;
     
     private String username = new String();
-    private JFrame jf = new JFrame("Gioco del 10eLotto");
+    private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
     private JPanel[] jp = new JPanel[PANELS];
-    private JLabel jlTitolo = new JLabel("INSERISCI IL NOME UTENTE", JLabel.CENTER);
+    private JLabel jlTitolo = new JLabel("LOGIN", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("Username ", JLabel.CENTER);
     private JButton jb = new JButton("OK");
     private JTextField jtf = new JTextField(15);

@@ -9,8 +9,13 @@ javac src/finestre/Finale.java
 javac src/finestre/InserimentoNumeri.java
 javac src/finestre/Login.java
 javac src/finestre/Menu.java
+javac src/finestre/UtilitiesFinestra.java
 
 javac src/calcoli/CalcoloVincita.java
+
+javac src/log/FileInput.java
+javac src/log/FileOutput.java
+javac src/log/Log.java
 
 javac src/utente/Utente.java
 
