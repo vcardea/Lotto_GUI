@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,16 +19,16 @@ public class Login {
 
     private class GestorePulsante implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            username = jtf.getText().replaceAll(" ", "");
+            username = jtfUsername.getText().replaceAll(" ", "");
             if (!isUsernameValid(username)) {
                 JOptionPane.showMessageDialog(jf,
                     "Lo username deve essere di almeno 5 caratteri [A-Za-z0-9_]",
                     "Attenzione",
                     JOptionPane.WARNING_MESSAGE);
-                jtf.setText("");
+                    jtfUsername.setText("");
             } else {
                 // Apre la finestra del menu principale
-                Menu m = new Menu(jtf.getText());
+                Menu m = new Menu(jtfUsername.getText());
                 jf.dispose();
             }
         }
@@ -40,11 +41,14 @@ public class Login {
     private JPanel[] jp = new JPanel[PANELS];
     private JLabel jlTitolo = new JLabel("LOGIN", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("Username ", JLabel.CENTER);
-    private JButton jb = new JButton("OK");
-    private JTextField jtf = new JTextField(15);
+    private JButton jbLogin = new JButton("Login");
+    private JTextField jtfUsername = new JTextField(15);
 
     public Login() {
-        // Componenti
+        jlTitolo.setFont(new Font("Sans-Serif", Font.BOLD, 24));
+        jlUsername.setFont(new Font("Sans-Serif", Font.BOLD, 16));
+        jtfUsername.setFont(new Font("Sans-Serif", Font.PLAIN, 16));
+
         for (int i = 0; i < PANELS; i++) {
             jp[i] = new JPanel();
         }
@@ -53,10 +57,10 @@ public class Login {
 
         jp[0].add(jlTitolo);
         jp[1].add(jlUsername);
-        jp[1].add(jtf);
-        jp[2].add(jb);
+        jp[1].add(jtfUsername);
+        jp[2].add(jbLogin);
         
-        jb.addActionListener(new GestorePulsante());
+        jbLogin.addActionListener(new GestorePulsante());
 
         // Frame
         jf.addWindowListener(new GestoreFinestraFN(jf));
