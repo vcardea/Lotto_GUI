@@ -50,8 +50,9 @@ public class Finale {
         }
     }
 
+    private static final byte NUMERI = 90;
     private static final byte ESTRAZIONI = 20;
-    private boolean[] checkEstrazioni = new boolean[90];
+    private boolean[] checkEstrazioni = new boolean[NUMERI];
     private Vector<Byte> numeriIndovinati = new Vector<Byte>();
     private Vector<Byte> numeriEstratti = new Vector<Byte>();
     private byte contNumeriVinti = 0;
@@ -66,7 +67,7 @@ public class Finale {
     private JLabel jlTitolo = new JLabel("RISULTATO FINALE", JLabel.CENTER);
     private JLabel jlNumeriEstratti = new JLabel("Numeri estratti", JLabel.CENTER);
     private JLabel jlNumeriIndovinati = new JLabel("Numeri indovinati", JLabel.CENTER);
-    private JLabel jlTitoloGuadagno = new JLabel("Guadagno (importo - vincita)", JLabel.CENTER);
+    private JLabel jlTitoloGuadagno = new JLabel("Vincita", JLabel.CENTER);
     private JButton jbChiudi = new JButton("Chiudi");
 
     /*
@@ -74,12 +75,14 @@ public class Finale {
      */
     public Finale(boolean[] numeriScelti, float importo, byte numeri) {
         estrai();
-        for (byte i = 0; i < 90; ++i) {
-            if(checkEstrazioni[i]) numeriEstrattiString += i + 1 + " ";
+        for (byte i = 0; i < NUMERI; ++i) {
+            if(checkEstrazioni[i]) {
+                numeriEstrattiString += (i + 1) + " ";
+            }
             if (numeriScelti[i] && checkEstrazioni[i]) {
                 numeriIndovinati.addElement((byte) (i + 1));
                 ++contNumeriVinti;
-                numeriIndovinatiString += i + 1 + " ";
+                numeriIndovinatiString += (i + 1) + " ";
             }
         }
         CalcoloVincita cv = new CalcoloVincita(numeri, importo, contNumeriVinti);
@@ -102,14 +105,16 @@ public class Finale {
 
         // Imposta il layout del pannello centrale
         jp[1].setLayout(gl);
-        System.out.println(numeriIndovinatiString.length());
+
         // Aggiunge componenti al pannello
         jp[0].add(jlTitolo);
         jp[1].add(jlNumeriEstratti);
         jp[1].add(new JLabel(numeriEstrattiString, JLabel.CENTER));
         jp[1].add(jlNumeriIndovinati);
-        if(numeriEstrattiString.length() != 0) jp[1].add(new JLabel(numeriIndovinatiString, JLabel.CENTER));
-        else jp[1].add(new JLabel("Non hai indovinato numeri", JLabel.CENTER));
+        if (numeriIndovinatiString.isEmpty()) {
+            numeriIndovinatiString = "Non hai indovinato numeri";
+        }
+        jp[1].add(new JLabel(numeriIndovinatiString, JLabel.CENTER));
         jp[1].add(jlTitoloGuadagno);
         jp[1].add(new JLabel(String.valueOf(vincita), JLabel.CENTER));
         jp[2].add(jbChiudi, BorderLayout.CENTER);
