@@ -41,13 +41,14 @@ public class Login {
     private JPanel[] jp = new JPanel[PANELS];
     private JLabel jlTitolo = new JLabel("LOGIN", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("Username ", JLabel.CENTER);
-    private JButton jbLogin = new JButton("Login");
+    private JButton jbLogin = new JButton("LOGIN");
     private JTextField jtfUsername = new JTextField(15);
 
     public Login() {
-        jlTitolo.setFont(new Font("Sans-Serif", Font.BOLD, 24));
-        jlUsername.setFont(new Font("Sans-Serif", Font.BOLD, 16));
-        jtfUsername.setFont(new Font("Sans-Serif", Font.PLAIN, 16));
+        jlTitolo.setFont(new Font("Sans-Serif", Font.BOLD, 28));
+        jlUsername.setFont(new Font("Sans-Serif", Font.BOLD, 18));
+        jtfUsername.setFont(new Font("Sans-Serif", Font.PLAIN, 18));
+        jbLogin.setFont(new Font("Sans-Serif", Font.BOLD, 20));
 
         for (int i = 0; i < PANELS; i++) {
             jp[i] = new JPanel();
