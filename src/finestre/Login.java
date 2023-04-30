@@ -57,7 +57,7 @@ public class Login {
     private void stiliEColori() {
         // Etichetta del titolo
         jlTitolo.setForeground(UtilitiesFinestra.GREY);
-        jlTitolo.setFont(UtilitiesFinestra.FTITOLO);
+        jlTitolo.setFont(UtilitiesFinestra.FTITLE);
 
         // Etichetta del nome utente
         jlUsername.setForeground(UtilitiesFinestra.GREY);

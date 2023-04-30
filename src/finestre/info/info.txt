@@ -1,0 +1,2 @@
+Il gioco del 10eLotto consiste nello scegliere una quantità di numeri variabile da 1 a 10, 
+a discrezione dell'utente, tra i 90 disponibili (da 1 a 90). 

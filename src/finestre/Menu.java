@@ -52,7 +52,7 @@ public class Menu {
     private void stiliEColori() {
         // Etichetta del titolo
         jlTitolo.setForeground(UtilitiesFinestra.GREY);
-        jlTitolo.setFont(UtilitiesFinestra.FTITOLO);
+        jlTitolo.setFont(UtilitiesFinestra.FTITLE);
 
         // Etichetta del nome utente
         jlUsername.setForeground(UtilitiesFinestra.GREY);
@@ -79,10 +79,8 @@ public class Menu {
         // Pulsante esci
         jbEsci.setForeground(UtilitiesFinestra.BLUE);
         jbEsci.setBackground(UtilitiesFinestra.GREY);
-        jbEsci.setPreferredSize(new Dimension(200, 50));
-        jbEsci.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 0),
-            BorderFactory.createEmptyBorder(0, 0, 0, 0)));
+        jbEsci.setPreferredSize(UtilitiesFinestra.BUTTON_DIMENSION);
+        jbEsci.setBorder(UtilitiesFinestra.BORDER);
         jbEsci.setFont(UtilitiesFinestra.FBUTTON);
     }
 
@@ -106,10 +104,15 @@ public class Menu {
     }
 
     private void componenti() {
+        // Gestione pulsante nuova partita
         jbNuovaPartita.setActionCommand("nuovapartita");
         jbNuovaPartita.addActionListener(new GestoreInterno());
+
+        // Gestione pulsante informazioni
         jbInfo.setActionCommand("info");
         jbInfo.addActionListener(new GestoreInterno());
+
+        // Gestione pulsante di uscita
         jbEsci.setActionCommand("esci");
         jbEsci.addActionListener(new GestoreUscita(jf));
     }
