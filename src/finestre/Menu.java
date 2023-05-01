@@ -6,12 +6,10 @@ import src.utente.Utente;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -61,19 +59,15 @@ public class Menu {
         // Pulsante nuova partita
         jbNuovaPartita.setForeground(UtilitiesFinestra.BLUE);
         jbNuovaPartita.setBackground(UtilitiesFinestra.GREY);
-        jbNuovaPartita.setPreferredSize(new Dimension(200, 50));
-        jbNuovaPartita.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 0),
-            BorderFactory.createEmptyBorder(0, 0, 0, 0)));
+        jbNuovaPartita.setPreferredSize(UtilitiesFinestra.BUTTON_DIMENSION);
+        jbNuovaPartita.setBorder(UtilitiesFinestra.BORDER);
         jbNuovaPartita.setFont(UtilitiesFinestra.FBUTTON);
 
         // Pulsante informazioni
         jbInfo.setForeground(UtilitiesFinestra.BLUE);
         jbInfo.setBackground(UtilitiesFinestra.GREY);
-        jbInfo.setPreferredSize(new Dimension(200, 50));
-        jbInfo.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 0),
-            BorderFactory.createEmptyBorder(0, 0, 0, 0)));
+        jbInfo.setPreferredSize(UtilitiesFinestra.BUTTON_DIMENSION);
+        jbInfo.setBorder(UtilitiesFinestra.BORDER);
         jbInfo.setFont(UtilitiesFinestra.FBUTTON);
 
         // Pulsante esci

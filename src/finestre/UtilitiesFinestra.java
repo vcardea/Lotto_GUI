@@ -25,9 +25,9 @@ public class UtilitiesFinestra {
     protected static final Font FLABEL = new Font("Sans-Serif", Font.BOLD, 18);
     protected static final Font FTEXT = new Font("Sans-Serif", Font.PLAIN, 18);
     protected static final Font FBUTTON = new Font("Sans-Serif", Font.BOLD, 20);
-    protected static final Dimension BUTTON_DIMENSION = new Dimension(200, 50);
+    protected static final Dimension BUTTON_DIMENSION = new Dimension(210, 90);
     protected static final Border BORDER = BorderFactory.createCompoundBorder(
-        BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 0),
+        BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 20),
         BorderFactory.createEmptyBorder(0, 0, 0, 0)
     );
 } 
