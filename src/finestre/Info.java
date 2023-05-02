@@ -53,7 +53,7 @@ public class Info {
         // Pulsante di chiusura
         jbChiudi.setForeground(UtilitiesFinestra.BLUE);
         jbChiudi.setBackground(UtilitiesFinestra.GREY);
-        jbChiudi.setPreferredSize(UtilitiesFinestra.BUTTON_DIMENSION);
+        jbChiudi.setPreferredSize(UtilitiesFinestra.DBUTTON);
         jbChiudi.setBorder(UtilitiesFinestra.BORDER);
         jbChiudi.setFont(UtilitiesFinestra.FBUTTON);
     }

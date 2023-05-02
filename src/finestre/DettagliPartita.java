@@ -28,15 +28,17 @@ public class DettagliPartita {
         }
 
         public void actionPerformed(ActionEvent e) {
-            String s = jtfImporto.getText();
+            String s = e.getActionCommand();
+            String val = jtfImporto.getText();
 
             // Controlla se l'input e' vuoto
-            if (s.isEmpty())
+            if (val.isEmpty()) {
                 errore();
+            }
             else if (s.equals("prosegui")) {
                 // Controlla se l'input e' un numero
                 try {
-                    importo = Float.valueOf(s);
+                    importo = Float.valueOf(val);
                 } catch (NumberFormatException nfe) {
                     importo = 0.0f;
                 }
@@ -57,9 +59,7 @@ public class DettagliPartita {
     private byte numeri = 0;
     private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
     private GridLayout glNorth = new GridLayout(2, 1);
-    private GridLayout glCenter = new GridLayout(2, 2, 10, 10);
     private JPanel[] jp = new JPanel[UtilitiesFinestra.PANELS];
-    private JPanel jpCenter = new JPanel();
     private JLabel jlTitolo = new JLabel("DETTAGLI PARTITA", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("", JLabel.CENTER);
     private JLabel jlNumeri = new JLabel("Inserire quanti numeri si vuole giocare");
@@ -93,12 +93,10 @@ public class DettagliPartita {
 
         // Etichetta dell'importo
         jlImporto.setForeground(UtilitiesFinestra.GREY);
-        jlImporto.setBackground(UtilitiesFinestra.BLUE);
         jlImporto.setFont(UtilitiesFinestra.FLABEL);
 
         // Etichetta dei numeri
         jlNumeri.setForeground(UtilitiesFinestra.GREY);
-        jlNumeri.setBackground(UtilitiesFinestra.BLUE);
         jlNumeri.setFont(UtilitiesFinestra.FLABEL);
 
         // Pulsante prosegui
@@ -118,17 +116,15 @@ public class DettagliPartita {
 
         // Layout
         jp[0].setLayout(glNorth);
-        jpCenter.setLayout(glCenter);
         jp[1].setLayout(new GridBagLayout());
 
         // Composizione
         jp[0].add(jlTitolo);
         jp[0].add(jlUsername);
-        jpCenter.add(jlImporto);
-        jpCenter.add(jtfImporto);
-        jpCenter.add(jlNumeri);
-        jpCenter.add(jcbNumeri);
-        jp[1].add(jpCenter);
+        jp[1].add(jlImporto);
+        jp[1].add(jtfImporto);
+        jp[1].add(jlNumeri);
+        jp[1].add(jcbNumeri);
         jp[2].add(jbProsegui);
     }
 
