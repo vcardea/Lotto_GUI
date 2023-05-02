@@ -107,7 +107,7 @@ public class InserimentoNumeri {
         jf.setSize(UtilitiesFinestra.WIDTH, UtilitiesFinestra.HEIGHT);
         jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
         jf.setVisible(true);
-        jf.setIconImage(UtilitiesFinestra.icon.getImage());
+        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
         jf.getContentPane();
     }
 }

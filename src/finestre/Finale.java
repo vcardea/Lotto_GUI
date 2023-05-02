@@ -130,7 +130,7 @@ public class Finale {
         jf.add(jp[2], BorderLayout.SOUTH);
         jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
         jf.setSize(UtilitiesFinestra.WIDTH, UtilitiesFinestra.HEIGHT);
-        jf.setIconImage(UtilitiesFinestra.icon.getImage());
+        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
         jf.setVisible(true);
         jf.getContentPane();
     }

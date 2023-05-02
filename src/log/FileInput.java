@@ -61,12 +61,12 @@ public class FileInput {
             line = text; 
 
             while (line != null) {
+                text += line;
                 try {
                     line = br.readLine();
                 } catch (IOException ioe) {
                     System.err.println(">! Errore durante la lettura del file " + INPUT);
                 }
-                text += line;
             }
 
             closeInput();

@@ -32,12 +32,11 @@ public class Info {
     }
 
     private void testo() {
-        FileInput fi = new FileInput(UtilitiesFinestra.INFOFILE);
         if (info.equals("")) {
+            FileInput fi = new FileInput(UtilitiesFinestra.INFOFILE);
             info = fi.readText();
         }
-        System.out.println(info);
-        jta.append(info);
+        jta.setText(info);
     }
 
     private void stiliEColori() {
@@ -77,6 +76,7 @@ public class Info {
         // Area di testo
         jta.setPreferredSize(new Dimension(500, 200));
         jta.setWrapStyleWord(true);
+        jta.setLineWrap(true);
         jta.setEditable(false);
 
         // Gestione pulsante chiusura
