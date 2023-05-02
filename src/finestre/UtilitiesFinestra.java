@@ -11,7 +11,8 @@ import java.awt.Color;
 
 public class UtilitiesFinestra {
     protected static final String TITOLO = "Gioco del 10eLotto";
-    protected static final ImageIcon icon = new ImageIcon("src/img/logo.png");
+    protected static final ImageIcon ICON = new ImageIcon("src/img/logo.png");
+    protected static final String INFOFILE = "src/finestre/info/info.txt";
     protected static final Dimension RESOLUTION = Toolkit.getDefaultToolkit().getScreenSize();
     protected static final byte PANELS = 3;
     protected static final int WIDTH = 700;

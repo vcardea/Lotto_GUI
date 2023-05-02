@@ -45,4 +45,33 @@ public class FileInput {
         }
         return line;
     }
+
+    public String readText() {
+        String text = new String();
+
+        if (openInput()) {
+            String line = new String();
+
+            try {
+                text = br.readLine();
+            } catch (IOException ioe) {
+                System.err.println(">! Errore durante la lettura del file " + INPUT);
+            }
+
+            line = text; 
+
+            while (line != null) {
+                try {
+                    line = br.readLine();
+                } catch (IOException ioe) {
+                    System.err.println(">! Errore durante la lettura del file " + INPUT);
+                }
+                text += line;
+            }
+
+            closeInput();
+        }
+
+        return text;
+    }
 }

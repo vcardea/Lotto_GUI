@@ -125,7 +125,7 @@ public class Menu {
         jf.setVisible(true);
 
         // Icona
-        jf.setIconImage(UtilitiesFinestra.icon.getImage());
+        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
 
         // Contenitore
         jf.getContentPane();

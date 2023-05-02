@@ -11,6 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 
 public class Info {
@@ -18,8 +19,9 @@ public class Info {
     private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
     private JPanel[] jp = new JPanel[UtilitiesFinestra.PANELS];
     private JLabel jlTitolo = new JLabel("INFORMAZIONI");
-    private JTextArea jta = new JTextArea();
+    private JTextArea jta = new JTextArea(15, 10);
     private JButton jbChiudi = new JButton("Chiudi");
+    private String info = new String("");
 
     public Info() {
         testo();
@@ -30,8 +32,12 @@ public class Info {
     }
 
     private void testo() {
-        FileInput fi = new FileInput("src/");
-        
+        FileInput fi = new FileInput(UtilitiesFinestra.INFOFILE);
+        if (info.equals("")) {
+            info = fi.readText();
+        }
+        System.out.println(info);
+        jta.append(info);
     }
 
     private void stiliEColori() {
@@ -69,6 +75,8 @@ public class Info {
 
     private void componenti() {
         // Area di testo
+        jta.setPreferredSize(new Dimension(500, 200));
+        jta.setWrapStyleWord(true);
         jta.setEditable(false);
 
         // Gestione pulsante chiusura
@@ -90,7 +98,7 @@ public class Info {
         jf.setVisible(true);
 
         // Icona
-        jf.setIconImage(UtilitiesFinestra.icon.getImage());
+        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
 
         // Contenitore
         jf.getContentPane();
