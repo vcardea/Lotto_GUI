@@ -16,10 +16,11 @@ import java.awt.GridBagLayout;
 
 public class Info {
     
+    private final Dimension INFO_DIMENSION = new Dimension(650, 300);
     private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
     private JPanel[] jp = new JPanel[UtilitiesFinestra.PANELS];
     private JLabel jlTitolo = new JLabel("INFORMAZIONI");
-    private JTextArea jta = new JTextArea(15, 10);
+    private JTextArea jta = new JTextArea(15, 25);
     private JButton jbChiudi = new JButton("Chiudi");
     private String info = new String("");
 
@@ -45,7 +46,8 @@ public class Info {
         jlTitolo.setFont(UtilitiesFinestra.FTITLE);
 
         // Area di testo
-        jta.setForeground(UtilitiesFinestra.BLUE);
+        jta.setForeground(UtilitiesFinestra.WHITE);
+        jta.setBackground(UtilitiesFinestra.BLUE);
         jta.setFont(UtilitiesFinestra.FTEXT);
 
         // Pulsante di chiusura
@@ -74,7 +76,7 @@ public class Info {
 
     private void componenti() {
         // Area di testo
-        jta.setPreferredSize(new Dimension(500, 200));
+        jta.setPreferredSize(INFO_DIMENSION);
         jta.setWrapStyleWord(true);
         jta.setLineWrap(true);
         jta.setEditable(false);

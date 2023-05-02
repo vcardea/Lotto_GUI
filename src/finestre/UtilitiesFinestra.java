@@ -22,11 +22,12 @@ public class UtilitiesFinestra {
     protected static final Dimension DIMENSION = new Dimension(UtilitiesFinestra.WIDTH, UtilitiesFinestra.HEIGHT);
     protected static final Color BLUE = new Color(3, 63, 94);
     protected static final Color GREY = new Color(230, 230, 230);
+    protected static final Color WHITE = new Color(255, 255, 255);
     protected static final Font FTITLE = new Font("Sans-Serif", Font.BOLD, 28);
     protected static final Font FLABEL = new Font("Sans-Serif", Font.BOLD, 18);
     protected static final Font FTEXT = new Font("Sans-Serif", Font.PLAIN, 18);
     protected static final Font FBUTTON = new Font("Sans-Serif", Font.BOLD, 20);
-    protected static final Dimension BUTTON_DIMENSION = new Dimension(210, 90);
+    protected static final Dimension DBUTTON = new Dimension(210, 90);
     protected static final Border BORDER = BorderFactory.createCompoundBorder(
         BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 20),
         BorderFactory.createEmptyBorder(0, 0, 0, 0)

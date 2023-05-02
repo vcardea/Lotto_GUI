@@ -53,12 +53,10 @@ public class FileInput {
             String line = new String();
 
             try {
-                text = br.readLine();
+                line = br.readLine();
             } catch (IOException ioe) {
                 System.err.println(">! Errore durante la lettura del file " + INPUT);
-            }
-
-            line = text; 
+            } 
 
             while (line != null) {
                 text += line;

@@ -21,7 +21,7 @@ public class Menu {
             String s = ae.getActionCommand();
 
             if (s.equals("nuovapartita")) {
-                cl = new ConfigurazioneLotto();
+                cl = new DettagliPartita();
                 jf.setVisible(false);
             } else if (s.equals("info")) {
                 Info i = new Info();
@@ -38,7 +38,7 @@ public class Menu {
     private JButton jbNuovaPartita = new JButton("Nuova Partita");
     private JButton jbInfo = new JButton("Informazioni");
     private JButton jbEsci = new JButton("Esci");
-    private ConfigurazioneLotto cl = null;
+    private DettagliPartita cl = null;
 
     public Menu() {
         stiliEColori();
@@ -59,21 +59,21 @@ public class Menu {
         // Pulsante nuova partita
         jbNuovaPartita.setForeground(UtilitiesFinestra.BLUE);
         jbNuovaPartita.setBackground(UtilitiesFinestra.GREY);
-        jbNuovaPartita.setPreferredSize(UtilitiesFinestra.BUTTON_DIMENSION);
+        jbNuovaPartita.setPreferredSize(UtilitiesFinestra.DBUTTON);
         jbNuovaPartita.setBorder(UtilitiesFinestra.BORDER);
         jbNuovaPartita.setFont(UtilitiesFinestra.FBUTTON);
 
         // Pulsante informazioni
         jbInfo.setForeground(UtilitiesFinestra.BLUE);
         jbInfo.setBackground(UtilitiesFinestra.GREY);
-        jbInfo.setPreferredSize(UtilitiesFinestra.BUTTON_DIMENSION);
+        jbInfo.setPreferredSize(UtilitiesFinestra.DBUTTON);
         jbInfo.setBorder(UtilitiesFinestra.BORDER);
         jbInfo.setFont(UtilitiesFinestra.FBUTTON);
 
         // Pulsante esci
         jbEsci.setForeground(UtilitiesFinestra.BLUE);
         jbEsci.setBackground(UtilitiesFinestra.GREY);
-        jbEsci.setPreferredSize(UtilitiesFinestra.BUTTON_DIMENSION);
+        jbEsci.setPreferredSize(UtilitiesFinestra.DBUTTON);
         jbEsci.setBorder(UtilitiesFinestra.BORDER);
         jbEsci.setFont(UtilitiesFinestra.FBUTTON);
     }
@@ -112,8 +112,11 @@ public class Menu {
     }
 
     private void frame() {
-        // Layout
+        // Ascoltatore finestra
         jf.addWindowListener(new GestoreFinestra(jf));
+
+        // Layout
+        jf.setLayout(new BorderLayout());
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
