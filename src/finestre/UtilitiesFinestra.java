@@ -8,8 +8,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
 
 public class UtilitiesFinestra {
+    protected static final BorderLayout LAYOUT = new BorderLayout();
+    protected static final GridBagLayout LAYOUTCENTER = new GridBagLayout();
     protected static final String TITOLO = "Gioco del 10eLotto";
     protected static final ImageIcon ICON = new ImageIcon("src/img/logo.png");
     protected static final String INFOFILE = "src/finestre/info/info.txt";

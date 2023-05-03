@@ -123,8 +123,8 @@ public class Menu {
 
         // Posizionamento, dimensione e visibilità finestra
         jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
-        jf.setMinimumSize(UtilitiesFinestra.DIMENSION);
         jf.setSize(UtilitiesFinestra.DIMENSION);
+        jf.setResizable(false);
         jf.setVisible(true);
 
         // Icona

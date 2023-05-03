@@ -13,7 +13,6 @@ import javax.swing.JButton;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -86,7 +85,7 @@ public class Login {
         }
 
         // Layout
-        jp[1].setLayout(new GridBagLayout());
+        jp[1].setLayout(UtilitiesFinestra.LAYOUTCENTER);
 
         // Composizione
         jp[0].add(jlTitolo);
@@ -105,15 +104,15 @@ public class Login {
         jf.addWindowListener(new GestoreFinestraFN(jf));
         
         // Layout
-        jf.setLayout(new BorderLayout());
+        jf.setLayout(UtilitiesFinestra.LAYOUT);
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
 
         // Posizionamento, dimensione, visibilità finestra
         jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
-        jf.setMinimumSize(UtilitiesFinestra.DIMENSION);
         jf.setSize(UtilitiesFinestra.DIMENSION);
+        jf.setResizable(false);
         jf.setVisible(true);
 
         // Icona

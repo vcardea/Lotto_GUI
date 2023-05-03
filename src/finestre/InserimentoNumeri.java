@@ -104,7 +104,8 @@ public class InserimentoNumeri {
         jf.add(jp1);
         jf.add(jp2);
         jf.add(jb);
-        jf.setSize(UtilitiesFinestra.WIDTH, UtilitiesFinestra.HEIGHT);
+        jf.setSize(UtilitiesFinestra.DIMENSION);
+        jf.setResizable(false);
         jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
         jf.setVisible(true);
         jf.setIconImage(UtilitiesFinestra.ICON.getImage());
