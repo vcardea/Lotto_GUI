@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -59,6 +60,7 @@ public class DettagliPartita {
     private byte numeri = 0;
     private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
     private GridLayout glNorth = new GridLayout(2, 1);
+    private GridBagConstraints gcb = new GridBagConstraints();
     private JPanel[] jp = new JPanel[UtilitiesFinestra.PANELS];
     private JLabel jlTitolo = new JLabel("DETTAGLI PARTITA", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("", JLabel.CENTER);
