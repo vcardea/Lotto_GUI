@@ -1,48 +1,58 @@
 package src.finestre;
 
 import src.finestre.gestori.GestoreFinestraND;
+import src.utente.Utente;
 
+import javax.swing.border.Border;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class InserimentoNumeri {
 
-    private static boolean numeri_scelti[] = new boolean[90];
+    protected static final Border BORDER = BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 0),
+        BorderFactory.createEmptyBorder(0, 0, 0, 0)
+    );
+    private static final byte NUMERI = 90;
+    private static boolean numeriScelti[] = new boolean[NUMERI];
     private static int contatore;
+    private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
+    private JPanel jp[] = new JPanel[UtilitiesFinestra.PANELS];
+    private JLabel jlTitolo = new JLabel("INSERIMENTO NUMERI", JLabel.CENTER);
+    private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
+    private GridLayout glNumeri = new GridLayout(9, 10);
+    private JButton jbProsegui = new JButton("Prosegui");
     private byte numeri = 0;
     private float importo;
-    private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
-    private JPanel jp1 = new JPanel();
-    private JPanel jp2 = new JPanel();
-    private JLabel jl = new JLabel("Inserisci i numeri");
-    private GridLayout gl = new GridLayout(3, 1);
-    private GridLayout gl_scelte = new GridLayout(9, 10);
-    private JButton jb = new JButton("Prosegui");
 
     private class GestorePulsante implements ActionListener {
         private void errore(boolean tipo) {
             if (tipo) {
                 JOptionPane.showMessageDialog(jf, "Hai gia' inserito tutti i numeri",
-                        "Errore",
-                        JOptionPane.ERROR_MESSAGE);
+                    "Errore",
+                    JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(jf, "Non hai scelto tutti i numeri.",
-                        "Attenzione",
-                        JOptionPane.WARNING_MESSAGE);
+                    "Attenzione",
+                    JOptionPane.WARNING_MESSAGE);
             }
         }
 
         private void reset() {
-            for (int i = 0; i < 90; ++i)
-                if (numeri_scelti[i])
-                    numeri_scelti[i] = false;
+            for (int i = 0; i < NUMERI; ++i)
+                if (numeriScelti[i])
+                    numeriScelti[i] = false;
             contatore = 0;
         }
 
@@ -52,24 +62,46 @@ public class InserimentoNumeri {
                 if (numeri != contatore) {
                     errore(false);
                 } else {
-                    Finale f = new Finale(numeri_scelti, importo, numeri);
+                    Finale f = new Finale(numeriScelti, importo, numeri);
                     reset();
                     jf.dispose();
                 }
             } else {
-                int numero = Integer.parseInt(comando);
+                JButton jb = (JButton) e.getSource();
+                int numero = Integer.valueOf(comando).intValue();
                 --numero;
-                if (!numeri_scelti[numero]) {
+                if (!numeriScelti[numero]) {
                     if (contatore >= numeri) {
                         errore(true);
                     } else {
-                        numeri_scelti[numero] = true;
+                        numeriScelti[numero] = true;
                         ++contatore;
+                        jb.setForeground(UtilitiesFinestra.GREEN);
+                        GestoreMouse.selezionati[numero] = true;
                     }
                 } else {
-                    numeri_scelti[numero] = false;
+                    numeriScelti[numero] = false;
                     --contatore;
+                    jb.setForeground(UtilitiesFinestra.GREY);
+                    GestoreMouse.selezionati[numero] = false;
                 }
+            }
+        }
+    }
+
+    private class GestoreMouse extends MouseAdapter {
+        protected static boolean[] selezionati = new boolean[NUMERI];
+
+        public void mouseEntered(MouseEvent e) {
+            JButton jb = (JButton) e.getComponent();
+            jb.setForeground(UtilitiesFinestra.LIGHTGREEN);
+        }
+
+        public void mouseExited(MouseEvent e) {
+            JButton jb = (JButton) e.getComponent();
+            int indice = Integer.valueOf(jb.getActionCommand()).intValue();
+            if (!selezionati[indice - 1]) {
+                jb.setForeground(UtilitiesFinestra.GREY);
             }
         }
     }
@@ -77,38 +109,88 @@ public class InserimentoNumeri {
     public InserimentoNumeri(byte numeri, float importo) {
         this.numeri = numeri;
         this.importo = importo;
-        creaFinestra();
+        
+        stiliEColori();
+        pannelli();
+        componenti();
+        frame();
     }
 
-    private void setup() { // setta la lista
+    private void stiliEColori() {
+        // Etichetta del titolo
+        jlTitolo.setForeground(UtilitiesFinestra.GREY);
+        jlTitolo.setFont(UtilitiesFinestra.FTITLE);
+
+        // Etichetta del nome utente
+        jlUsername.setForeground(UtilitiesFinestra.GREY);
+        jlUsername.setFont(UtilitiesFinestra.FLABEL);
+
+        // Pulsante per il login
+        jbProsegui.setForeground(UtilitiesFinestra.BLUE);
+        jbProsegui.setBackground(UtilitiesFinestra.GREY);
+        jbProsegui.setPreferredSize(UtilitiesFinestra.DBUTTON);
+        jbProsegui.setBorder(UtilitiesFinestra.BORDER);
+        jbProsegui.setFont(UtilitiesFinestra.FBUTTON);
+    }
+
+    private void setup() {
         contatore = 0;
-        for (int i = 1; i <= 90; i++) {
-            numeri_scelti[i - 1] = false;
+        for (int i = 1; i <= NUMERI; i++) {
+            numeriScelti[i - 1] = false;
             JButton btnNumero = new JButton(Integer.toString(i));
             btnNumero.setActionCommand(Integer.toString(i));
             btnNumero.addActionListener(new GestorePulsante());
-            jp2.add(btnNumero);
+            btnNumero.addMouseListener(new GestoreMouse());
+            // Stile pulsante
+            btnNumero.setForeground(UtilitiesFinestra.GREY);
+            btnNumero.setBackground(UtilitiesFinestra.BLUE);
+            btnNumero.setBorder(BORDER);
+            btnNumero.setFont(UtilitiesFinestra.FBUTTON);
+            jp[1].add(btnNumero);
         }
     }
 
-    public void creaFinestra() {
+    private void pannelli() {
+        // Istanziazione
+        for (int i = 0; i < UtilitiesFinestra.PANELS; ++i) {
+            jp[i] = new JPanel();
+            jp[i].setBackground(UtilitiesFinestra.BLUE);
+        }
+
+        // Imposta il layout dei pulsanti
+        jp[1].setLayout(glNumeri);
+
+        // Composizione di pannelli
+        jp[0].add(jlTitolo);
         setup();
+        jp[2].add(jbProsegui);
+    }
 
-        jp1.add(jl);
-        jp2.setLayout(gl_scelte);
+    private void componenti() {
+        // Ascoltatore pulsante prosegui
+        jbProsegui.addActionListener(new GestorePulsante());
+    }
 
-        jb.addActionListener(new GestorePulsante());
-
+    private void frame() {
+        // Ascoltatore finestra
         jf.addWindowListener(new GestoreFinestraND(jf));
-        jf.setLayout(gl);
-        jf.add(jp1);
-        jf.add(jp2);
-        jf.add(jb);
+
+        // Layout
+        jf.setLayout(UtilitiesFinestra.LAYOUT);
+        jf.add(jp[0], BorderLayout.NORTH);
+        jf.add(jp[1], BorderLayout.CENTER);
+        jf.add(jp[2], BorderLayout.SOUTH);
+
+        // Posizione, dimensione, visibilità finestra
+        jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
         jf.setSize(UtilitiesFinestra.DIMENSION);
         jf.setResizable(false);
-        jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
         jf.setVisible(true);
+        
+        // Icona
         jf.setIconImage(UtilitiesFinestra.ICON.getImage());
+        
+        // Contenitore
         jf.getContentPane();
     }
 }

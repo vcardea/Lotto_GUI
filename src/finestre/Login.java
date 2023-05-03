@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
@@ -39,6 +40,11 @@ public class Login {
         }
     }
 
+    private final Border BORDER = BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 30),
+        BorderFactory.createEmptyBorder(0, 0, 0, 0)
+    );
+    private final Dimension DBUTTON = new Dimension(300, 105);
     private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
     private JPanel[] jp = new JPanel[UtilitiesFinestra.PANELS];
     private JLabel jlTitolo = new JLabel("FINESTRA DI LOGIN", JLabel.CENTER);
@@ -70,10 +76,8 @@ public class Login {
         // Pulsante per il login
         jbLogin.setForeground(UtilitiesFinestra.BLUE);
         jbLogin.setBackground(UtilitiesFinestra.GREY);
-        jbLogin.setPreferredSize(new Dimension(300, 105));
-        jbLogin.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 30),
-            BorderFactory.createEmptyBorder(0, 0, 0, 0)));
+        jbLogin.setPreferredSize(DBUTTON);
+        jbLogin.setBorder(BORDER);
         jbLogin.setFont(UtilitiesFinestra.FBUTTON);
     }
 
