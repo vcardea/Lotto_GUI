@@ -149,6 +149,9 @@ public class CalcoloVincita {
 			vincita = importo * 2;
 	}
 
+	/**
+	 * @return vincita
+	 */
 	public float getVincita() {
 		return vincita;
 	}

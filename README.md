@@ -7,16 +7,17 @@ Programma lotto con la GUI, assegnato il 24/03/2023.
 
 ~~-Scheletro della GUI;~~
 
--GUI del lotto;
+~~-GUI del lotto;~~
 
--Eventi del lotto;
+~~-Eventi del lotto;~~
 
--Log del lotto;
+~~-Log del lotto;~~
 
--Aggiunte varie;
+~~-Aggiunte varie;~~
 
-05/04/2023
-Creazione scheletro del programma.
+-Documentazione Finale;
+
+INFORMAZIONI SUI LOG
 
 STATISTICHE/LOG
 SCRIVI LOG

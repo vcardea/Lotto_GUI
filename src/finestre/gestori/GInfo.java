@@ -14,6 +14,10 @@ public class GInfo implements ActionListener {
         this.jf = jf;
     }
 
+    /**
+    * @param ae evento che gestisce l'uscita tramite button
+    * e riapre il menu'
+    */
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
 

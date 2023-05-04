@@ -26,6 +26,9 @@ public class Login {
      * Inner class per la gestione di button e JTextField
      */
     private class GestorePulsante implements ActionListener {
+        /**
+         * 
+         */
         public void actionPerformed(ActionEvent e) {
             String username = jtfUsername.getText().replaceAll(" ", "");
             if (!isUsernameValid(username)) {

@@ -12,6 +12,9 @@ public class GestoreUscita implements ActionListener {
         this.jf = jf;
     }
 
+    /**
+    * @param ae evento che gestisce l'uscita tramite button
+    */
     public void actionPerformed(ActionEvent ae) {
         String s = ae.getActionCommand();
         if (s.equals("esci")) {
