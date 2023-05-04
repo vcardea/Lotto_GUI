@@ -192,21 +192,26 @@ public class Finale {
         jp[2].add(jbStatistiche);
         jp[2].add(jbChiudi);
 
-        jp[3].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 4, UtilFinestra.ALTEZZA));
+        //jp[3].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA, UtilFinestra.ALTEZZA));
         jp[3].add(jlEstratti, BorderLayout.NORTH);
         jp[3].add(jlNumeriEstratti, BorderLayout.CENTER);
         for (int i = 0; i < ESTRAZIONI; i++) {
-            jlNumeriEstratti.setText(String.valueOf(numeriEstratti.elementAt(i)));
-            jp[3].add(jlNumeriEstratti, BorderLayout.CENTER);
+            JLabel jbTmp = new JLabel(String.valueOf(numeriEstratti.elementAt(i)));
+            jp[3].add(jbTmp, BorderLayout.CENTER);
         }
 
-        jlNumeriEstratti.setText("");
-        jp[4].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 4, UtilFinestra.ALTEZZA));
+        //jp[4].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA, UtilFinestra.ALTEZZA));
         jp[4].add(jlIndovinati, BorderLayout.NORTH);
         jp[4].add(jlNumeriIndovinati, BorderLayout.CENTER);
-        for (int i = 0; i < numeriIndovinati.size(); i++) {
-            jlNumeriEstratti.setText(String.valueOf(numeriIndovinati.elementAt(i)));
-            jp[4].add(jlNumeriEstratti, BorderLayout.CENTER);
+        if(numeriIndovinati.size() > 0) {
+            for (int i = 0; i < numeriIndovinati.size(); i++) {
+                JLabel jbTmp = new JLabel(String.valueOf(numeriEstratti.elementAt(i)));
+                jp[4].add(jbTmp, BorderLayout.CENTER);
+            }
+        } else {
+                jp[4].setLayout(glNord);
+                JLabel jbTmp = new JLabel("Non hai indovinato nessun numero");
+                jp[4].add(jbTmp, BorderLayout.CENTER);
         }
     }
 
