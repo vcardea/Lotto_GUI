@@ -59,11 +59,11 @@ public class DettagliPartita {
 
     private float importo = 0.0f;
     private byte numeri = 0;
-    private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
+    private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private GridLayout glNorth = new GridLayout(2, 1);
     private GridBagLayout gbl = new GridBagLayout();
     private GridBagConstraints gbc = new GridBagConstraints();
-    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANNELLI];
+    private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("DETTAGLI PARTITA", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("", JLabel.CENTER);
     private JLabel jlNumeri = new JLabel("Inserire quanti numeri si vuole giocare", JLabel.CENTER);
@@ -88,34 +88,34 @@ public class DettagliPartita {
 
     private void stiliEColori() {
         // Etichetta del titolo
-        jlTitolo.setForeground(UtilitiesFinestra.GREY);
-        jlTitolo.setFont(UtilitiesFinestra.FTITLE);
+        jlTitolo.setForeground(UtilFinestra.GRIGIO);
+        jlTitolo.setFont(UtilFinestra.FTITOLO);
 
         // Etichetta del nome utente
-        jlUsername.setForeground(UtilitiesFinestra.GREY);
-        jlUsername.setFont(UtilitiesFinestra.FLABEL);
+        jlUsername.setForeground(UtilFinestra.GRIGIO);
+        jlUsername.setFont(UtilFinestra.FETICHETTA);
 
         // Etichetta dell'importo
-        jlImporto.setForeground(UtilitiesFinestra.GREY);
-        jlImporto.setFont(UtilitiesFinestra.FLABEL);
+        jlImporto.setForeground(UtilFinestra.GRIGIO);
+        jlImporto.setFont(UtilFinestra.FETICHETTA);
 
         // Etichetta dei numeri
-        jlNumeri.setForeground(UtilitiesFinestra.GREY);
-        jlNumeri.setFont(UtilitiesFinestra.FLABEL);
+        jlNumeri.setForeground(UtilFinestra.GRIGIO);
+        jlNumeri.setFont(UtilFinestra.FETICHETTA);
 
         // Pulsante prosegui
-        jbProsegui.setForeground(UtilitiesFinestra.BLUE);
-        jbProsegui.setBackground(UtilitiesFinestra.GREY);
-        jbProsegui.setPreferredSize(UtilitiesFinestra.DBUTTON);
-        jbProsegui.setBorder(UtilitiesFinestra.BORDER);
-        jbProsegui.setFont(UtilitiesFinestra.FBUTTON);
+        jbProsegui.setForeground(UtilFinestra.BLU);
+        jbProsegui.setBackground(UtilFinestra.GRIGIO);
+        jbProsegui.setPreferredSize(UtilFinestra.DPULSANTE);
+        jbProsegui.setBorder(UtilFinestra.BPULSANTE);
+        jbProsegui.setFont(UtilFinestra.FPULSANTE);
     }
 
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilitiesFinestra.PANNELLI; i++) {
+        for (int i = 0; i < UtilFinestra.PANNELLI; i++) {
             jp[i] = new JPanel();
-            jp[i].setBackground(UtilitiesFinestra.BLUE);
+            jp[i].setBackground(UtilFinestra.BLU);
         }
 
         // Layout
@@ -179,19 +179,19 @@ public class DettagliPartita {
         jf.addWindowListener(new GestoreFinestraND(jf));
 
         // Layout
-        jf.setLayout(UtilitiesFinestra.LAYOUT);
+        jf.setLayout(UtilFinestra.LAYOUT);
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
 
         // Posizionamento, dimensione e visibilità
-        jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
-        jf.setSize(UtilitiesFinestra.DIMENSION);
+        jf.setLocation(UtilFinestra.POSX, UtilFinestra.POSY);
+        jf.setSize(UtilFinestra.DIMENSIONE);
         jf.setResizable(false);
         jf.setVisible(true);
 
         // Icona
-        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
+        jf.setIconImage(UtilFinestra.ICONA.getImage());
 
         // Contenitore
         jf.getContentPane();

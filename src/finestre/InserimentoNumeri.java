@@ -20,15 +20,15 @@ import java.awt.event.MouseEvent;
 
 public class InserimentoNumeri {
 
-    protected static final Border BORDER = BorderFactory.createCompoundBorder(
-        BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 0),
+    protected static final Border BPULSANTE = BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(UtilFinestra.BLU, 0),
         BorderFactory.createEmptyBorder(0, 0, 0, 0)
     );
     private static final byte NUMERI = 90;
     private static boolean numeriScelti[] = new boolean[NUMERI];
     private static int contatore;
-    private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
-    private JPanel jp[] = new JPanel[UtilitiesFinestra.PANNELLI];
+    private JFrame jf = new JFrame(UtilFinestra.TITOLO);
+    private JPanel jp[] = new JPanel[UtilFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("INSERIMENTO NUMERI", JLabel.CENTER);
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
     private GridLayout glNumeri = new GridLayout(9, 10);
@@ -76,13 +76,13 @@ public class InserimentoNumeri {
                     } else {
                         numeriScelti[numero] = true;
                         ++contatore;
-                        jb.setForeground(UtilitiesFinestra.GREEN);
+                        jb.setForeground(UtilFinestra.VERDE);
                         GestoreMouse.selezionati[numero] = true;
                     }
                 } else {
                     numeriScelti[numero] = false;
                     --contatore;
-                    jb.setForeground(UtilitiesFinestra.GREY);
+                    jb.setForeground(UtilFinestra.GRIGIO);
                     GestoreMouse.selezionati[numero] = false;
                 }
             }
@@ -94,14 +94,14 @@ public class InserimentoNumeri {
 
         public void mouseEntered(MouseEvent e) {
             JButton jb = (JButton) e.getComponent();
-            jb.setForeground(UtilitiesFinestra.LIGHTGREEN);
+            jb.setForeground(UtilFinestra.VERDECHIARO);
         }
 
         public void mouseExited(MouseEvent e) {
             JButton jb = (JButton) e.getComponent();
             int indice = Integer.valueOf(jb.getActionCommand()).intValue();
             if (!selezionati[indice - 1]) {
-                jb.setForeground(UtilitiesFinestra.GREY);
+                jb.setForeground(UtilFinestra.GRIGIO);
             }
         }
     }
@@ -118,19 +118,19 @@ public class InserimentoNumeri {
 
     private void stiliEColori() {
         // Etichetta del titolo
-        jlTitolo.setForeground(UtilitiesFinestra.GREY);
-        jlTitolo.setFont(UtilitiesFinestra.FTITLE);
+        jlTitolo.setForeground(UtilFinestra.GRIGIO);
+        jlTitolo.setFont(UtilFinestra.FTITOLO);
 
         // Etichetta del nome utente
-        jlUsername.setForeground(UtilitiesFinestra.GREY);
-        jlUsername.setFont(UtilitiesFinestra.FLABEL);
+        jlUsername.setForeground(UtilFinestra.GRIGIO);
+        jlUsername.setFont(UtilFinestra.FETICHETTA);
 
         // Pulsante per il login
-        jbProsegui.setForeground(UtilitiesFinestra.BLUE);
-        jbProsegui.setBackground(UtilitiesFinestra.GREY);
-        jbProsegui.setPreferredSize(UtilitiesFinestra.DBUTTON);
-        jbProsegui.setBorder(UtilitiesFinestra.BORDER);
-        jbProsegui.setFont(UtilitiesFinestra.FBUTTON);
+        jbProsegui.setForeground(UtilFinestra.BLU);
+        jbProsegui.setBackground(UtilFinestra.GRIGIO);
+        jbProsegui.setPreferredSize(UtilFinestra.DPULSANTE);
+        jbProsegui.setBorder(UtilFinestra.BPULSANTE);
+        jbProsegui.setFont(UtilFinestra.FPULSANTE);
     }
 
     private void setup() {
@@ -142,19 +142,19 @@ public class InserimentoNumeri {
             btnNumero.addActionListener(new GestorePulsante());
             btnNumero.addMouseListener(new GestoreMouse());
             // Stile pulsante
-            btnNumero.setForeground(UtilitiesFinestra.GREY);
-            btnNumero.setBackground(UtilitiesFinestra.BLUE);
-            btnNumero.setBorder(BORDER);
-            btnNumero.setFont(UtilitiesFinestra.FBUTTON);
+            btnNumero.setForeground(UtilFinestra.GRIGIO);
+            btnNumero.setBackground(UtilFinestra.BLU);
+            btnNumero.setBorder(BPULSANTE);
+            btnNumero.setFont(UtilFinestra.FPULSANTE);
             jp[1].add(btnNumero);
         }
     }
 
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilitiesFinestra.PANNELLI; ++i) {
+        for (int i = 0; i < UtilFinestra.PANNELLI; ++i) {
             jp[i] = new JPanel();
-            jp[i].setBackground(UtilitiesFinestra.BLUE);
+            jp[i].setBackground(UtilFinestra.BLU);
         }
 
         // Imposta il layout dei pulsanti
@@ -176,19 +176,19 @@ public class InserimentoNumeri {
         jf.addWindowListener(new GestoreFinestraND(jf));
 
         // Layout
-        jf.setLayout(UtilitiesFinestra.LAYOUT);
+        jf.setLayout(UtilFinestra.LAYOUT);
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
 
         // Posizione, dimensione, visibilità finestra
-        jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
-        jf.setSize(UtilitiesFinestra.DIMENSION);
+        jf.setLocation(UtilFinestra.POSX, UtilFinestra.POSY);
+        jf.setSize(UtilFinestra.DIMENSIONE);
         jf.setResizable(false);
         jf.setVisible(true);
         
         // Icona
-        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
+        jf.setIconImage(UtilFinestra.ICONA.getImage());
         
         // Contenitore
         jf.getContentPane();

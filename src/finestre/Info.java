@@ -16,9 +16,9 @@ import java.awt.GridBagLayout;
 
 public class Info {
     
-    private final Dimension INFO_DIMENSION = new Dimension(650, 300);
-    private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
-    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANNELLI];
+    private final Dimension INFO_DIMENSIONE = new Dimension(650, 300);
+    private JFrame jf = new JFrame(UtilFinestra.TITOLO);
+    private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("INFORMAZIONI");
     private JTextArea jta = new JTextArea(15, 25);
     private JButton jbChiudi = new JButton("Chiudi");
@@ -34,7 +34,7 @@ public class Info {
 
     private void testo() {
         if (info.equals("")) {
-            FileInput fi = new FileInput(UtilitiesFinestra.INFOFILE);
+            FileInput fi = new FileInput(UtilFinestra.INFOFILE);
             info = fi.readText();
         }
         jta.setText(info);
@@ -42,27 +42,27 @@ public class Info {
 
     private void stiliEColori() {
         // Etichetta del titolo
-        jlTitolo.setForeground(UtilitiesFinestra.GREY);
-        jlTitolo.setFont(UtilitiesFinestra.FTITLE);
+        jlTitolo.setForeground(UtilFinestra.GRIGIO);
+        jlTitolo.setFont(UtilFinestra.FTITOLO);
 
         // Area di testo
-        jta.setForeground(UtilitiesFinestra.WHITE);
-        jta.setBackground(UtilitiesFinestra.BLUE);
-        jta.setFont(UtilitiesFinestra.FTEXT);
+        jta.setForeground(UtilFinestra.BIANCO);
+        jta.setBackground(UtilFinestra.BLU);
+        jta.setFont(UtilFinestra.FTESTO);
 
         // Pulsante di chiusura
-        jbChiudi.setForeground(UtilitiesFinestra.BLUE);
-        jbChiudi.setBackground(UtilitiesFinestra.GREY);
-        jbChiudi.setPreferredSize(UtilitiesFinestra.DBUTTON);
-        jbChiudi.setBorder(UtilitiesFinestra.BORDER);
-        jbChiudi.setFont(UtilitiesFinestra.FBUTTON);
+        jbChiudi.setForeground(UtilFinestra.BLU);
+        jbChiudi.setBackground(UtilFinestra.GRIGIO);
+        jbChiudi.setPreferredSize(UtilFinestra.DPULSANTE);
+        jbChiudi.setBorder(UtilFinestra.BPULSANTE);
+        jbChiudi.setFont(UtilFinestra.FPULSANTE);
     }
 
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilitiesFinestra.PANNELLI; i++) {
+        for (int i = 0; i < UtilFinestra.PANNELLI; i++) {
             jp[i] = new JPanel();
-            jp[i].setBackground(UtilitiesFinestra.BLUE);
+            jp[i].setBackground(UtilFinestra.BLU);
         }
 
         // Layout
@@ -76,7 +76,7 @@ public class Info {
 
     private void componenti() {
         // Area di testo
-        jta.setPreferredSize(INFO_DIMENSION);
+        jta.setPreferredSize(INFO_DIMENSIONE);
         jta.setWrapStyleWord(true);
         jta.setLineWrap(true);
         jta.setEditable(false);
@@ -94,13 +94,13 @@ public class Info {
         jf.add(jp[2], BorderLayout.SOUTH);
 
         // Posizionamento, dimensione e visibilità finestra
-        jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
-        jf.setMinimumSize(UtilitiesFinestra.DIMENSION);
-        jf.setSize(UtilitiesFinestra.DIMENSION);
+        jf.setLocation(UtilFinestra.POSX, UtilFinestra.POSY);
+        jf.setMinimumSize(UtilFinestra.DIMENSIONE);
+        jf.setSize(UtilFinestra.DIMENSIONE);
         jf.setVisible(true);
 
         // Icona
-        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
+        jf.setIconImage(UtilFinestra.ICONA.getImage());
 
         // Contenitore
         jf.getContentPane();

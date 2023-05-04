@@ -40,13 +40,13 @@ public class Login {
         }
     }
 
-    private final Border BORDER = BorderFactory.createCompoundBorder(
-        BorderFactory.createLineBorder(UtilitiesFinestra.BLUE, 30),
+    private final Border BPULSANTE = BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(UtilFinestra.BLU, 30),
         BorderFactory.createEmptyBorder(0, 0, 0, 0)
     );
-    private final Dimension DBUTTON = new Dimension(300, 105);
-    private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
-    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANNELLI];
+    private final Dimension DPULSANTE = new Dimension(300, 105);
+    private JFrame jf = new JFrame(UtilFinestra.TITOLO);
+    private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("FINESTRA DI LOGIN", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("Username ", JLabel.LEFT);
     private JTextField jtfUsername = new JTextField(15);
@@ -61,35 +61,35 @@ public class Login {
 
     private void stiliEColori() {
         // Etichetta del titolo
-        jlTitolo.setForeground(UtilitiesFinestra.GREY);
-        jlTitolo.setFont(UtilitiesFinestra.FTITLE);
+        jlTitolo.setForeground(UtilFinestra.GRIGIO);
+        jlTitolo.setFont(UtilFinestra.FTITOLO);
 
         // Etichetta del nome utente
-        jlUsername.setForeground(UtilitiesFinestra.GREY);
-        jlUsername.setFont(UtilitiesFinestra.FLABEL);
+        jlUsername.setForeground(UtilFinestra.GRIGIO);
+        jlUsername.setFont(UtilFinestra.FETICHETTA);
 
         // Casella di testo del nome utente
-        jtfUsername.setFont(UtilitiesFinestra.FTEXT);
-        jtfUsername.setForeground(UtilitiesFinestra.BLUE);
-        jtfUsername.setBackground(UtilitiesFinestra.GREY);
+        jtfUsername.setFont(UtilFinestra.FTESTO);
+        jtfUsername.setForeground(UtilFinestra.BLU);
+        jtfUsername.setBackground(UtilFinestra.GRIGIO);
         
         // Pulsante per il login
-        jbLogin.setForeground(UtilitiesFinestra.BLUE);
-        jbLogin.setBackground(UtilitiesFinestra.GREY);
-        jbLogin.setPreferredSize(DBUTTON);
-        jbLogin.setBorder(BORDER);
-        jbLogin.setFont(UtilitiesFinestra.FBUTTON);
+        jbLogin.setForeground(UtilFinestra.BLU);
+        jbLogin.setBackground(UtilFinestra.GRIGIO);
+        jbLogin.setPreferredSize(DPULSANTE);
+        jbLogin.setBorder(BPULSANTE);
+        jbLogin.setFont(UtilFinestra.FPULSANTE);
     }
 
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilitiesFinestra.PANNELLI; i++) {
+        for (int i = 0; i < UtilFinestra.PANNELLI; i++) {
             jp[i] = new JPanel();
-            jp[i].setBackground(UtilitiesFinestra.BLUE);
+            jp[i].setBackground(UtilFinestra.BLU);
         }
 
         // Layout
-        jp[1].setLayout(UtilitiesFinestra.LAYOUTCENTER);
+        jp[1].setLayout(UtilFinestra.LAYOUTCENTRO);
 
         // Composizione
         jp[0].add(jlTitolo);
@@ -108,19 +108,19 @@ public class Login {
         jf.addWindowListener(new GestoreFinestraFN(jf));
         
         // Layout
-        jf.setLayout(UtilitiesFinestra.LAYOUT);
+        jf.setLayout(UtilFinestra.LAYOUT);
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
 
         // Posizionamento, dimensione, visibilità finestra
-        jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
-        jf.setSize(UtilitiesFinestra.DIMENSION);
+        jf.setLocation(UtilFinestra.POSX, UtilFinestra.POSY);
+        jf.setSize(UtilFinestra.DIMENSIONE);
         jf.setResizable(false);
         jf.setVisible(true);
 
         // Icona
-        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
+        jf.setIconImage(UtilFinestra.ICONA.getImage());
         
         // Contenitore
         jf.getContentPane();

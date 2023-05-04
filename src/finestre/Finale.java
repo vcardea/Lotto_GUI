@@ -11,9 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -42,7 +45,7 @@ public class Finale {
     private float vincita = 0.0f;
 
     private final byte PANNELLI = 5;
-    private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
+    private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel[] jp = new JPanel[PANNELLI];
     private GridLayout glNord = new GridLayout(2, 1);
     private GridBagLayout gblCentro = new GridBagLayout();
@@ -111,27 +114,43 @@ public class Finale {
 
     private void stileEColori() {
         // Etichetta del titolo
-        jlTitolo.setForeground(UtilitiesFinestra.GREY);
-        jlTitolo.setFont(UtilitiesFinestra.FTITLE);
+        jlTitolo.setForeground(UtilFinestra.GRIGIO);
+        jlTitolo.setFont(UtilFinestra.FTITOLO);
 
         // Etichetta del nome utente
-        jlUsername.setForeground(UtilitiesFinestra.GREY);
-        jlUsername.setFont(UtilitiesFinestra.FLABEL);
+        jlUsername.setForeground(UtilFinestra.GRIGIO);
+        jlUsername.setFont(UtilFinestra.FETICHETTA);
+
+        // Etichetta titolo dei numeri estratti
+        jlEstratti.setForeground(UtilFinestra.GRIGIO);
+        jlEstratti.setFont(UtilFinestra.FETICHETTA);
 
         // Etichetta dei numeri estratti
-        jlNumeriEstratti.setForeground(UtilitiesFinestra.GREY);
-        jlNumeriEstratti.setFont(UtilitiesFinestra.FLABEL);
+        jlNumeriEstratti.setForeground(UtilFinestra.GRIGIO);
+        jlNumeriEstratti.setFont(UtilFinestra.FETICHETTA);
+
+        // Etichetta titolo dei numeri indovinati
+        jlIndovinati.setForeground(UtilFinestra.GRIGIO);
+        jlIndovinati.setFont(UtilFinestra.FETICHETTA);
 
         // Etichetta dei numeri indovinati
-        jlNumeriIndovinati.setForeground(UtilitiesFinestra.GREY);
-        jlNumeriIndovinati.setFont(UtilitiesFinestra.FLABEL);
+        jlNumeriIndovinati.setForeground(UtilFinestra.GRIGIO);
+        jlNumeriIndovinati.setFont(UtilFinestra.FETICHETTA);
+
+        // Etichetta titolo vincita
+        jlVincita.setForeground(UtilFinestra.GRIGIO);
+        jlVincita.setFont(UtilFinestra.FETICHETTA);
+
+        // Etichetta vincita
+        jlMostraVincita.setForeground(UtilFinestra.GRIGIO);
+        jlMostraVincita.setFont(UtilFinestra.FETICHETTA);
     }
 
     private void pannelli() {
         // Inizializza i pannelli
         for (int i = 0; i < PANNELLI; i++) {
             jp[i] = new JPanel();
-            jp[i].setBackground(UtilitiesFinestra.BLUE);
+            jp[i].setBackground(UtilFinestra.BLU);
         }
 
         // Istanzia componenti
@@ -147,19 +166,37 @@ public class Finale {
         jp[4].setLayout(blEstOvest);
 
         // Aggiunge componenti al pannello
+        GridBagConstraints gbc = new GridBagConstraints();
+
         jp[0].add(jlTitolo);
         jp[0].add(jlUsername);
-        jp[1].add(jlVincita);
-        jp[1].add(jlMostraVincita);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        jp[1].add(jlVincita, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.insets = new Insets(20, 0, 0, 0);
+        jp[1].add(jlMostraVincita, gbc);
+
         jp[2].add(jbStatistiche);
         jp[2].add(jbChiudi);
+
+        jp[3].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 4, UtilFinestra.ALTEZZA));
         jp[3].add(jlEstratti, BorderLayout.NORTH);
         jp[3].add(jlNumeriEstratti, BorderLayout.CENTER);
+
+        jp[4].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 4, UtilFinestra.ALTEZZA));
         jp[4].add(jlIndovinati, BorderLayout.NORTH);
         jp[4].add(jlNumeriIndovinati, BorderLayout.CENTER);
     }
 
     private void componenti() {
+        // Pulsante statistiche
+        jbStatistiche.setActionCommand("statistiche");
+        jbStatistiche.addActionListener(new GestoreInterno());
+
         // Pulsante di chiusura
         jbChiudi.setActionCommand("chiudi");
         jbChiudi.addActionListener(new GestoreInterno());
@@ -170,7 +207,7 @@ public class Finale {
         jf.addWindowListener(new GestoreFinestraND(jf));
 
         // Layout
-        jf.setLayout(UtilitiesFinestra.LAYOUT);
+        jf.setLayout(UtilFinestra.LAYOUT);
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
@@ -178,13 +215,13 @@ public class Finale {
         jf.add(jp[4], BorderLayout.EAST);
         
         // Posizione, dimensione, visibilità finestra
-        jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
+        jf.setLocation(UtilFinestra.POSX, UtilFinestra.POSY);
         jf.setResizable(false);
-        jf.setSize(UtilitiesFinestra.DIMENSION);
+        jf.setSize(UtilFinestra.DIMENSIONE);
         jf.setVisible(true);
 
         // Icona
-        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
+        jf.setIconImage(UtilFinestra.ICONA.getImage());
 
         // Contenitore
         jf.getContentPane();

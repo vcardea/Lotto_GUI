@@ -30,8 +30,8 @@ public class Menu {
         }
     }
 
-    private static JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
-    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANNELLI];
+    private static JFrame jf = new JFrame(UtilFinestra.TITOLO);
+    private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
     private GridLayout glNorth = new GridLayout(2, 1, 10, 0);
     private JLabel jlTitolo = new JLabel("MENU PRINCIPALE", JLabel.CENTER);
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
@@ -49,40 +49,40 @@ public class Menu {
 
     private void stiliEColori() {
         // Etichetta del titolo
-        jlTitolo.setForeground(UtilitiesFinestra.GREY);
-        jlTitolo.setFont(UtilitiesFinestra.FTITLE);
+        jlTitolo.setForeground(UtilFinestra.GRIGIO);
+        jlTitolo.setFont(UtilFinestra.FTITOLO);
 
         // Etichetta del nome utente
-        jlUsername.setForeground(UtilitiesFinestra.GREY);
-        jlUsername.setFont(UtilitiesFinestra.FLABEL);
+        jlUsername.setForeground(UtilFinestra.GRIGIO);
+        jlUsername.setFont(UtilFinestra.FETICHETTA);
 
         // Pulsante nuova partita
-        jbNuovaPartita.setForeground(UtilitiesFinestra.BLUE);
-        jbNuovaPartita.setBackground(UtilitiesFinestra.GREY);
-        jbNuovaPartita.setPreferredSize(UtilitiesFinestra.DBUTTON);
-        jbNuovaPartita.setBorder(UtilitiesFinestra.BORDER);
-        jbNuovaPartita.setFont(UtilitiesFinestra.FBUTTON);
+        jbNuovaPartita.setForeground(UtilFinestra.BLU);
+        jbNuovaPartita.setBackground(UtilFinestra.GRIGIO);
+        jbNuovaPartita.setPreferredSize(UtilFinestra.DPULSANTE);
+        jbNuovaPartita.setBorder(UtilFinestra.BPULSANTE);
+        jbNuovaPartita.setFont(UtilFinestra.FPULSANTE);
 
         // Pulsante informazioni
-        jbInfo.setForeground(UtilitiesFinestra.BLUE);
-        jbInfo.setBackground(UtilitiesFinestra.GREY);
-        jbInfo.setPreferredSize(UtilitiesFinestra.DBUTTON);
-        jbInfo.setBorder(UtilitiesFinestra.BORDER);
-        jbInfo.setFont(UtilitiesFinestra.FBUTTON);
+        jbInfo.setForeground(UtilFinestra.BLU);
+        jbInfo.setBackground(UtilFinestra.GRIGIO);
+        jbInfo.setPreferredSize(UtilFinestra.DPULSANTE);
+        jbInfo.setBorder(UtilFinestra.BPULSANTE);
+        jbInfo.setFont(UtilFinestra.FPULSANTE);
 
         // Pulsante esci
-        jbEsci.setForeground(UtilitiesFinestra.BLUE);
-        jbEsci.setBackground(UtilitiesFinestra.GREY);
-        jbEsci.setPreferredSize(UtilitiesFinestra.DBUTTON);
-        jbEsci.setBorder(UtilitiesFinestra.BORDER);
-        jbEsci.setFont(UtilitiesFinestra.FBUTTON);
+        jbEsci.setForeground(UtilFinestra.BLU);
+        jbEsci.setBackground(UtilFinestra.GRIGIO);
+        jbEsci.setPreferredSize(UtilFinestra.DPULSANTE);
+        jbEsci.setBorder(UtilFinestra.BPULSANTE);
+        jbEsci.setFont(UtilFinestra.FPULSANTE);
     }
 
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilitiesFinestra.PANNELLI; i++) {
+        for (int i = 0; i < UtilFinestra.PANNELLI; i++) {
             jp[i] = new JPanel();
-            jp[i].setBackground(UtilitiesFinestra.BLUE);
+            jp[i].setBackground(UtilFinestra.BLU);
         }
 
         // Layout
@@ -122,13 +122,13 @@ public class Menu {
         jf.add(jp[2], BorderLayout.SOUTH);
 
         // Posizionamento, dimensione e visibilità finestra
-        jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
-        jf.setSize(UtilitiesFinestra.DIMENSION);
+        jf.setLocation(UtilFinestra.POSX, UtilFinestra.POSY);
+        jf.setSize(UtilFinestra.DIMENSIONE);
         jf.setResizable(false);
         jf.setVisible(true);
 
         // Icona
-        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
+        jf.setIconImage(UtilFinestra.ICONA.getImage());
 
         // Contenitore
         jf.getContentPane();
