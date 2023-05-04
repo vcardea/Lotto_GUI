@@ -46,7 +46,7 @@ public class Login {
     );
     private final Dimension DBUTTON = new Dimension(300, 105);
     private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
-    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANELS];
+    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("FINESTRA DI LOGIN", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("Username ", JLabel.LEFT);
     private JTextField jtfUsername = new JTextField(15);
@@ -83,7 +83,7 @@ public class Login {
 
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilitiesFinestra.PANELS; i++) {
+        for (int i = 0; i < UtilitiesFinestra.PANNELLI; i++) {
             jp[i] = new JPanel();
             jp[i].setBackground(UtilitiesFinestra.BLUE);
         }

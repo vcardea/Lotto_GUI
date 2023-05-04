@@ -28,7 +28,7 @@ public class InserimentoNumeri {
     private static boolean numeriScelti[] = new boolean[NUMERI];
     private static int contatore;
     private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
-    private JPanel jp[] = new JPanel[UtilitiesFinestra.PANELS];
+    private JPanel jp[] = new JPanel[UtilitiesFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("INSERIMENTO NUMERI", JLabel.CENTER);
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
     private GridLayout glNumeri = new GridLayout(9, 10);
@@ -152,7 +152,7 @@ public class InserimentoNumeri {
 
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilitiesFinestra.PANELS; ++i) {
+        for (int i = 0; i < UtilitiesFinestra.PANNELLI; ++i) {
             jp[i] = new JPanel();
             jp[i].setBackground(UtilitiesFinestra.BLUE);
         }

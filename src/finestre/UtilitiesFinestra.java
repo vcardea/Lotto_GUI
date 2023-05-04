@@ -20,7 +20,7 @@ public class UtilitiesFinestra {
     protected static final ImageIcon ICON = new ImageIcon("src/img/logo.png");
     protected static final String INFOFILE = "src/finestre/info/info.txt";
     
-    protected static final byte PANELS = 3;
+    protected static final byte PANNELLI = 3;
     
     protected static final Dimension RESOLUTION = Toolkit.getDefaultToolkit().getScreenSize();
     protected static final int WIDTH = 700;

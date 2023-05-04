@@ -18,7 +18,7 @@ public class Info {
     
     private final Dimension INFO_DIMENSION = new Dimension(650, 300);
     private JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
-    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANELS];
+    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("INFORMAZIONI");
     private JTextArea jta = new JTextArea(15, 25);
     private JButton jbChiudi = new JButton("Chiudi");
@@ -60,7 +60,7 @@ public class Info {
 
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilitiesFinestra.PANELS; i++) {
+        for (int i = 0; i < UtilitiesFinestra.PANNELLI; i++) {
             jp[i] = new JPanel();
             jp[i].setBackground(UtilitiesFinestra.BLUE);
         }

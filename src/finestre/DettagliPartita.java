@@ -63,7 +63,7 @@ public class DettagliPartita {
     private GridLayout glNorth = new GridLayout(2, 1);
     private GridBagLayout gbl = new GridBagLayout();
     private GridBagConstraints gbc = new GridBagConstraints();
-    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANELS];
+    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("DETTAGLI PARTITA", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("", JLabel.CENTER);
     private JLabel jlNumeri = new JLabel("Inserire quanti numeri si vuole giocare", JLabel.CENTER);
@@ -113,7 +113,7 @@ public class DettagliPartita {
 
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilitiesFinestra.PANELS; i++) {
+        for (int i = 0; i < UtilitiesFinestra.PANNELLI; i++) {
             jp[i] = new JPanel();
             jp[i].setBackground(UtilitiesFinestra.BLUE);
         }

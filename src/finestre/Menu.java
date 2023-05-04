@@ -31,7 +31,7 @@ public class Menu {
     }
 
     private static JFrame jf = new JFrame(UtilitiesFinestra.TITOLO);
-    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANELS];
+    private JPanel[] jp = new JPanel[UtilitiesFinestra.PANNELLI];
     private GridLayout glNorth = new GridLayout(2, 1, 10, 0);
     private JLabel jlTitolo = new JLabel("MENU PRINCIPALE", JLabel.CENTER);
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
@@ -80,7 +80,7 @@ public class Menu {
 
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilitiesFinestra.PANELS; i++) {
+        for (int i = 0; i < UtilitiesFinestra.PANNELLI; i++) {
             jp[i] = new JPanel();
             jp[i].setBackground(UtilitiesFinestra.BLUE);
         }
