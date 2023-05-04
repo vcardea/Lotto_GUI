@@ -119,19 +119,48 @@ public class Finale {
         jp[1].add(new JLabel(String.valueOf(vincita), JLabel.CENTER));
         jp[2].add(jbChiudi, BorderLayout.CENTER);
 
+        
+
+        stileEColori();
+        pannelli();
+        componenti();
+        frame();
+    }
+
+    private void stileEColori() {
+
+    }
+
+    private void pannelli() {
+
+    }
+
+    private void componenti() {
         // Pulsante di chiusura
         jbChiudi.setActionCommand("chiudi");
         jbChiudi.addActionListener(new GestoreInterno());
+    }
 
-        // Imposta ulteriori dettagli del frame
+    private void frame() {
+        // Ascoltatore finestra
         jf.addWindowListener(new GestoreFinestraND(jf));
+
+        // Layout
+        jf.setLayout(UtilitiesFinestra.LAYOUT);
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
+        
+        // Posizione, dimensione, visibilità finestra
         jf.setLocation(UtilitiesFinestra.LOCATIONX, UtilitiesFinestra.LOCATIONY);
-        jf.setSize(UtilitiesFinestra.WIDTH, UtilitiesFinestra.HEIGHT);
-        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
+        jf.setResizable(false);
+        jf.setSize(UtilitiesFinestra.DIMENSION);
         jf.setVisible(true);
+
+        // Icona
+        jf.setIconImage(UtilitiesFinestra.ICON.getImage());
+
+        // Contenitore
         jf.getContentPane();
     }
 }
