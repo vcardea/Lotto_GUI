@@ -47,7 +47,7 @@ public class FileInput {
     }
 
     /**
-     * @return\una linea sola del file
+     * @return una linea sola del file
      */
     public String read() {
         String line = new String("");

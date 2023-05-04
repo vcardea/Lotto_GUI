@@ -18,7 +18,7 @@ public class GestoreUscita implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         String s = ae.getActionCommand();
         if (s.equals("esci")) {
-            jf.dispose();
+            System.exit(0);
         }
     }
 }

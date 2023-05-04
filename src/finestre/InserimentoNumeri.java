@@ -83,7 +83,8 @@ public class InserimentoNumeri {
                 } else {
                     Finale f = new Finale(numeriScelti, importo, numeri); // procede alla prossima finestra
                     reset(); // resetta i diversi valori
-                    jf.dispose(); // chiude la finestra 
+                    jf.setVisible(false);
+                    // jf.dispose(); // chiude la finestra 
                 }
             } else {
                 JButton jb = (JButton) e.getSource();
@@ -246,5 +247,9 @@ public class InserimentoNumeri {
         
         // Contenitore
         jf.getContentPane();
+    }
+
+    public void apriFinestra() {
+        jf.setVisible(true);
     }
 }
