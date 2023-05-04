@@ -36,7 +36,8 @@ public class InserimentoNumeri {
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
     private GridLayout glNumeri = new GridLayout(9, 10);
     private JButton jbProsegui = new JButton("Prosegui");
-    
+    private JButton[] jbNumeri = new JButton[NUMERI];
+
     protected static final Border BPULSANTE = BorderFactory.createCompoundBorder(
         BorderFactory.createLineBorder(UtilFinestra.BLU, 0),
         BorderFactory.createEmptyBorder(0, 0, 0, 0)
@@ -66,8 +67,12 @@ public class InserimentoNumeri {
          */
         private void reset() {
             for (int i = 0; i < NUMERI; ++i)
-                if (numeriScelti[i])
-                    numeriScelti[i] = false; // resetta l'array dei numeri selezionati
+                if (numeriScelti[i]) {
+                    numeriScelti[i] = false;
+                    jbNumeri[i].setForeground(UtilFinestra.GRIGIO);
+                    GestoreMouse.selezionati[i] = false;
+                }
+            // resetta l'array dei numeri selezionati
             contatore = 0;
         }
 
@@ -83,8 +88,8 @@ public class InserimentoNumeri {
                 } else {
                     Finale f = new Finale(numeriScelti, importo, numeri); // procede alla prossima finestra
                     reset(); // resetta i diversi valori
-                    jf.setVisible(false);
-                    // jf.dispose(); // chiude la finestra 
+                    //jf.setVisible(false);
+                    jf.dispose(); // chiude la finestra 
                 }
             } else {
                 JButton jb = (JButton) e.getSource();
@@ -124,8 +129,9 @@ public class InserimentoNumeri {
          * il mouse passa sopra un numero
          */
         public void mouseEntered(MouseEvent e) {
-            JButton jb = (JButton) e.getComponent();
-            jb.setForeground(UtilFinestra.VERDECHIARO);
+            JButton jbTmp = (JButton) e.getComponent();
+            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue();
+            jbNumeri[indice - 1].setForeground(UtilFinestra.VERDECHIARO);
         }
 
         /**
@@ -134,10 +140,10 @@ public class InserimentoNumeri {
          * (per capire leggere il metodo corrispondente "mouseEntered")
          */
         public void mouseExited(MouseEvent e) {
-            JButton jb = (JButton) e.getComponent();
-            int indice = Integer.valueOf(jb.getActionCommand()).intValue();
+            JButton jbTmp = (JButton) e.getComponent();
+            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue();
             if (!selezionati[indice - 1]) {
-                jb.setForeground(UtilFinestra.GRIGIO);
+                jbNumeri[indice - 1].setForeground(UtilFinestra.GRIGIO);
             }
         }
     }
@@ -183,16 +189,16 @@ public class InserimentoNumeri {
         contatore = 0;
         for (int i = 1; i <= NUMERI; i++) {
             numeriScelti[i - 1] = false;
-            JButton btnNumero = new JButton(Integer.toString(i));
-            btnNumero.setActionCommand(Integer.toString(i));
-            btnNumero.addActionListener(new GestorePulsante());
-            btnNumero.addMouseListener(new GestoreMouse());
+            jbNumeri[i - 1] = new JButton(Integer.toString(i));
+            jbNumeri[i - 1].setActionCommand(Integer.toString(i));
+            jbNumeri[i - 1].addActionListener(new GestorePulsante());
+            jbNumeri[i - 1].addMouseListener(new GestoreMouse());
             // Stile pulsante
-            btnNumero.setForeground(UtilFinestra.GRIGIO);
-            btnNumero.setBackground(UtilFinestra.BLU);
-            btnNumero.setBorder(BPULSANTE);
-            btnNumero.setFont(UtilFinestra.FPULSANTE);
-            jp[1].add(btnNumero);
+            jbNumeri[i - 1].setForeground(UtilFinestra.GRIGIO);
+            jbNumeri[i - 1].setBackground(UtilFinestra.BLU);
+            jbNumeri[i - 1].setBorder(BPULSANTE);
+            jbNumeri[i - 1].setFont(UtilFinestra.FPULSANTE);
+            jp[1].add(jbNumeri[i - 1]);
         }
     }
 

@@ -10,7 +10,7 @@ javac -d bin src/finestre/InserimentoNumeri.java
 javac -d bin src/finestre/Login.java
 javac -d bin src/finestre/Menu.java
 javac -d bin src/finestre/Info.java
-javac -d bin src/finestre/UtilitiesFinestra.java
+javac -d bin src/finestre/UtilFinestra.java
 
 javac -d bin src/calcoli/CalcoloVincita.java
 
