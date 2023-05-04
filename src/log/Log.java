@@ -15,8 +15,24 @@ import java.util.Vector;
 import java.time.Clock;
 import java.time.ZoneId;
 
-public class Log {
+/**
+ * GIOCO DEL DIECI E LOTTO IN GUI
+ * Realizzato da:
+ * Vincenzo Cardea
+ * Francesco Salvatore Rizzello
+ * Matteo De Vito
+ * Alessandro Serio
+ * 
+ * Classe che gestisce la scrittura
+ * e lettura dei Log del progetto.
+ */
 
+public class Log {
+    /**
+     * Funziona che ritorna un Vector<Byte> scelti,
+     * che contiene 
+     * @param bScelti
+     */
     private static Vector<Byte> converti(boolean[] bScelti) {
         Vector<Byte> scelti = new Vector<Byte>();
 

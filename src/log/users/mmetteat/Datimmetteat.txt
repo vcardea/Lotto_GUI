@@ -1,0 +1,1 @@
+<mmetteat[2023-05-04T17:01:49+02:00[Europe/Rome]]>[PartiteGiocate=[1]] [ImportoTotale=[2.0]] [VincitaTotale=[0.0]] [GuadagnoTotale=[-2.0]] [MediaVincite=[0.0]] 
