@@ -20,23 +20,32 @@ import java.awt.event.MouseEvent;
 
 public class InserimentoNumeri {
 
-    protected static final Border BPULSANTE = BorderFactory.createCompoundBorder(
-        BorderFactory.createLineBorder(UtilFinestra.BLU, 0),
-        BorderFactory.createEmptyBorder(0, 0, 0, 0)
-    );
     private static final byte NUMERI = 90;
-    private static boolean numeriScelti[] = new boolean[NUMERI];
+    private static boolean numeriScelti[] = new boolean[NUMERI]; 
     private static int contatore;
+    private byte numeri = 0;
+    private float importo;
+
+    // elementi grafici
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel jp[] = new JPanel[UtilFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("INSERIMENTO NUMERI", JLabel.CENTER);
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
     private GridLayout glNumeri = new GridLayout(9, 10);
     private JButton jbProsegui = new JButton("Prosegui");
-    private byte numeri = 0;
-    private float importo;
+    
+    protected static final Border BPULSANTE = BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(UtilFinestra.BLU, 0),
+        BorderFactory.createEmptyBorder(0, 0, 0, 0)
+    );
 
+    /**
+     * Inner class per il gestore dei button
+     */
     private class GestorePulsante implements ActionListener {
+        /**
+         * @param tipo di errore
+         */
         private void errore(boolean tipo) {
             if (tipo) {
                 JOptionPane.showMessageDialog(jf, "Hai gia' inserito tutti i numeri",
@@ -49,39 +58,46 @@ public class InserimentoNumeri {
             }
         }
 
+        /**
+         * Reset dei diversi dati 
+         */
         private void reset() {
             for (int i = 0; i < NUMERI; ++i)
                 if (numeriScelti[i])
-                    numeriScelti[i] = false;
+                    numeriScelti[i] = false; // resetta l'array dei numeri selezionati
             contatore = 0;
         }
 
+        /**
+         * @param e evento che gestisce il selezionamento
+         * dei numeri
+         */
         public void actionPerformed(ActionEvent e) {
             String comando = e.getActionCommand();
             if (comando.equals("Prosegui")) {
-                if (numeri != contatore) {
-                    errore(false);
+                if (numeri != contatore) { // controlla se la quantita' di numeri scelti
+                    errore(false); // e' uguale alla quantita di numeri selezionati precedentemente
                 } else {
-                    Finale f = new Finale(numeriScelti, importo, numeri);
-                    reset();
-                    jf.dispose();
+                    Finale f = new Finale(numeriScelti, importo, numeri); // procede alla prossima finestra
+                    reset(); // resetta i diversi valori
+                    jf.dispose(); // chiude la finestra 
                 }
             } else {
                 JButton jb = (JButton) e.getSource();
-                int numero = Integer.valueOf(comando).intValue();
+                int numero = Integer.valueOf(comando).intValue(); // prende il numero selezionato
                 --numero;
-                if (!numeriScelti[numero]) {
+                if (!numeriScelti[numero]) { // se il numero non e' stato selezionato
                     if (contatore >= numeri) {
-                        errore(true);
+                        errore(true); // se la quantita di numeri selezionati e' maggiore al massimo
                     } else {
-                        numeriScelti[numero] = true;
-                        ++contatore;
+                        numeriScelti[numero] = true; // lo seleziona
+                        ++contatore; // aumenta il contatore
                         jb.setForeground(UtilFinestra.VERDE);
                         GestoreMouse.selezionati[numero] = true;
                     }
                 } else {
-                    numeriScelti[numero] = false;
-                    --contatore;
+                    numeriScelti[numero] = false; // se invece il numero e' gia' selezionato
+                    --contatore; // diminuisce il contatore e lo deseleziona
                     jb.setForeground(UtilFinestra.GRIGIO);
                     GestoreMouse.selezionati[numero] = false;
                 }
@@ -89,14 +105,30 @@ public class InserimentoNumeri {
         }
     }
 
+    /**
+     * Inner class per gestire il mouse
+     */
     private class GestoreMouse extends MouseAdapter {
+        /**
+         * Attributo protected per salvarsi
+         * i numeri fin'ora selezionati
+         */
         protected static boolean[] selezionati = new boolean[NUMERI];
 
+        /**
+         * @param e evento che gestisce quando
+         * il mouse passa sopra un numero
+         */
         public void mouseEntered(MouseEvent e) {
             JButton jb = (JButton) e.getComponent();
             jb.setForeground(UtilFinestra.VERDECHIARO);
         }
 
+        /**
+         * @param e evento che gestisce quando
+         * il mouse esce fuori dal numero 
+         * (per capire leggere il metodo corrispondente "mouseEntered")
+         */
         public void mouseExited(MouseEvent e) {
             JButton jb = (JButton) e.getComponent();
             int indice = Integer.valueOf(jb.getActionCommand()).intValue();
@@ -106,6 +138,11 @@ public class InserimentoNumeri {
         }
     }
 
+    /**
+     * Costruttore
+     * @param numeri la quantita di numeri scelti
+     * @param importo usato
+     */
     public InserimentoNumeri(byte numeri, float importo) {
         this.numeri = numeri;
         this.importo = importo;
@@ -115,7 +152,9 @@ public class InserimentoNumeri {
         componenti();
         frame();
     }
-
+    /**
+     * Sistema lo stile ed i colori della finestra
+     */
     private void stiliEColori() {
         // Etichetta del titolo
         jlTitolo.setForeground(UtilFinestra.GRIGIO);
@@ -133,6 +172,9 @@ public class InserimentoNumeri {
         jbProsegui.setFont(UtilFinestra.FPULSANTE);
     }
 
+    /**
+     * Setup dei button, mouse e relative scelte
+     */
     private void setup() {
         contatore = 0;
         for (int i = 1; i <= NUMERI; i++) {
@@ -150,6 +192,9 @@ public class InserimentoNumeri {
         }
     }
 
+    /**
+     * Crea e sistema i pannelli
+     */
     private void pannelli() {
         // Istanziazione
         for (int i = 0; i < UtilFinestra.PANNELLI; ++i) {
@@ -166,11 +211,17 @@ public class InserimentoNumeri {
         jp[2].add(jbProsegui);
     }
 
+    /**
+     * Aggiunge gli ascoltatori necessari
+     */
     private void componenti() {
         // Ascoltatore pulsante prosegui
         jbProsegui.addActionListener(new GestorePulsante());
     }
 
+    /**
+     * Crea e sistema il frame
+     */
     private void frame() {
         // Ascoltatore finestra
         jf.addWindowListener(new GestoreFinestraND(jf));
