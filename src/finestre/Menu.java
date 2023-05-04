@@ -135,7 +135,7 @@ public class Menu {
 
         // Gestione pulsante di uscita
         jbEsci.setActionCommand("esci");
-        jbEsci.addActionListener(new GestoreUscita(jf));
+        jbEsci.addActionListener(new GestoreUscita());
     }
 
     /**
