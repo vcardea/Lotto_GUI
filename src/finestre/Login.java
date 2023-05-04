@@ -17,8 +17,14 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe per la gestione della finestra Login
+ */
 public class Login {
 
+    /**
+     * Inner class per la gestione di button e JTextField
+     */
     private class GestorePulsante implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String username = jtfUsername.getText().replaceAll(" ", "");
@@ -31,7 +37,7 @@ public class Login {
             } else {
                 // Imposta il nome utente
                 Utente.username = username;
-                
+                // Prosegue
                 // Apre la finestra del menu principale
                 Menu m = new Menu();
 
@@ -40,6 +46,7 @@ public class Login {
         }
     }
 
+    // elementi grafici
     private final Border BPULSANTE = BorderFactory.createCompoundBorder(
         BorderFactory.createLineBorder(UtilFinestra.BLU, 30),
         BorderFactory.createEmptyBorder(0, 0, 0, 0)
@@ -52,6 +59,9 @@ public class Login {
     private JTextField jtfUsername = new JTextField(15);
     private JButton jbLogin = new JButton("Login");
 
+    /**
+     * Costruttore
+     */
     public Login() {
         stiliEColori();
         pannelli();
@@ -59,6 +69,9 @@ public class Login {
         frame();
     }
 
+    /**
+     * Sistema lo stile ed i colori della finestra
+     */
     private void stiliEColori() {
         // Etichetta del titolo
         jlTitolo.setForeground(UtilFinestra.GRIGIO);
@@ -81,6 +94,9 @@ public class Login {
         jbLogin.setFont(UtilFinestra.FPULSANTE);
     }
 
+    /**
+     * Crea e sistema i pannelli da utilizzare
+     */
     private void pannelli() {
         // Istanziazione
         for (int i = 0; i < UtilFinestra.PANNELLI; i++) {
@@ -98,11 +114,17 @@ public class Login {
         jp[2].add(jbLogin);
     }
 
+    /**
+     * Crea e sistema i componenti
+     */
     private void componenti() {
         // Pulsante di login
         jbLogin.addActionListener(new GestorePulsante());
     }
 
+    /**
+     * Crea ed apre il frame
+     */
     private void frame() {
         // Ascoltatore
         jf.addWindowListener(new GestoreFinestraFN(jf));
@@ -126,6 +148,10 @@ public class Login {
         jf.getContentPane();
     }
 
+    /**
+     * @param username dell'utente
+     * @return se la sintassi dello username e' giusta
+     */
     private boolean isUsernameValid(String username) {
         if (username.length() < 5) {
             return false;
