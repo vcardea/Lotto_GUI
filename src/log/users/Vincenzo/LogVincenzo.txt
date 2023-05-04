@@ -65,3 +65,7 @@
 <Vincenzo[2023-05-04T22:16:25+02:00[Europe/Rome]]>[PartitaNumero=[65]] [Importo=[2.0]] [Vincita=[0.0]] [NumeriScelti=[15]] [NumeriIndovinati=[]] 
 <Vincenzo[2023-05-04T22:16:32+02:00[Europe/Rome]]>[PartitaNumero=[66]] [Importo=[2.0]] [Vincita=[0.0]] [NumeriScelti=[44]] [NumeriIndovinati=[]] 
 <Vincenzo[2023-05-04T22:16:36+02:00[Europe/Rome]]>[PartitaNumero=[67]] [Importo=[2.0]] [Vincita=[0.0]] [NumeriScelti=[22]] [NumeriIndovinati=[]] 
+<Vincenzo[2023-05-04T22:20:06+02:00[Europe/Rome]]>[PartitaNumero=[68]] [Importo=[4.0]] [Vincita=[0.0]] [NumeriScelti=[47]] [NumeriIndovinati=[]] 
+<Vincenzo[2023-05-04T22:20:29+02:00[Europe/Rome]]>[PartitaNumero=[69]] [Importo=[4.0]] [Vincita=[12.0]] [NumeriScelti=[38]] [NumeriIndovinati=[38]] 
+<Vincenzo[2023-05-04T22:22:58+02:00[Europe/Rome]]>[PartitaNumero=[70]] [Importo=[4.0]] [Vincita=[0.0]] [NumeriScelti=[45]] [NumeriIndovinati=[]] 
+<Vincenzo[2023-05-04T22:23:52+02:00[Europe/Rome]]>[PartitaNumero=[71]] [Importo=[4.0]] [Vincita=[0.0]] [NumeriScelti=[56]] [NumeriIndovinati=[]] 

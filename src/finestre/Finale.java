@@ -44,7 +44,7 @@ public class Finale {
     private boolean[] checkEstrazioni = new boolean[NUMERI];
     private Vector<Byte> numeriIndovinati = new Vector<Byte>();
     private Vector<Byte> numeriEstratti = new Vector<Byte>();
-    private byte contNumeriVinti = 0;
+    private byte contNumeriVinti = 0; 
     private float vincita = 0.0f;
 
     private final byte PANNELLI = 5;
@@ -60,10 +60,8 @@ public class Finale {
     private JLabel jlIndovinati = new JLabel("Numeri indovinati", JLabel.CENTER);
     private JLabel jlVincita = new JLabel("Vincita (euro)", JLabel.CENTER);
     private JLabel jlMostraVincita;
-    private String sNumeriEstratti = new String("");
-    private JLabel jlNumeriEstratti;
-    private String sNumeriIndovinati = new String("");
-    private JLabel jlNumeriIndovinati;
+    private JLabel jlNumeriEstratti = new JLabel("");
+    private JLabel jlNumeriIndovinati = new JLabel("");
     private JButton jbStatistiche = new JButton("Statistiche");
     private JButton jbChiudi = new JButton("Chiudi");
 
@@ -74,13 +72,9 @@ public class Finale {
         estrai();
 
         for (byte i = 0; i < NUMERI; ++i) {
-            if (checkEstrazioni[i]) {
-                sNumeriEstratti += (i + 1) + " ";
-            }
             if (numeriScelti[i] && checkEstrazioni[i]) {
                 numeriIndovinati.addElement((byte) (i + 1));
                 ++contNumeriVinti;
-                sNumeriEstratti += (i + 1) + " ";
             }
         }
 
@@ -172,8 +166,6 @@ public class Finale {
 
         // Istanzia componenti
         jlMostraVincita = new JLabel(String.valueOf(vincita), JLabel.CENTER);
-        jlNumeriEstratti = new JLabel(sNumeriEstratti, JLabel.CENTER);
-        jlNumeriIndovinati = new JLabel(sNumeriIndovinati, JLabel.CENTER);
 
         // Layout
         jp[0].setLayout(glNord);
@@ -203,10 +195,19 @@ public class Finale {
         jp[3].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 4, UtilFinestra.ALTEZZA));
         jp[3].add(jlEstratti, BorderLayout.NORTH);
         jp[3].add(jlNumeriEstratti, BorderLayout.CENTER);
+        for (int i = 0; i < ESTRAZIONI; i++) {
+            jlNumeriEstratti.setText(String.valueOf(numeriEstratti.elementAt(i)));
+            jp[3].add(jlNumeriEstratti, BorderLayout.CENTER);
+        }
 
+        jlNumeriEstratti.setText("");
         jp[4].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 4, UtilFinestra.ALTEZZA));
         jp[4].add(jlIndovinati, BorderLayout.NORTH);
         jp[4].add(jlNumeriIndovinati, BorderLayout.CENTER);
+        for (int i = 0; i < numeriIndovinati.size(); i++) {
+            jlNumeriEstratti.setText(String.valueOf(numeriIndovinati.elementAt(i)));
+            jp[4].add(jlNumeriEstratti, BorderLayout.CENTER);
+        }
     }
 
     private void componenti() {
