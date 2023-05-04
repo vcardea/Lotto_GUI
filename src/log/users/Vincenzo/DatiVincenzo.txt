@@ -1,1 +1,1 @@
-<Vincenzo[2023-05-04T18:52:48+02:00[Europe/Rome]]>[PartiteGiocate=[28]] [ImportoTotale=[287.0]] [VincitaTotale=[109.0]] [GuadagnoTotale=[-178.0]] [MediaVincite=[3.892857]] 
+<Vincenzo[2023-05-04T20:30:33+02:00[Europe/Rome]]>[PartiteGiocate=[45]] [ImportoTotale=[474.0]] [VincitaTotale=[385.0]] [GuadagnoTotale=[-89.0]] [MediaVincite=[8.555555]] 

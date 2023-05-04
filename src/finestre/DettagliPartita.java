@@ -63,7 +63,8 @@ public class DettagliPartita {
                 } else {
                     numeri = (byte) (jcbNumeri.getSelectedIndex() + 1);
                     InserimentoNumeri in = new InserimentoNumeri(numeri, importo);
-                    jf.dispose();
+                    jtfImporto.setText("");
+                    jf.setVisible(false);
                 }
             }
         }
@@ -73,7 +74,7 @@ public class DettagliPartita {
     private byte numeri = 0;
 
     // elementi grafici
-    private JFrame jf = new JFrame(UtilFinestra.TITOLO);
+    private static JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private GridLayout glNorth = new GridLayout(2, 1);
     private GridBagLayout gbl = new GridBagLayout();
     private GridBagConstraints gbc = new GridBagConstraints();
@@ -160,6 +161,7 @@ public class DettagliPartita {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.BOTH;
         gbc.anchor = GridBagConstraints.LINE_START;
+        jp[1].setPreferredSize(UtilFinestra.DIMENSIONE);
         jp[1].add(jlImporto, gbc);
 
         // Disponi jtfImporto
@@ -228,6 +230,10 @@ public class DettagliPartita {
 
         // Contenitore
         jf.getContentPane();
+    }
+
+    public static void apriFinestra() {
+        jf.setVisible(true);
     }
 
     /**

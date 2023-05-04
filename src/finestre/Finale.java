@@ -28,10 +28,13 @@ public class Finale {
      */
     public class GestoreInterno implements ActionListener {
         public void actionPerformed(ActionEvent ae) {
-            String s = ae.getActionCommand();
-            if (s.equals("chiudi")) {
+            String comando = ae.getActionCommand();
+            if (comando.equals("chiudi")) {
                 Menu.apriFinestra();
                 jf.dispose();
+            } else if (comando.equals("statistiche")) {
+                Statistiche s = new Statistiche();
+                jf.setVisible(false);
             }
         }
     }
@@ -44,22 +47,23 @@ public class Finale {
     private byte contNumeriVinti = 0;
     private float vincita = 0.0f;
 
-    private final byte PANNELLI = 5;
+    private final byte PANNELLI = 7;
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel[] jp = new JPanel[PANNELLI];
     private GridLayout glNord = new GridLayout(2, 1);
     private GridBagLayout gblCentro = new GridBagLayout();
     private FlowLayout flSud = new FlowLayout();
+    private GridLayout glMostraNumeri = new GridLayout(10, 2);
     private BorderLayout blEstOvest = new BorderLayout();
     private JLabel jlTitolo = new JLabel("RISULTATO FINALE", JLabel.CENTER);
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
     private JLabel jlEstratti = new JLabel("Numeri estratti", JLabel.CENTER);
     private JLabel jlIndovinati = new JLabel("Numeri indovinati", JLabel.CENTER);
-    private JLabel jlVincita = new JLabel("Vincita", JLabel.CENTER);
+    private JLabel jlVincita = new JLabel("Vincita (euro)", JLabel.CENTER);
     private JLabel jlMostraVincita;
-    private String stringNumeriEstratti = new String("");
+    private String sNumeriEstratti = new String("A");
     private JLabel jlNumeriEstratti;
-    private String stringNumeriIndovinati = new String("");
+    private String sNumeriIndovinati = new String("A");
     private JLabel jlNumeriIndovinati;
     private JButton jbStatistiche = new JButton("Statistiche");
     private JButton jbChiudi = new JButton("Chiudi");
@@ -71,13 +75,13 @@ public class Finale {
         estrai();
 
         for (byte i = 0; i < NUMERI; ++i) {
-            if(checkEstrazioni[i]) {
-                stringNumeriEstratti += (i + 1) + " ";
+            if (checkEstrazioni[i]) {
+                sNumeriEstratti += (i + 1) + " ";
             }
             if (numeriScelti[i] && checkEstrazioni[i]) {
                 numeriIndovinati.addElement((byte) (i + 1));
                 ++contNumeriVinti;
-                stringNumeriEstratti += (i + 1) + " ";
+                sNumeriEstratti += (i + 1) + " ";
             }
         }
 
@@ -144,6 +148,20 @@ public class Finale {
         // Etichetta vincita
         jlMostraVincita.setForeground(UtilFinestra.GRIGIO);
         jlMostraVincita.setFont(UtilFinestra.FETICHETTA);
+
+        // Pulsante statistiche
+        jbStatistiche.setForeground(UtilFinestra.BLU);
+        jbStatistiche.setBackground(UtilFinestra.GRIGIO);
+        jbStatistiche.setPreferredSize(UtilFinestra.DPULSANTE);
+        jbStatistiche.setBorder(UtilFinestra.BPULSANTE);
+        jbStatistiche.setFont(UtilFinestra.FPULSANTE);
+
+        // Pulsante chiudi
+        jbChiudi.setForeground(UtilFinestra.BLU);
+        jbChiudi.setBackground(UtilFinestra.GRIGIO);
+        jbChiudi.setPreferredSize(UtilFinestra.DPULSANTE);
+        jbChiudi.setBorder(UtilFinestra.BPULSANTE);
+        jbChiudi.setFont(UtilFinestra.FPULSANTE);
     }
 
     private void pannelli() {
@@ -155,8 +173,8 @@ public class Finale {
 
         // Istanzia componenti
         jlMostraVincita = new JLabel(String.valueOf(vincita), JLabel.CENTER);
-        jlNumeriEstratti = new JLabel(stringNumeriEstratti, JLabel.CENTER);
-        jlNumeriIndovinati = new JLabel(stringNumeriIndovinati, JLabel.CENTER);
+        jlNumeriEstratti = new JLabel(sNumeriEstratti, JLabel.CENTER);
+        jlNumeriIndovinati = new JLabel(sNumeriIndovinati, JLabel.CENTER);
 
         // Layout
         jp[0].setLayout(glNord);
@@ -164,6 +182,8 @@ public class Finale {
         jp[2].setLayout(flSud);
         jp[3].setLayout(blEstOvest);
         jp[4].setLayout(blEstOvest);
+        jp[5].setLayout(glMostraNumeri);
+        jp[6].setLayout(glMostraNumeri);
 
         // Aggiunge componenti al pannello
         GridBagConstraints gbc = new GridBagConstraints();
@@ -185,11 +205,13 @@ public class Finale {
 
         jp[3].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 4, UtilFinestra.ALTEZZA));
         jp[3].add(jlEstratti, BorderLayout.NORTH);
-        jp[3].add(jlNumeriEstratti, BorderLayout.CENTER);
+        jp[5].add(jlNumeriEstratti);
+        jp[3].add(jp[5], BorderLayout.CENTER);
 
         jp[4].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 4, UtilFinestra.ALTEZZA));
         jp[4].add(jlIndovinati, BorderLayout.NORTH);
-        jp[4].add(jlNumeriIndovinati, BorderLayout.CENTER);
+        jp[6].add(jlNumeriIndovinati);
+        jp[4].add(jp[6], BorderLayout.CENTER);
     }
 
     private void componenti() {
@@ -216,8 +238,8 @@ public class Finale {
         
         // Posizione, dimensione, visibilità finestra
         jf.setLocation(UtilFinestra.POSX, UtilFinestra.POSY);
-        jf.setResizable(false);
         jf.setSize(UtilFinestra.DIMENSIONE);
+        jf.setResizable(false);
         jf.setVisible(true);
 
         // Icona

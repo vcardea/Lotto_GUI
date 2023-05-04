@@ -30,7 +30,11 @@ public class Menu {
             String s = ae.getActionCommand();
 
             if (s.equals("nuovapartita")) {
-                cl = new DettagliPartita();
+                if (cl == null) {
+                    cl = new DettagliPartita();
+                } else {
+                    cl.apriFinestra();
+                }
                 jf.setVisible(false);
             } else if (s.equals("info")) {
                 Info i = new Info();
@@ -41,7 +45,6 @@ public class Menu {
 
     private DettagliPartita cl = null;
 
-    // elementi grafici
     private static JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
     private GridLayout glNorth = new GridLayout(2, 1, 10, 0);
