@@ -19,9 +19,18 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe per la gestione della finestra DettagliPartita
+ */
 public class DettagliPartita {
 
+    /**
+     * Inner class per la gestione di button e ComboBox
+     */
     private class GestoreInterno implements ActionListener {
+        /**
+         * metodo che visualizza l'errore
+         */
         private void errore() {
             JOptionPane.showMessageDialog(jf, "L'importo deve essere da 2 a 200 euro, a scatti di 0.50",
                 "Attenzione",
@@ -29,6 +38,9 @@ public class DettagliPartita {
             jtfImporto.setText("");
         }
 
+        /**
+         * @param e evento che gestisce i button e la ComboBox
+         */
         public void actionPerformed(ActionEvent e) {
             String s = e.getActionCommand();
             String val = jtfImporto.getText();
@@ -59,6 +71,8 @@ public class DettagliPartita {
 
     private float importo = 0.0f;
     private byte numeri = 0;
+
+    // elementi grafici
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private GridLayout glNorth = new GridLayout(2, 1);
     private GridBagLayout gbl = new GridBagLayout();
@@ -72,6 +86,9 @@ public class DettagliPartita {
     private JComboBox<Integer> jcbNumeri = new JComboBox<Integer>();
     private JTextField jtfImporto = new JTextField(6);
 
+    /**
+     * Costruttore
+     */
     public DettagliPartita() {
         setupCombo();
         stiliEColori();
@@ -80,12 +97,19 @@ public class DettagliPartita {
         frame();
     }
 
+    /**
+     * Setup della ComboBox per l'inserimento
+     * della quantita' di numeri
+     */
     private void setupCombo() {
         for (int i = 1; i <= 10; ++i) {
             jcbNumeri.addItem(i);
         }
     }
 
+    /**
+     * Sistema lo stile ed i colori della finestra
+     */
     private void stiliEColori() {
         // Etichetta del titolo
         jlTitolo.setForeground(UtilFinestra.GRIGIO);
@@ -111,6 +135,9 @@ public class DettagliPartita {
         jbProsegui.setFont(UtilFinestra.FPULSANTE);
     }
 
+    /**
+     * Crea e sistema i pannelli da utilizzare
+     */
     private void pannelli() {
         // Istanziazione
         for (int i = 0; i < UtilFinestra.PANNELLI; i++) {
@@ -165,6 +192,9 @@ public class DettagliPartita {
         jp[2].add(jbProsegui);
     }
 
+    /**
+     * Crea e sistema i componenti
+     */
     private void componenti() {
         // Etichetta del nome utente
         jlUsername.setText(Utente.username);
@@ -174,6 +204,9 @@ public class DettagliPartita {
         jbProsegui.addActionListener(new GestoreInterno());
     }
 
+    /**
+     * Crea ed apre il frame
+     */
     private void frame() {
         // Ascoltatore finestra
         jf.addWindowListener(new GestoreFinestraND(jf));
@@ -197,10 +230,16 @@ public class DettagliPartita {
         jf.getContentPane();
     }
 
+    /**
+     * @return importo inserito
+     */
     public float getImporto() {
         return importo;
     }
 
+    /**
+     * @return quantita dei numeri selezionati
+     */
     public int getNumeri() {
         return numeri;
     }
