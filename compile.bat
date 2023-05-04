@@ -1,26 +1,26 @@
 :: Diverse ccompilazioni
-javac src/finestre/gestori/GestoreUscita.java
-javac src/finestre/gestori/GestoreFinestra.java
-javac src/finestre/gestori/GestoreFinestraND.java
-javac src/finestre/gestori/GestoreFinestraFN.java
+javac -d bin src/finestre/gestori/GestoreUscita.java
+javac -d bin src/finestre/gestori/GestoreFinestra.java
+javac -d bin src/finestre/gestori/GestoreFinestraND.java
+javac -d bin src/finestre/gestori/GestoreFinestraFN.java
 
-javac src/finestre/DettagliPartita.java
-javac src/finestre/Finale.java
-javac src/finestre/InserimentoNumeri.java
-javac src/finestre/Login.java
-javac src/finestre/Menu.java
-javac src/finestre/Info.java
-javac src/finestre/UtilitiesFinestra.java
+javac -d bin src/finestre/DettagliPartita.java
+javac -d bin src/finestre/Finale.java
+javac -d bin src/finestre/InserimentoNumeri.java
+javac -d bin src/finestre/Login.java
+javac -d bin src/finestre/Menu.java
+javac -d bin src/finestre/Info.java
+javac -d bin src/finestre/UtilitiesFinestra.java
 
-javac src/calcoli/CalcoloVincita.java
+javac -d bin src/calcoli/CalcoloVincita.java
 
-javac src/log/FileInput.java
-javac src/log/FileOutput.java
-javac src/log/Log.java
+javac -d bin src/log/FileInput.java
+javac -d bin src/log/FileOutput.java
+javac -d bin src/log/Log.java
 
-javac src/utente/Utente.java
+javac -d bin src/utente/Utente.java
 
-javac src/main/LottoMain.java
+javac -d bin src/main/LottoMain.java
 
 :: L'effettiva apertura
-java src/main/LottoMain
+java -cp bin src/main/LottoMain
