@@ -15,8 +15,17 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Classe che gestisce la finestra Menu
+ */
 public class Menu {
+    /**
+     * Inner class per la gestione dei button
+     */
     protected class GestoreInterno implements ActionListener {
+        /**
+         * @param e evento che gestisce i button e le relative funzioni
+         */
         public void actionPerformed(ActionEvent ae) {
             String s = ae.getActionCommand();
 
@@ -30,6 +39,9 @@ public class Menu {
         }
     }
 
+    private DettagliPartita cl = null;
+
+    // elementi grafici
     private static JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
     private GridLayout glNorth = new GridLayout(2, 1, 10, 0);
@@ -38,8 +50,11 @@ public class Menu {
     private JButton jbNuovaPartita = new JButton("Nuova Partita");
     private JButton jbInfo = new JButton("Informazioni");
     private JButton jbEsci = new JButton("Esci");
-    private DettagliPartita cl = null;
+    
 
+    /**
+     * Costruttore
+     */
     public Menu() {
         stiliEColori();
         pannelli();
@@ -47,6 +62,9 @@ public class Menu {
         frame();
     }
 
+    /**
+     * Sistema lo stile ed i colori della finestra
+     */
     private void stiliEColori() {
         // Etichetta del titolo
         jlTitolo.setForeground(UtilFinestra.GRIGIO);
@@ -78,6 +96,9 @@ public class Menu {
         jbEsci.setFont(UtilFinestra.FPULSANTE);
     }
 
+    /**
+     * Crea e sistema i pannelli da utilizzare
+     */
     private void pannelli() {
         // Istanziazione
         for (int i = 0; i < UtilFinestra.PANNELLI; i++) {
@@ -97,6 +118,9 @@ public class Menu {
         jp[2].add(jbEsci);
     }
 
+    /**
+     * Crea e sistema i componenti
+     */
     private void componenti() {
         // Gestione pulsante nuova partita
         jbNuovaPartita.setActionCommand("nuovapartita");
@@ -111,6 +135,9 @@ public class Menu {
         jbEsci.addActionListener(new GestoreUscita(jf));
     }
 
+    /**
+     * Crea ed apre il frame
+     */
     private void frame() {
         // Ascoltatore finestra
         jf.addWindowListener(new GestoreFinestra(jf));
@@ -134,6 +161,9 @@ public class Menu {
         jf.getContentPane();
     }
 
+    /**
+     * metodo che setta visibile la finestra
+     */
     public static void apriFinestra() {
         jf.setVisible(true);
     }

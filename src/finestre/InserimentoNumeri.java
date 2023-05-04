@@ -18,6 +18,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Classe che gestisce la finestra InserimentoNumeri
+ */
 public class InserimentoNumeri {
 
     private static final byte NUMERI = 90;
@@ -40,7 +43,7 @@ public class InserimentoNumeri {
     );
 
     /**
-     * Inner class per il gestore dei button
+     * Inner class per la gestione dei button
      */
     private class GestorePulsante implements ActionListener {
         /**
