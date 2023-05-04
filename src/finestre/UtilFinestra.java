@@ -11,6 +11,9 @@ import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 
+/**
+ * Classe con diverse costanti utili per le finestre
+ */
 public class UtilFinestra {
     protected static final BorderLayout LAYOUT = new BorderLayout();
     protected static final GridBagLayout LAYOUTCENTRO = new GridBagLayout();
