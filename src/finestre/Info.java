@@ -14,8 +14,12 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 
+/**
+ * Classe per la gestione della finestra Info
+ */
 public class Info {
     
+    // elementi grafici
     private final Dimension INFO_DIMENSIONE = new Dimension(650, 300);
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
@@ -24,6 +28,9 @@ public class Info {
     private JButton jbChiudi = new JButton("Chiudi");
     private String info = new String("");
 
+    /**
+     * Costruttore
+     */
     public Info() {
         testo();
         stiliEColori();
@@ -32,6 +39,10 @@ public class Info {
         frame();
     }
 
+    /** 
+     * Metodo che prende in input da file le informazioni
+     * riguardanti il gioco del lotto
+    */ 
     private void testo() {
         if (info.equals("")) {
             FileInput fi = new FileInput(UtilFinestra.INFOFILE);
@@ -40,6 +51,9 @@ public class Info {
         jta.setText(info);
     }
 
+    /**
+     * Sistema lo stile ed i colori della finestra
+     */
     private void stiliEColori() {
         // Etichetta del titolo
         jlTitolo.setForeground(UtilFinestra.GRIGIO);
@@ -58,6 +72,9 @@ public class Info {
         jbChiudi.setFont(UtilFinestra.FPULSANTE);
     }
 
+    /**
+     * Crea e sistema i pannelli da utilizzare
+     */
     private void pannelli() {
         // Istanziazione
         for (int i = 0; i < UtilFinestra.PANNELLI; i++) {
@@ -74,6 +91,9 @@ public class Info {
         jp[2].add(jbChiudi);
     }
 
+    /**
+     * Crea e sistema i componenti
+     */
     private void componenti() {
         // Area di testo
         jta.setPreferredSize(INFO_DIMENSIONE);
@@ -86,6 +106,9 @@ public class Info {
         jbChiudi.addActionListener(new GInfo(jf));
     }
 
+    /**
+     * Crea e sistema il frame
+     */
     private void frame() {
         // Layout
         jf.addWindowListener(new GestoreFinestraND(jf));
