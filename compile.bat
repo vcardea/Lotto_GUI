@@ -11,6 +11,7 @@ javac -d bin src/finestre/Login.java
 javac -d bin src/finestre/Menu.java
 javac -d bin src/finestre/Info.java
 javac -d bin src/finestre/UtilFinestra.java
+javac -d bin src/finestre/Statistiche.java
 
 javac -d bin src/calcoli/CalcoloVincita.java
 
