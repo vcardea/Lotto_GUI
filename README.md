@@ -1,34 +1,5 @@
-# Lotto_GUI
-Programma lotto con la GUI, assegnato il 24/03/2023.
+LottoGUI
 
-**TODO**: 
+Progetto scolastico che consiste nell'implementare una simulazione del gioco del 10eLotto per sensibilizzare le persone sul tema del gioco d'azzardo e le dipendenze ad esso relativo. Utilizzo dell'interfaccia grafica Swing offerta da Java.
 
-~~-Programma base del lotto;~~
-
-~~-Scheletro della GUI;~~
-
-~~-GUI del lotto;~~
-
-~~-Eventi del lotto;~~
-
-~~-Log del lotto;~~
-
-~~-Aggiunte varie;~~
-
--Documentazione Finale;
-
-INFORMAZIONI SUI LOG
-
-STATISTICHE/LOG
-SCRIVI LOG
-[...]/LogNomeUtente.txt
-string              int           float         float         boolean[]                Vector<Byte>              
-<NomeUtente[Orario]>[Partita:[1]] [Importo:[2]] [Vincita:[2]] [NumeriScelti:[2, 3, 4]] [NumeriIndovinati:[2, 3]] 
-
-DATI
-[...]/DatiNomeUtente.txt
-string              int           float                 float                float                  float
-<NomeUtente[Orario]>[Partita:[1]] [ImportoTotale:[100]] [VincitaTotale:[10]] [GuadagnoTotale:[-90]] [MediaVincite:[0.33]]
-
-Orario = Ultima Modifica
-GuadagnoTotale = (VincitaTotale - ImportoTotale)
+- Assicurarsi di avere installato una versione di Java uguale o superiore alla 1.8
