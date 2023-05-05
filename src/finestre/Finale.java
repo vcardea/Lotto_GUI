@@ -41,8 +41,7 @@ public class Finale {
                 Menu.apriFinestra();
                 jf.dispose();
             } else if (comando.equals("statistiche")) {
-                Statistiche s = new Statistiche();
-                jf.setVisible(false);
+                Statistiche.mostraStatistiche(jf);
             }
         }
     }

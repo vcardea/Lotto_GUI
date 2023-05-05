@@ -25,6 +25,9 @@ import java.time.ZoneId;
  * @author Alessandro Serio
  */
 public class Log {
+
+    public static String DATI = "";
+
     /**
      * Converte un array di boolean in un Vector<Byte>.
      * 
@@ -197,6 +200,7 @@ public class Log {
         final String OUTPUT = "users/" + Utente.username + "/Log" + Utente.username + ".txt";
         final String CARTELLA = "users/" + Utente.username;
         final String INPUT = CARTELLA + "/Dati" + Utente.username + ".txt";
+        DATI = INPUT;
         Vector<Byte> scelti = new Vector<Byte>();
         FileOutput fo = new FileOutput(OUTPUT);
         String log = new String();
