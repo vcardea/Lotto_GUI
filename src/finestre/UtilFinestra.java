@@ -20,8 +20,8 @@ public class UtilFinestra {
     
     protected static final String TITOLO = "Gioco del 10eLotto";
     
-    protected static final ImageIcon ICONA = new ImageIcon("src/img/logo.png");
-    protected static final String INFOFILE = "src/finestre/info/info.txt";
+    protected static final ImageIcon ICONA = new ImageIcon("img/logo.png");
+    protected static final String INFOFILE = "info/info.txt";
     
     protected static final byte PANNELLI = 3;
     

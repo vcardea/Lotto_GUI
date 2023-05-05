@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -114,10 +115,19 @@ public class Menu {
         jp[1].setLayout(new GridBagLayout());
 
         // Composizione
+        GridBagConstraints gbc = new GridBagConstraints();
+
         jp[0].add(jlTitolo);
         jp[0].add(jlUsername);
-        jp[1].add(jbNuovaPartita);
-        jp[1].add(jbInfo);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        jp[1].add(jbNuovaPartita, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        jp[1].add(jbInfo, gbc);
+
         jp[2].add(jbEsci);
     }
 

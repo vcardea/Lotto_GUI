@@ -1,0 +1,9 @@
+Il gioco del 10eLotto consiste nello scegliere una quantita' di numeri variabile da 1 a 10, a discrezione dell'utente, tra i 90 disponibili (da 1 a 90). 
+
+E' possibile giocare da un minimo di 1 euro ad un massimo di 200 euro con incrementi di 0,50.
+
+In questa implementazione la vincita massima possibile ammonta ad 1.000.000 di euro che si ottiene puntando 200 euro su 10 numeri indovinandoli tutti e 10.
+
+Le tabelle delle vincite sono ufficiali e prese dal sito di lotto-italia.it.
+
+*DISCLAIMER - Lo scopo di questo programma e' quello di disincentivare qualunque forma di gioco d'azzardo mostrando in maniera evidente le basse vincite degli utenti rispetto al denaro impiegato.

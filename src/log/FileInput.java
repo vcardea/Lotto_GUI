@@ -79,7 +79,7 @@ public class FileInput {
             } 
 
             while (line != null) {
-                text += line;
+                text += line + '\n';
                 try {
                     line = br.readLine();
                 } catch (IOException ioe) {

@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -48,6 +49,7 @@ public class Finale {
     private float vincita = 0.0f;
 
     private final byte PANNELLI = 5;
+    private final Font FRIDOTTO = new Font("Sans-Serif", Font.BOLD, 16);
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel[] jp = new JPanel[PANNELLI];
     private GridLayout glNord = new GridLayout(2, 1);
@@ -56,11 +58,11 @@ public class Finale {
     private GridLayout glEstOvest = new GridLayout(11, 2);
     private JLabel jlTitolo = new JLabel("RISULTATO FINALE", JLabel.CENTER);
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
-    private JLabel jlEstratti = new JLabel("Numeri estratti", JLabel.CENTER);
+    private JLabel jlEstratti = new JLabel("Numeri ", JLabel.CENTER);
     private JLabel jlIndovinati = new JLabel("Numeri indovinati", JLabel.CENTER);
     private JLabel jlVincita = new JLabel("Vincita (euro)", JLabel.CENTER);
     private JLabel jlMostraVincita;
-    private JLabel jlNumeriEstratti = new JLabel("");
+    private JLabel jlNumeriEstratti = new JLabel("estratti");
     private JLabel jlNumeriIndovinati = new JLabel("");
     private JButton jbStatistiche = new JButton("Statistiche");
     private JButton jbChiudi = new JButton("Chiudi");
@@ -192,27 +194,38 @@ public class Finale {
         jp[2].add(jbStatistiche);
         jp[2].add(jbChiudi);
 
-        //jp[3].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA, UtilFinestra.ALTEZZA));
+        jp[3].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 3, UtilFinestra.ALTEZZA));
         jp[3].add(jlEstratti, BorderLayout.NORTH);
         jp[3].add(jlNumeriEstratti, BorderLayout.CENTER);
         for (int i = 0; i < ESTRAZIONI; i++) {
-            JLabel jbTmp = new JLabel(String.valueOf(numeriEstratti.elementAt(i)));
+            JLabel jbTmp = new JLabel(String.valueOf(numeriEstratti.elementAt(i)), JLabel.CENTER);
+            jbTmp.setForeground(UtilFinestra.GRIGIO);
+            jbTmp.setFont(UtilFinestra.FETICHETTA);
             jp[3].add(jbTmp, BorderLayout.CENTER);
         }
 
-        //jp[4].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA, UtilFinestra.ALTEZZA));
+        jp[4].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 3, UtilFinestra.ALTEZZA));
         jp[4].add(jlIndovinati, BorderLayout.NORTH);
         jp[4].add(jlNumeriIndovinati, BorderLayout.CENTER);
-        if(numeriIndovinati.size() > 0) {
-            for (int i = 0; i < numeriIndovinati.size(); i++) {
-                JLabel jbTmp = new JLabel(String.valueOf(numeriEstratti.elementAt(i)));
-                jp[4].add(jbTmp, BorderLayout.CENTER);
-            }
-        } else {
-                jp[4].setLayout(glNord);
-                JLabel jbTmp = new JLabel("Non hai indovinato nessun numero");
-                jp[4].add(jbTmp, BorderLayout.CENTER);
+        for (int i = 0; i < numeriIndovinati.size(); i++) {
+            JLabel jbTmp = new JLabel(String.valueOf(numeriEstratti.elementAt(i)), JLabel.CENTER);
+            jbTmp.setForeground(UtilFinestra.GRIGIO);
+            jbTmp.setFont(UtilFinestra.FETICHETTA);
+            jp[4].add(jbTmp, BorderLayout.CENTER);
         }
+
+        // if(numeriIndovinati.size() > 0) {
+            // for (int i = 0; i < numeriIndovinati.size(); i++) {
+            //     JLabel jbTmp = new JLabel(String.valueOf(numeriEstratti.elementAt(i)), JLabel.CENTER);
+            //     jbTmp.setForeground(UtilFinestra.GRIGIO);
+            //     jp[4].add(jbTmp, BorderLayout.CENTER);
+            // }
+        // } else {
+        //     jp[4].setLayout(glNord);
+        //     JLabel jbTmp = new JLabel("Non hai indovinato nessun numero", JLabel.CENTER);
+        //     jbTmp.setForeground(UtilFinestra.GRIGIO);
+        //     jp[4].add(jbTmp, BorderLayout.CENTER);
+        // }
     }
 
     private void componenti() {

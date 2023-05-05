@@ -145,12 +145,12 @@ public class Log {
         FileOutput fo = new FileOutput(INPUT);
         String linea = new String();
         float guadagnoTotale;
-        float mediaVincite;
+        float guadagnoMedio;
 
         guadagnoTotale = (float) vincita - importo;
-        mediaVincite = (float) vincita / partite;
+        guadagnoMedio = (float) guadagnoTotale / partite;
 
-        linea = generaDati(partite, importo, vincita, guadagnoTotale, mediaVincite);
+        linea = generaDati(partite, importo, vincita, guadagnoTotale, guadagnoMedio);
         fo.write(linea, false);
     }
 
@@ -159,13 +159,13 @@ public class Log {
      * @param importo usato
      * @param vincita soldi vinti
      * @param guadagnoTotale calcolato con la somma di tutte le vincite - importi
-     * @param mediaVincite media delle vincite
+     * @param guadagnoMedio durante le partite
      * @return genera la stringa dei dati del giocatore
      */
-    public static String generaDati(int partite, float importo, float vincita, float guadagnoTotale, float mediaVincite) {
+    public static String generaDati(int partite, float importo, float vincita, float guadagnoTotale, float guadagnoMedio) {
         String linea = "<" + Utente.username + "[" + getDate() + "]" + ">[PartiteGiocate=[" + partite + "]] ";
         linea += "[ImportoTotale=[" + importo + "]] [VincitaTotale=[" + vincita + "]] ";
-        linea += "[GuadagnoTotale=[" + guadagnoTotale + "]] [MediaVincite=[" + mediaVincite + "]] ";
+        linea += "[GuadagnoTotale=[" + guadagnoTotale + "]] [GuadagnoMedio=[" + guadagnoMedio + "]] ";
         return linea;
     }
 
@@ -176,8 +176,8 @@ public class Log {
      * @param indovinati vector in cui ci sono i numeri vinti come elementi
      */
     public static void scriviLog(float importo, float vincita, boolean[] bScelti, Vector<Byte> indovinati) {
-        final String OUTPUT = "src/log/users/" + Utente.username + "/Log" + Utente.username + ".txt";
-        final String CARTELLA = "src/log/users/" + Utente.username;
+        final String OUTPUT = "users/" + Utente.username + "/Log" + Utente.username + ".txt";
+        final String CARTELLA = "users/" + Utente.username;
         final String INPUT = CARTELLA + "/Dati" + Utente.username + ".txt";
         Vector<Byte> scelti = new Vector<Byte>();
         FileOutput fo = new FileOutput(OUTPUT);

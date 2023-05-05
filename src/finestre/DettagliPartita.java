@@ -32,7 +32,7 @@ public class DettagliPartita {
          * metodo che visualizza l'errore
          */
         private void errore() {
-            JOptionPane.showMessageDialog(jf, "L'importo deve essere da 2 a 200 euro, a scatti di 0.50",
+            JOptionPane.showMessageDialog(jf, "L'importo deve essere da 1 a 200 euro, a scatti di 0.50",
                 "Attenzione",
                 JOptionPane.WARNING_MESSAGE);
             jtfImporto.setText("");
@@ -58,7 +58,7 @@ public class DettagliPartita {
                 }
 
                 // Controlla il formato dell'importo
-                if (importo < 2 || importo > 200 || importo % 0.50 != 0) {
+                if (importo < 1 || importo > 200 || importo % 0.50 != 0) {
                     errore();
                 } else {
                     numeri = (byte) (jcbNumeri.getSelectedIndex() + 1);
@@ -88,7 +88,7 @@ public class DettagliPartita {
     private JLabel jlTitolo = new JLabel("DETTAGLI PARTITA", JLabel.CENTER);
     private JLabel jlUsername = new JLabel("", JLabel.CENTER);
     private JLabel jlNumeri = new JLabel("Inserire quanti numeri si vuole giocare", JLabel.CENTER);
-    private JLabel jlImporto = new JLabel("Inserire l'importo (da 2 a 200 euro)", JLabel.CENTER);
+    private JLabel jlImporto = new JLabel("Inserire l'importo (da 1 a 200 euro)", JLabel.CENTER);
     private JButton jbProsegui = new JButton("Prosegui");
     private JComboBox<Integer> jcbNumeri = new JComboBox<Integer>();
     private JTextField jtfImporto = new JTextField(6);
