@@ -33,6 +33,7 @@ public class InserimentoNumeri {
     private static int contatore;
     private byte numeri = 0;
     private float importo;
+    protected boolean[] selezionati = new boolean[NUMERI];
 
     // elementi grafici
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
@@ -77,7 +78,7 @@ public class InserimentoNumeri {
                 if (numeriScelti[i]) {
                     numeriScelti[i] = false;
                     jbNumeri[i].setForeground(UtilFinestra.GRIGIO);
-                    GestoreMouse.selezionati[i] = false;
+                    selezionati[i] = false;
                 }
             // resetta l'array dei numeri selezionati
             contatore = 0;
@@ -110,13 +111,13 @@ public class InserimentoNumeri {
                         numeriScelti[numero] = true; // lo seleziona
                         ++contatore; // aumenta il contatore
                         jb.setForeground(UtilFinestra.VERDE);
-                        GestoreMouse.selezionati[numero] = true;
+                        selezionati[numero] = true;
                     }
                 } else {
                     numeriScelti[numero] = false; // se invece il numero e' gia' selezionato
                     --contatore; // diminuisce il contatore e lo deseleziona
                     jb.setForeground(UtilFinestra.GRIGIO);
-                    GestoreMouse.selezionati[numero] = false;
+                    selezionati[numero] = false;
                 }
             }
         }
@@ -126,8 +127,6 @@ public class InserimentoNumeri {
      * Inner class per gestire il mouse
      */
     private class GestoreMouse extends MouseAdapter {
-
-        protected static boolean[] selezionati = new boolean[NUMERI];
 
         /**
          * Gestisce il passaggio del mouse sui numeri
