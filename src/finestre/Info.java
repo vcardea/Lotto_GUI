@@ -15,7 +15,12 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 
 /**
- * Classe per la gestione della finestra Info
+ * Classe per la finestra delle informazioni
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
 public class Info {
     

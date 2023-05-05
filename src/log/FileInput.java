@@ -5,7 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Classe con funzioni utili per Input da file
+ * Classe per la lettura da file di testo
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
 public class FileInput {
     private final String INPUT;
@@ -14,6 +19,7 @@ public class FileInput {
 
     /**
      * Costruttore
+     * 
      * @param INPUT percorso del file di Input
      */
     public FileInput(String INPUT) {
@@ -22,6 +28,7 @@ public class FileInput {
 
     /**
      * Apre il flusso di Input
+     * 
      * @return se ci sono stati problemi nell'apertura
      */
     private boolean openInput() {
@@ -47,7 +54,9 @@ public class FileInput {
     }
 
     /**
-     * @return una linea sola del file
+     * Legge una linea da file
+     * 
+     * @return una sola linea del file
      */
     public String read() {
         String line = new String("");
@@ -64,6 +73,8 @@ public class FileInput {
     }
 
     /**
+     * Legge tutto un file
+     * 
      * @return tutte le linee del file
      */
     public String readText() {

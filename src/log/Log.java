@@ -16,22 +16,20 @@ import java.time.Clock;
 import java.time.ZoneId;
 
 /**
- * GIOCO DEL DIECI E LOTTO IN GUI
- * Realizzato da:
- * Vincenzo Cardea
- * Francesco Salvatore Rizzello
- * Matteo De Vito
- * Alessandro Serio
+ * La classe Log gestisce la creazione delle cartelle
+ * e dei file di log delle partite giocate dagli utenti.
  * 
- * Classe che gestisce la scrittura
- * e lettura dei Log del progetto.
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
-
 public class Log {
     /**
-     * @param bScelti array di 90 elementi di bool
-     * @return un Vector<Byte> scelti, 
-     * che contiene i numeri inseriti dall'utente
+     * Converte un array di boolean in un Vector<Byte>.
+     * 
+     * @param bScelti array booleano di 90 elementi
+     * @return        un Vector<Byte> contenente i numeri scelti dall'utente
      */
     private static Vector<Byte> converti(boolean[] bScelti) {
         Vector<Byte> scelti = new Vector<Byte>();
@@ -45,7 +43,9 @@ public class Log {
     }
 
     /**
-     * @return la data della giocata
+     * Ritorna la data corrente.
+     * 
+     * @return la data corrente
      */
     private static String getDate() {
         ZoneId zi = ZoneId.of("Europe/Rome");
@@ -54,8 +54,10 @@ public class Log {
     }
 
     /**
+     * Legge una linea dal file di testo.
+     * 
      * @param INPUT percorso del file
-     * @return una singola linea del file letto
+     * @return      la linea letta
      */
     private static String leggi(final String INPUT) {
         FileInput fi = new FileInput(INPUT);
@@ -63,9 +65,14 @@ public class Log {
     }
 
     /**
+     * Ritorna il dato voluto in base al token:
+     *      1 - partite giocate
+     *      2 - importo totale
+     *      3 - vincita totale
+     * 
      * @param linea stringa da analizzare
      * @param token numero di token
-     * @return il dato letto
+     * @return      il dato letto
      */
     private static float leggiDato(String linea, int token) {
         StringTokenizer st = new StringTokenizer(linea, " ");
@@ -94,8 +101,11 @@ public class Log {
     }
 
     /**
+     * Controlla se la cartella e il file indicato esistono.
+     * Se no, li crea.
+     * 
      * @param CARTELLA percorso della cartella
-     * @param INPUT percorso del file
+     * @param INPUT    percorso del file
      */
     private static void controllaSeEsiste(final String CARTELLA, final String INPUT) {
         File dir = new File(CARTELLA);
@@ -122,12 +132,14 @@ public class Log {
     }
 
     /**
-     * @param partite giocate totali
-     * @param importo usato
-     * @param vincita soldi vinti
-     * @param scelti numeri scelti
+     * Ritorna il log da scrivere su file.
+     * 
+     * @param partite    giocate
+     * @param importo    usato
+     * @param vincita    della partita corrente
+     * @param scelti     numeri scelti
      * @param indovinati numeri indovinati
-     * @return il log da scrivere nel file
+     * @return           il log da scrivere nel file
      */
     private static String generaLog(int partite, float importo, float vincita, Vector<Byte> scelti, Vector<Byte> indovinati) {
         String linea = "<" + Utente.username + "[" + getDate() + "]" + ">[PartitaNumero=[" + partite + "]] [Importo=[" + importo;
@@ -136,10 +148,12 @@ public class Log {
     }
 
     /**
-     * @param partite giocate totali
+     * Aggiorna i dati del file DatiNomeUtente.txt.
+     * 
+     * @param partite giocate
      * @param importo usato
-     * @param vincita soldi vinti
-     * @param INPUT percorso del file
+     * @param vincita della partita corrente
+     * @param INPUT   percorso del file
      */
     private static void aggiornaDati(int partite, float importo, float vincita, final String INPUT) {
         FileOutput fo = new FileOutput(INPUT);
@@ -155,12 +169,14 @@ public class Log {
     }
 
     /**
-     * @param partite giocate totali
-     * @param importo usato
-     * @param vincita soldi vinti
-     * @param guadagnoTotale calcolato con la somma di tutte le vincite - importi
-     * @param guadagnoMedio durante le partite
-     * @return genera la stringa dei dati del giocatore
+     * Ritorna i dati da sovrascrivere nel file DatiNomeUtente.txt.
+     * 
+     * @param partite        giocate
+     * @param importo        usato
+     * @param vincita        della partita corrente
+     * @param guadagnoTotale di tutte le partite
+     * @param guadagnoMedio  per partita
+     * @return               una stringa con i dati
      */
     public static String generaDati(int partite, float importo, float vincita, float guadagnoTotale, float guadagnoMedio) {
         String linea = "<" + Utente.username + "[" + getDate() + "]" + ">[PartiteGiocate=[" + partite + "]] ";
@@ -170,10 +186,12 @@ public class Log {
     }
 
     /**
-     * @param importo usato
-     * @param vincita soldi vinti
-     * @param bScelti array di 90 elementi con i numeri scelti a forma di indice e segnati true
-     * @param indovinati vector in cui ci sono i numeri vinti come elementi
+     * Scrive il log sul file LogNomeUtente.txt.
+     * 
+     * @param importo    usato
+     * @param vincita    della partita corrente
+     * @param bScelti    array booleano con i numeri scelti
+     * @param indovinati numeri indovinati
      */
     public static void scriviLog(float importo, float vincita, boolean[] bScelti, Vector<Byte> indovinati) {
         final String OUTPUT = "users/" + Utente.username + "/Log" + Utente.username + ".txt";

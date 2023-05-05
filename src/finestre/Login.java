@@ -18,16 +18,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Classe per la gestione della finestra Login
+ * Classe per la gestione del login
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
 public class Login {
 
     /**
-     * Inner class per la gestione di button e JTextField
+     * Inner class per la gestione del pulsante login
      */
     private class GestorePulsante implements ActionListener {
         /**
+         * Gestisce la pressione del tasto di login
          * 
+         * @param e evento generato sul componente
          */
         public void actionPerformed(ActionEvent e) {
             String username = jtfUsername.getText().replaceAll(" ", "");
@@ -40,7 +47,7 @@ public class Login {
             } else {
                 // Imposta il nome utente
                 Utente.username = username;
-                // Prosegue
+
                 // Apre la finestra del menu principale
                 Menu m = new Menu();
 
@@ -49,7 +56,6 @@ public class Login {
         }
     }
 
-    // elementi grafici
     private final Border BPULSANTE = BorderFactory.createCompoundBorder(
         BorderFactory.createLineBorder(UtilFinestra.BLU, 30),
         BorderFactory.createEmptyBorder(0, 0, 0, 0)
@@ -152,8 +158,10 @@ public class Login {
     }
 
     /**
+     * Stabilisce se il nome utente è valido
+     * 
      * @param username dell'utente
-     * @return se la sintassi dello username e' giusta
+     * @return         se il nome utente è valido
      */
     private boolean isUsernameValid(String username) {
         if (username.length() < 5) {

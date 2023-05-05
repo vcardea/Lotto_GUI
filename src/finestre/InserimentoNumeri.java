@@ -19,7 +19,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * Classe che gestisce la finestra InserimentoNumeri
+ * Classe per l'inserimento dei numeri da giocare
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
 public class InserimentoNumeri {
 
@@ -44,10 +49,12 @@ public class InserimentoNumeri {
     );
 
     /**
-     * Inner class per la gestione dei button
+     * Inner class per la gestione dei pulsanti
      */
     private class GestorePulsante implements ActionListener {
         /**
+         * Comunica un errore all'utente
+         * 
          * @param tipo di errore
          */
         private void errore(boolean tipo) {
@@ -63,7 +70,7 @@ public class InserimentoNumeri {
         }
 
         /**
-         * Reset dei diversi dati 
+         * Reset dei dati 
          */
         private void reset() {
             for (int i = 0; i < NUMERI; ++i)
@@ -77,8 +84,9 @@ public class InserimentoNumeri {
         }
 
         /**
-         * @param e evento che gestisce il selezionamento
-         * dei numeri
+         * Gestisce l'evento sul pulsante premuto
+         * 
+         * @param e evento sul pulsante
          */
         public void actionPerformed(ActionEvent e) {
             String comando = e.getActionCommand();
@@ -118,15 +126,13 @@ public class InserimentoNumeri {
      * Inner class per gestire il mouse
      */
     private class GestoreMouse extends MouseAdapter {
-        /**
-         * Attributo protected per salvarsi
-         * i numeri fin'ora selezionati
-         */
+
         protected static boolean[] selezionati = new boolean[NUMERI];
 
         /**
-         * @param e evento che gestisce quando
-         * il mouse passa sopra un numero
+         * Gestisce il passaggio del mouse sui numeri
+         * 
+         * @param e evento del mouse
          */
         public void mouseEntered(MouseEvent e) {
             JButton jbTmp = (JButton) e.getComponent();
@@ -135,9 +141,9 @@ public class InserimentoNumeri {
         }
 
         /**
-         * @param e evento che gestisce quando
-         * il mouse esce fuori dal numero 
-         * (per capire leggere il metodo corrispondente "mouseEntered")
+         * Gestisce l'uscita del cursore da una posizione sopra il componente
+         * 
+         * @param e evento del mouse
          */
         public void mouseExited(MouseEvent e) {
             JButton jbTmp = (JButton) e.getComponent();
@@ -150,11 +156,11 @@ public class InserimentoNumeri {
 
     /**
      * Costruttore
-     * @param numeri la quantita di numeri scelti
+     * 
+     * @param numeri  la quantita' di numeri scelti
      * @param importo usato
      */
-    public InserimentoNumeri(byte numeri, float importo) {
-        this.numeri = numeri;
+    public InserimentoNumeri(float importo) {
         this.importo = importo;
         
         stiliEColori();
@@ -162,6 +168,7 @@ public class InserimentoNumeri {
         componenti();
         frame();
     }
+
     /**
      * Sistema lo stile ed i colori della finestra
      */
@@ -183,7 +190,7 @@ public class InserimentoNumeri {
     }
 
     /**
-     * Setup dei button, mouse e relative scelte
+     * Setup dei pulsanti, mouse e relative scelte
      */
     private void setup() {
         contatore = 0;
@@ -255,7 +262,19 @@ public class InserimentoNumeri {
         jf.getContentPane();
     }
 
+    /**
+     * Rende visibile la finestra
+     */
     public void apriFinestra() {
         jf.setVisible(true);
+    }
+
+    /**
+     * Imposta quanti numeri giocare
+     * 
+     * @param numeri quanti numeri giocare
+     */
+    public void setNumeri(byte numeri) {
+        this.numeri = numeri;
     }
 }

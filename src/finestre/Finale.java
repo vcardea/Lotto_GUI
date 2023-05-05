@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -23,6 +22,14 @@ import java.awt.event.ActionEvent;
 
 import java.util.Vector;
 
+/**
+ * Classe per la gestione della finestra finale
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
+ */
 public class Finale {
     /*
      * Classe interna per la gestione dei pulsanti
@@ -49,7 +56,6 @@ public class Finale {
     private float vincita = 0.0f;
 
     private final byte PANNELLI = 5;
-    private final Font FRIDOTTO = new Font("Sans-Serif", Font.BOLD, 16);
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel[] jp = new JPanel[PANNELLI];
     private GridLayout glNord = new GridLayout(2, 1);
@@ -72,13 +78,7 @@ public class Finale {
      */
     public Finale(boolean[] numeriScelti, float importo, byte numeri) {
         estrai();
-
-        for (byte i = 0; i < NUMERI; ++i) {
-            if (numeriScelti[i] && checkEstrazioni[i]) {
-                numeriIndovinati.addElement((byte) (i + 1));
-                ++contNumeriVinti;
-            }
-        }
+        contaIndovinati(numeriScelti);
 
         CalcoloVincita cv = new CalcoloVincita(numeri, importo, contNumeriVinti);
         vincita = cv.getVincita();
@@ -91,6 +91,9 @@ public class Finale {
         frame();
     }
 
+    /**
+     * Estrae psudo-casualmente 20 numeri da 1 a 90
+     */
     private void estrai() {
         // Attributi locali
         boolean ripeti;
@@ -111,6 +114,23 @@ public class Finale {
         }
     }
 
+    /**
+     * Conta i numeri indovinati
+     * 
+     * @param numeriScelti array booleano con i numeri scelti dall'utente
+     */
+    private void contaIndovinati(boolean[] numeriScelti) {
+        for (byte i = 0; i < NUMERI; ++i) {
+            if (numeriScelti[i] && checkEstrazioni[i]) {
+                numeriIndovinati.addElement((byte) (i + 1));
+                ++contNumeriVinti;
+            }
+        }
+    }
+
+    /**
+     * Imposta stili e colori
+     */
     private void stileEColori() {
         // Etichetta del titolo
         jlTitolo.setForeground(UtilFinestra.GRIGIO);
@@ -159,6 +179,9 @@ public class Finale {
         jbChiudi.setFont(UtilFinestra.FPULSANTE);
     }
 
+    /**
+     * Crea e sistema i pannelli
+     */
     private void pannelli() {
         // Inizializza i pannelli
         for (int i = 0; i < PANNELLI; i++) {
@@ -228,6 +251,9 @@ public class Finale {
         // }
     }
 
+    /**
+     * Aggiunge gli ascoltatori ai pulsanti
+     */
     private void componenti() {
         // Pulsante statistiche
         jbStatistiche.setActionCommand("statistiche");
@@ -238,6 +264,9 @@ public class Finale {
         jbChiudi.addActionListener(new GestoreInterno());
     }
 
+    /**
+     * Crea il jframe
+     */
     private void frame() {
         // Ascoltatore finestra
         jf.addWindowListener(new GestoreFinestraND(jf));

@@ -17,18 +17,25 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * Classe che gestisce la finestra Menu
+ * Classe per la gestione del menu
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
 public class Menu {
     /**
-     * Inner class per la gestione dei button
+     * Inner class per la gestione dei pulsanti
      */
     protected class GestoreInterno implements ActionListener {
         /**
-         * @param e evento che gestisce i button e le relative funzioni
+         * Gestisce la pressione dei pulsanti
+         * 
+         * @param e evento generato sul pulsante
          */
-        public void actionPerformed(ActionEvent ae) {
-            String s = ae.getActionCommand();
+        public void actionPerformed(ActionEvent e) {
+            String s = e.getActionCommand();
 
             if (s.equals("nuovapartita")) {
                 if (cl == null) {
@@ -67,7 +74,7 @@ public class Menu {
     }
 
     /**
-     * Sistema lo stile ed i colori della finestra
+     * Imposta lo stile ed i colori della finestra
      */
     private void stiliEColori() {
         // Etichetta del titolo
@@ -175,7 +182,7 @@ public class Menu {
     }
 
     /**
-     * metodo che setta visibile la finestra
+     * Imposta visibile la finestra
      */
     public static void apriFinestra() {
         jf.setVisible(true);

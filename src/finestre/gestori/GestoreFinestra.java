@@ -5,13 +5,19 @@ import javax.swing.JFrame;
 import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
 
+/**
+ * Classe per la gestione di una finestra
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
+ */
 public class GestoreFinestra implements WindowListener {
 	private JFrame jf = new JFrame();
 
 	/**
-	 * Costruttore.
-	 * Prende come parametro il jframe della
-	 * finestra considerata
+	 * Costruttore
 	 * 
 	 * @param jf jframe della finestra
 	 */

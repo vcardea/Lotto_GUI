@@ -6,17 +6,20 @@ import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
 
 
-/*
- * Questo gestore finestra e' diverso
- * al posto di fare il dispose della finestra, chiude il programma
+/**
+ * Classe per la gestione della chiusura
+ * del programma
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
 public class GestoreFinestraFN implements WindowListener {
 	private JFrame jf = new JFrame();
 
 	/**
 	 * Costruttore.
-	 * Prende come parametro il jframe della
-	 * finestra considerata
 	 * 
 	 * @param jf jframe della finestra
 	 */

@@ -1,19 +1,25 @@
 package src.calcoli;
 
 /**
- * GIOCO DEL DIECI E LOTTO
- * Realizzato da:
- * Matteo De Vito
- * Francesco Rizzello
- * Vincenzo Cardea
- * Alessandro Serio
+ * Classe per la gestione della vincita
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
-
 public class CalcoloVincita {
 	private float importo;
 	private byte indovinati;
 	private float vincita = 0.0f;
 
+	/**
+	 * Costruttore
+	 * 
+	 * @param numGiocati quantita' di numeri giocati
+	 * @param importo    usato
+	 * @param indovinati quantita' di numeri indovinati
+	 */
 	public CalcoloVincita(byte numGiocati, float importo, byte indovinati) {
 		this.importo = importo;
 		this.indovinati = indovinati;
@@ -43,16 +49,25 @@ public class CalcoloVincita {
 		}
 	}
 
+	/**
+	 * Calcolo per un solo numero giocato
+	 */
 	private void CalcoloVincita1() {
 		if (indovinati == 1)
 			vincita = importo * 3;
 	}
 
+	/**
+	 * Calcolo per due numeri giocati
+	 */
 	private void CalcoloVincita2() {
 		if (indovinati == 2)
 			vincita = importo * 14;
 	}
 
+	/**
+	 * Calcolo per tre numeri giocati
+	 */
 	private void CalcoloVincita3() {
 		if (indovinati == 2)
 			vincita = importo * 2;
@@ -60,6 +75,9 @@ public class CalcoloVincita {
 			vincita = importo * 45;
 	}
 
+	/**
+	 * Calcolo per quattro numeri giocati
+	 */
 	private void CalcoloVincita4() {
 		if (indovinati == 2)
 			vincita = importo * 1;
@@ -69,6 +87,9 @@ public class CalcoloVincita {
 			vincita = importo * 90;
 	}
 
+	/**
+	 * Calcolo per cinque numeri giocati
+	 */
 	private void CalcoloVincita5() {
 		if (indovinati == 2)
 			vincita = importo * 1;
@@ -80,6 +101,9 @@ public class CalcoloVincita {
 			vincita = importo * 140;
 	}
 
+	/**
+	 * Calcolo per sei numeri giocati
+	 */
 	private void CalcoloVincita6() {
 		if (indovinati == 3)
 			vincita = importo * 2;
@@ -91,6 +115,9 @@ public class CalcoloVincita {
 			vincita = importo * 1000;
 	}
 
+	/**
+	 * Calcolo per sette numeri giocati
+	 */
 	private void CalcoloVincita7() {
 		if (indovinati == 4)
 			vincita = importo * 4;
@@ -104,6 +131,9 @@ public class CalcoloVincita {
 			vincita = importo * 1;
 	}
 
+	/**
+	 * Calcolo per otto numeri giocati
+	 */
 	private void CalcoloVincita8() {
 		if (indovinati == 5)
 			vincita = importo * 20;
@@ -117,6 +147,9 @@ public class CalcoloVincita {
 			vincita = importo * 1;
 	}
 
+	/**
+	 * Calcolo per nove numeri giocati
+	 */
 	private void CalcoloVincita9() {
 		if (indovinati == 5)
 			vincita = importo * 10;
@@ -132,6 +165,9 @@ public class CalcoloVincita {
 			vincita = importo * 2;
 	}
 
+	/**
+	 * Calcolo per dieci numeri giocati
+	 */
 	private void CalcoloVincita10() {
 		if (indovinati == 5)
 			vincita = importo * 5;
@@ -150,6 +186,8 @@ public class CalcoloVincita {
 	}
 
 	/**
+	 * Ritorna la vincita
+	 * 
 	 * @return vincita
 	 */
 	public float getVincita() {

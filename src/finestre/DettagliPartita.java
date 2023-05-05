@@ -20,16 +20,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Classe per la gestione della finestra DettagliPartita
+ * Classe per la gestione dell'importo e la quantita' 
+ * di numeri da giocare
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
 public class DettagliPartita {
 
     /**
-     * Inner class per la gestione di button e ComboBox
+     * Inner class per la gestione di pulsanti e ComboBox
      */
     private class GestoreInterno implements ActionListener {
         /**
-         * metodo che visualizza l'errore
+         * Comunica un messaggio di errore all'utente
          */
         private void errore() {
             JOptionPane.showMessageDialog(jf, "L'importo deve essere da 1 a 200 euro, a scatti di 0.50",
@@ -39,7 +45,9 @@ public class DettagliPartita {
         }
 
         /**
-         * @param e evento che gestisce i button e la ComboBox
+         * Gestione del pulsante prosegui
+         * 
+         * @param e evento
          */
         public void actionPerformed(ActionEvent e) {
             String s = e.getActionCommand();
@@ -63,10 +71,11 @@ public class DettagliPartita {
                 } else {
                     numeri = (byte) (jcbNumeri.getSelectedIndex() + 1);
                     if (in == null) {
-                        in = new InserimentoNumeri(numeri, importo);
+                        in = new InserimentoNumeri(importo);
                     } else {
                         in.apriFinestra();
                     }
+                    in.setNumeri(numeri);
                     jtfImporto.setText("");
                     jf.setVisible(false);
                 }
@@ -238,11 +247,16 @@ public class DettagliPartita {
         jf.getContentPane();
     }
 
+    /**
+     * Rende visibile la finestra
+     */
     public void apriFinestra() {
         jf.setVisible(true);
     }
 
     /**
+     * Ritorna l'importo
+     * 
      * @return importo inserito
      */
     public float getImporto() {
@@ -250,6 +264,8 @@ public class DettagliPartita {
     }
 
     /**
+     * Ritorna quanti numeri devono essere selezionati
+     * 
      * @return quantita dei numeri selezionati
      */
     public int getNumeri() {

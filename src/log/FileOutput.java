@@ -5,7 +5,12 @@ import java.io.PrintWriter;
 import java.io.IOException;
 
 /**
- * Classe con funzioni utili per Output da file
+ * Classe per la scrittura su file di testo
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
 public class FileOutput {
     private final String OUTPUT;
@@ -13,7 +18,8 @@ public class FileOutput {
     private PrintWriter pw;
     
     /**
-     * Costruttore
+     * Costruttore.
+     * 
      * @param OUTPUT percorso del file di Output
      */
     public FileOutput(String OUTPUT) {
@@ -21,9 +27,10 @@ public class FileOutput {
     }
 
     /**
-     * Apre il flusso di Output
-     * @param append per capire se il file va creato o solo modificato
-     * @return se ci sono stati problemi nell'apertura del flusso
+     * Apre il flusso di Output.
+     * 
+     * @param append se appende o sovrascrive i dati
+     * @return       se ci sono stati problemi nell'apertura del flusso
      */
     private boolean openOutput(boolean append) {
         try {
@@ -37,7 +44,7 @@ public class FileOutput {
     }
 
     /**
-     * Chiude il flusso di Output
+     * Chiude il flusso di Output.
      */
     private void closeOutput() {
         try {
@@ -48,8 +55,10 @@ public class FileOutput {
     }
 
     /**
-     * @param LINE linea letta da inserire nel file
-     * @param append per capire se il file va riscritto o solo modificato
+     * Scrive una linea su file.
+     * 
+     * @param LINE   linea da scrivere
+     * @param append se appende o sovrascrive i dati
      */
     public void write(String LINE, boolean append) {
         if (openOutput(append)) {

@@ -7,16 +7,31 @@ import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe per la gestione della chiusura della
+ * finestra delle informazioni
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
+ */
 public class GInfo implements ActionListener {
     private JFrame jf;
 
+    /**
+     * Costruttore
+     * 
+     * @param jf jframe della finestra da chiudere
+     */
     public GInfo(JFrame jf) {
         this.jf = jf;
     }
 
     /**
-    * @param ae evento che gestisce l'uscita tramite button
-    * e riapre il menu'
+     * Gestisce il pulsante chiudi
+     * 
+     * @param e evento
     */
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();

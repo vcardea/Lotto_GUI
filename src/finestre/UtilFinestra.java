@@ -12,7 +12,12 @@ import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 
 /**
- * Classe con diverse costanti utili per le finestre
+ * Classe con costanti utili per le finestre
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
 public class UtilFinestra {
     protected static final BorderLayout LAYOUT = new BorderLayout();

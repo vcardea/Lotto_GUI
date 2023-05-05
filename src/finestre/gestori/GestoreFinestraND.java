@@ -8,19 +8,20 @@ import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
 
 /**
- * ND = Non Destructive
- * GestoreFinestra_ND.java
- * Gestore finestra particolare:
- *  serve nelle classi: FinestraInserimentoNumeri, FinestraConfigurazioneNumeri, FinestraFinale
- *  nel caso si chiuda con la X, per aprire il menu
+ * Classe per la chiusura Non Distruttiva.
+ * Viene utilizzata per chiudere la finestra corrente e
+ * ritornare alla schermata del menu
+ * 
+ * @author Vincenzo Cardea
+ * @author Francesco Rizzello
+ * @author Matteo De Vito
+ * @author Alessandro Serio
  */
 public class GestoreFinestraND implements WindowListener {
     private JFrame jf = new JFrame();
 
     /**
      * Costruttore.
-     * Prende come parametro il jframe della
-     * finestra considerata
      * 
      * @param jf jframe della finestra
      */
