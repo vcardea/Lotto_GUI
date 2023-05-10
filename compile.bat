@@ -3,6 +3,7 @@ javac -d bin src/finestre/gestori/GestoreUscita.java
 javac -d bin src/finestre/gestori/GestoreFinestra.java
 javac -d bin src/finestre/gestori/GestoreFinestraND.java
 javac -d bin src/finestre/gestori/GestoreFinestraFN.java
+javac -d bin src/finestre/gestori/GestoreMouse.java
 
 javac -d bin src/finestre/DettagliPartita.java
 javac -d bin src/finestre/Finale.java
