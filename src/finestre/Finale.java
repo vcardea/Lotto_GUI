@@ -30,6 +30,8 @@ import java.util.Vector;
  * @author Francesco Rizzello
  * @author Matteo De Vito
  * @author Alessandro Serio
+ * 
+ * @since 1.0.0
  */
 public class Finale {
     /*

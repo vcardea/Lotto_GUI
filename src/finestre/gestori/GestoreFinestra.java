@@ -12,6 +12,8 @@ import java.awt.event.WindowEvent;
  * @author Francesco Rizzello
  * @author Matteo De Vito
  * @author Alessandro Serio
+ * 
+ * @since 1.0.0
  */
 public class GestoreFinestra implements WindowListener {
 	private JFrame jf = new JFrame();
