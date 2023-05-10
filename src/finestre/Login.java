@@ -9,12 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -59,11 +58,6 @@ public class Login {
         }
     }
 
-    private final Border BPULSANTE = BorderFactory.createCompoundBorder(
-        BorderFactory.createLineBorder(UtilFinestra.BLU, 30),
-        BorderFactory.createEmptyBorder(0, 0, 0, 0)
-    );
-    private final Dimension DPULSANTE = new Dimension(300, 105);
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("FINESTRA DI LOGIN", JLabel.CENTER);
@@ -101,8 +95,7 @@ public class Login {
         // Pulsante per il login
         jbLogin.setForeground(UtilFinestra.BLU);
         jbLogin.setBackground(UtilFinestra.GRIGIO);
-        jbLogin.setPreferredSize(DPULSANTE);
-        jbLogin.setBorder(BPULSANTE);
+        jbLogin.setPreferredSize(UtilFinestra.DPULSANTE);
         jbLogin.setFont(UtilFinestra.FPULSANTE);
     }
 
@@ -117,13 +110,17 @@ public class Login {
         }
 
         // Layout
-        jp[1].setLayout(UtilFinestra.LAYOUTCENTRO);
+        jp[1].setLayout(UtilFinestra.GRIDBAGLAYOUT);
+        jp[2].setLayout(new GridBagLayout());
 
         // Composizione
         jp[0].add(jlTitolo);
         jp[1].add(jlUsername);
         jp[1].add(jtfUsername);
-        jp[2].add(jbLogin);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = UtilFinestra.DISTBASSO;
+        jp[2].add(jbLogin, gbc);
     }
 
     /**
@@ -143,7 +140,7 @@ public class Login {
         jf.addWindowListener(new GestoreFinestraFN(jf));
         
         // Layout
-        jf.setLayout(UtilFinestra.LAYOUT);
+        jf.setLayout(UtilFinestra.BORDERLAYOUT);
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);

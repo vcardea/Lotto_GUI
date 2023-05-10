@@ -1,8 +1,6 @@
 package src.finestre;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.border.Border;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -10,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 /**
  * Classe con costanti utili per le finestre
@@ -22,39 +21,46 @@ import java.awt.GridBagLayout;
  * @since 1.0.0
  */
 public class UtilFinestra {
-    protected static final BorderLayout LAYOUT = new BorderLayout();
-    protected static final GridBagLayout LAYOUTCENTRO = new GridBagLayout();
+
+    // Layout
+    public static final BorderLayout BORDERLAYOUT = new BorderLayout();
+    public static final GridBagLayout GRIDBAGLAYOUT = new GridBagLayout();
     
-    protected static final String TITOLO = "Gioco del 10eLotto";
+    // Titolo
+    public static final String TITOLO = "Gioco del 10eLotto";
     
-    protected static final ImageIcon ICONA = new ImageIcon("img/logo.png");
-    protected static final String INFOFILE = "info/info.txt";
+    // Percorsi di file utili
+    public static final ImageIcon ICONA = new ImageIcon("img/logo.png");
+    public static final String INFOFILE = "info/info.txt";
     
-    protected static final byte NUMERI = 90;
-    protected static final byte ESTRAZIONI = 20;
-    protected static final byte PANNELLI = 3;
+    // Costanti numeriche
+    public static final byte NUMERI = 90;
+    public static final byte ESTRAZIONI = 20;
+    public static final byte PANNELLI = 3;
     
-    protected static final Dimension RISOLUZIONE = Toolkit.getDefaultToolkit().getScreenSize();
-    protected static final int LARGHEZZA = 700;
-    protected static final int ALTEZZA = 600;
-    protected static final int POSX = (int)(RISOLUZIONE.getWidth() / 2) - (LARGHEZZA / 2);
-    protected static final int POSY = (int)(RISOLUZIONE.getHeight() / 2) - (ALTEZZA / 2);
-    protected static final Dimension DIMENSIONE = new Dimension(UtilFinestra.LARGHEZZA, UtilFinestra.ALTEZZA);
+    // Risoluzione/Posizionamenti
+    public static final Dimension RISOLUZIONE = Toolkit.getDefaultToolkit().getScreenSize();
+    public static final int LARGHEZZA = 700;
+    public static final int ALTEZZA = 600;
+    public static final int POSX = (int)(RISOLUZIONE.getWidth() / 2) - (LARGHEZZA / 2);
+    public static final int POSY = (int)(RISOLUZIONE.getHeight() / 2) - (ALTEZZA / 2);
+    public static final Dimension DIMENSIONE = new Dimension(UtilFinestra.LARGHEZZA, UtilFinestra.ALTEZZA);
+    public static final Insets DISTBASSO = new Insets(0, 0, 20, 0);
+
+    // Colori
+    public static final Color BLU = new Color(3, 63, 94);
+    public static final Color BLUCHIARO = new Color(180, 180, 180);
+    public static final Color GRIGIO = new Color(230, 230, 230);
+    public static final Color BIANCO = new Color(230, 230, 230);
+    public static final Color VERDECHIARO = new Color(0, 255, 0);
+    public static final Color VERDE = new Color(0, 220, 0);
     
-    protected static final Color BLU = new Color(3, 63, 94);
-    protected static final Color GRIGIO = new Color(230, 230, 230);
-    protected static final Color BIANCO = new Color(255, 255, 255);
-    protected static final Color VERDECHIARO = new Color(0, 255, 0);
-    protected static final Color VERDE = new Color(0, 220, 0);
-    
-    protected static final Font FTITOLO = new Font("Sans-Serif", Font.BOLD, 28);
-    protected static final Font FETICHETTA = new Font("Sans-Serif", Font.BOLD, 18);
-    protected static final Font FTESTO = new Font("Sans-Serif", Font.PLAIN, 18);
-    protected static final Font FPULSANTE = new Font("Sans-Serif", Font.BOLD, 20);
-   
-    protected static final Dimension DPULSANTE = new Dimension(210, 100);
-    protected static final Border BPULSANTE = BorderFactory.createCompoundBorder(
-        BorderFactory.createLineBorder(UtilFinestra.BLU, 20),
-        BorderFactory.createEmptyBorder(0, 0, 0, 0)
-    );
+    // Font
+    public static final Font FTITOLO = new Font("Sans-Serif", Font.BOLD, 28);
+    public static final Font FETICHETTA = new Font("Sans-Serif", Font.BOLD, 18);
+    public static final Font FTESTO = new Font("Sans-Serif", Font.PLAIN, 18);
+    public static final Font FPULSANTE = new Font("Sans-Serif", Font.BOLD, 20);
+
+    // Dimensioni
+    public static final Dimension DPULSANTE = new Dimension(270, 50);
 } 

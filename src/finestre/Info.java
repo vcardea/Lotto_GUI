@@ -15,6 +15,7 @@ import javax.swing.JButton;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 /**
@@ -82,7 +83,6 @@ public class Info {
         jbChiudi.setForeground(UtilFinestra.BLU);
         jbChiudi.setBackground(UtilFinestra.GRIGIO);
         jbChiudi.setPreferredSize(UtilFinestra.DPULSANTE);
-        jbChiudi.setBorder(UtilFinestra.BPULSANTE);
         jbChiudi.setFont(UtilFinestra.FPULSANTE);
     }
 
@@ -98,11 +98,15 @@ public class Info {
 
         // Layout
         jp[1].setLayout(new GridBagLayout());
+        jp[2].setLayout(new GridBagLayout());
 
         // Composizione
         jp[0].add(jlTitolo);
         jp[1].add(jsp);
-        jp[2].add(jbChiudi);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = UtilFinestra.DISTBASSO;
+        jp[2].add(jbChiudi, gbc);
     }
 
     /**

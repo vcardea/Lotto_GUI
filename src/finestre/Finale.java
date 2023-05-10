@@ -12,7 +12,6 @@ import javax.swing.JButton;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -52,20 +51,24 @@ public class Finale {
     private boolean[] checkEstrazioni = new boolean[UtilFinestra.NUMERI];
     private Vector<Byte> numeriIndovinati = new Vector<Byte>();
     private Vector<Byte> numeriEstratti = new Vector<Byte>();
+    private Vector<Byte> vNumeriScelti = new Vector<Byte>();
     private byte contNumeriVinti = 0; 
     private float vincita = 0.0f;
 
+    private final Insets BSINISTRA = new Insets(0, 0, 20, 10);
+    private final Insets BDESTRA = new Insets(0, 10, 20, 0);
     private final byte PANNELLI = 5;
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel[] jp = new JPanel[PANNELLI];
     private GridLayout glNord = new GridLayout(2, 1);
     private GridBagLayout gblCentro = new GridBagLayout();
-    private FlowLayout flSud = new FlowLayout();
     private GridLayout glEstOvest = new GridLayout(11, 2);
     private JLabel jlTitolo = new JLabel("RISULTATO FINALE", JLabel.CENTER);
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
     private JLabel jlEstratti = new JLabel("Numeri ", JLabel.CENTER);
     private JLabel jlIndovinati = new JLabel("Numeri indovinati", JLabel.CENTER);
+    private JLabel jlScelti = new JLabel("Numeri scelti", JLabel.CENTER);
+    private JLabel jlNumeriScelti = new JLabel("", JLabel.CENTER);
     private JLabel jlVincita = new JLabel("Vincita (euro)", JLabel.CENTER);
     private JLabel jlMostraVincita;
     private JLabel jlNumeriEstratti = new JLabel("estratti");
@@ -92,10 +95,9 @@ public class Finale {
     }
 
     /**
-     * Estrae psudo-casualmente 20 numeri da 1 a 90
+     * Estrae 20 numeri pseudo-casuali da 1 a 90
      */
     private void estrai() {
-        // Attributi locali
         boolean ripeti;
         byte estrazione = 0;
 
@@ -121,6 +123,9 @@ public class Finale {
      */
     private void contaIndovinati(boolean[] numeriScelti) {
         for (byte i = 0; i < UtilFinestra.NUMERI; ++i) {
+            if (numeriScelti[i]) {
+                vNumeriScelti.addElement((byte) (i + 1));
+            }
             if (numeriScelti[i] && checkEstrazioni[i]) {
                 numeriIndovinati.addElement((byte) (i + 1));
                 ++contNumeriVinti;
@@ -156,6 +161,14 @@ public class Finale {
         jlNumeriIndovinati.setForeground(UtilFinestra.GRIGIO);
         jlNumeriIndovinati.setFont(UtilFinestra.FETICHETTA);
 
+        // Etichetta titolo dei numeri scelti
+        jlScelti.setForeground(UtilFinestra.GRIGIO);
+        jlScelti.setFont(UtilFinestra.FETICHETTA);
+
+        // Etichetta dei numeri scelti
+        jlNumeriScelti.setForeground(UtilFinestra.GRIGIO);
+        jlNumeriScelti.setFont(UtilFinestra.FETICHETTA);
+
         // Etichetta titolo vincita
         jlVincita.setForeground(UtilFinestra.GRIGIO);
         jlVincita.setFont(UtilFinestra.FETICHETTA);
@@ -168,14 +181,12 @@ public class Finale {
         jbStatistiche.setForeground(UtilFinestra.BLU);
         jbStatistiche.setBackground(UtilFinestra.GRIGIO);
         jbStatistiche.setPreferredSize(UtilFinestra.DPULSANTE);
-        jbStatistiche.setBorder(UtilFinestra.BPULSANTE);
         jbStatistiche.setFont(UtilFinestra.FPULSANTE);
 
         // Pulsante chiudi
         jbChiudi.setForeground(UtilFinestra.BLU);
         jbChiudi.setBackground(UtilFinestra.GRIGIO);
         jbChiudi.setPreferredSize(UtilFinestra.DPULSANTE);
-        jbChiudi.setBorder(UtilFinestra.BPULSANTE);
         jbChiudi.setFont(UtilFinestra.FPULSANTE);
     }
 
@@ -195,7 +206,7 @@ public class Finale {
         // Layout
         jp[0].setLayout(glNord);
         jp[1].setLayout(gblCentro);
-        jp[2].setLayout(flSud);
+        jp[2].setLayout(UtilFinestra.GRIDBAGLAYOUT);
         jp[3].setLayout(glEstOvest);
         jp[4].setLayout(glEstOvest);
 
@@ -209,16 +220,34 @@ public class Finale {
         // Centro
         gbc.gridx = 0;
         gbc.gridy = 0;
-        jp[1].add(jlVincita, gbc);
+        gbc.insets = new Insets(0, 0, 20, 0);
+        jp[1].add(jlScelti, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.insets = new Insets(20, 0, 0, 0);
+        gbc.insets = new Insets(0, 0, 40, 0);
+        jp[1].add(jlNumeriScelti, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.insets = new Insets(0, 0, 20, 0);
+        jp[1].add(jlVincita, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.insets = new Insets(0, 0, 20, 0);
         jp[1].add(jlMostraVincita, gbc);
 
         // Sud
-        jp[2].add(jbStatistiche);
-        jp[2].add(jbChiudi);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = BSINISTRA;
+        jp[2].add(jbStatistiche, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.insets = BDESTRA;
+        jp[2].add(jbChiudi, gbc);
 
         // Ovest
         jp[3].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 3, UtilFinestra.ALTEZZA));
@@ -249,6 +278,13 @@ public class Finale {
      * Aggiunge gli ascoltatori ai pulsanti
      */
     private void componenti() {
+        // Etichetta numeri scelti
+        String s = new String("");
+        for (int i = 0; i < vNumeriScelti.size(); i++) {
+            s += vNumeriScelti.elementAt(i) + " ";
+        }
+        jlNumeriScelti.setText(s);
+
         // Pulsante statistiche
         jbStatistiche.setActionCommand("statistiche");
         jbStatistiche.addActionListener(new GestoreInterno());
@@ -266,7 +302,7 @@ public class Finale {
         jf.addWindowListener(new GestoreFinestraND(jf));
 
         // Layout
-        jf.setLayout(UtilFinestra.LAYOUT);
+        jf.setLayout(UtilFinestra.BORDERLAYOUT);
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);

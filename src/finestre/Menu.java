@@ -13,6 +13,7 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -55,8 +56,9 @@ public class Menu {
 
     private DettagliPartita cl = null;
 
+    private final Insets DISTANZA = new Insets(10, 0, 0, 0);
     private static JFrame jf = new JFrame(UtilFinestra.TITOLO);
-    private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
+    private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI - 1];
     private GridLayout glNorth = new GridLayout(2, 1, 10, 0);
     private JLabel jlTitolo = new JLabel("MENU PRINCIPALE", JLabel.CENTER);
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
@@ -91,21 +93,18 @@ public class Menu {
         jbNuovaPartita.setForeground(UtilFinestra.BLU);
         jbNuovaPartita.setBackground(UtilFinestra.GRIGIO);
         jbNuovaPartita.setPreferredSize(UtilFinestra.DPULSANTE);
-        jbNuovaPartita.setBorder(UtilFinestra.BPULSANTE);
         jbNuovaPartita.setFont(UtilFinestra.FPULSANTE);
 
         // Pulsante informazioni
         jbInfo.setForeground(UtilFinestra.BLU);
         jbInfo.setBackground(UtilFinestra.GRIGIO);
         jbInfo.setPreferredSize(UtilFinestra.DPULSANTE);
-        jbInfo.setBorder(UtilFinestra.BPULSANTE);
         jbInfo.setFont(UtilFinestra.FPULSANTE);
 
         // Pulsante esci
         jbEsci.setForeground(UtilFinestra.BLU);
         jbEsci.setBackground(UtilFinestra.GRIGIO);
         jbEsci.setPreferredSize(UtilFinestra.DPULSANTE);
-        jbEsci.setBorder(UtilFinestra.BPULSANTE);
         jbEsci.setFont(UtilFinestra.FPULSANTE);
     }
 
@@ -114,7 +113,7 @@ public class Menu {
      */
     private void pannelli() {
         // Istanziazione
-        for (int i = 0; i < UtilFinestra.PANNELLI; i++) {
+        for (int i = 0; i < jp.length; i++) {
             jp[i] = new JPanel();
             jp[i].setBackground(UtilFinestra.BLU);
         }
@@ -135,9 +134,13 @@ public class Menu {
 
         gbc.gridx = 0;
         gbc.gridy = 1;
+        gbc.insets = DISTANZA;
         jp[1].add(jbInfo, gbc);
 
-        jp[2].add(jbEsci);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.insets = DISTANZA;
+        jp[1].add(jbEsci, gbc);
     }
 
     /**
@@ -168,7 +171,6 @@ public class Menu {
         jf.setLayout(new BorderLayout());
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
-        jf.add(jp[2], BorderLayout.SOUTH);
 
         // Posizionamento, dimensione e visibilità finestra
         jf.setLocation(UtilFinestra.POSX, UtilFinestra.POSY);

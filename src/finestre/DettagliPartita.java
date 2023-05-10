@@ -13,7 +13,6 @@ import javax.swing.JComboBox;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -98,7 +97,6 @@ public class DettagliPartita {
     // elementi grafici
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private GridLayout glNorth = new GridLayout(2, 1);
-    private GridBagLayout gbl = new GridBagLayout();
     private GridBagConstraints gbc = new GridBagConstraints();
     private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("DETTAGLI PARTITA", JLabel.CENTER);
@@ -154,7 +152,6 @@ public class DettagliPartita {
         jbProsegui.setForeground(UtilFinestra.BLU);
         jbProsegui.setBackground(UtilFinestra.GRIGIO);
         jbProsegui.setPreferredSize(UtilFinestra.DPULSANTE);
-        jbProsegui.setBorder(UtilFinestra.BPULSANTE);
         jbProsegui.setFont(UtilFinestra.FPULSANTE);
     }
 
@@ -170,7 +167,8 @@ public class DettagliPartita {
 
         // Layout
         jp[0].setLayout(glNorth);
-        jp[1].setLayout(gbl);
+        jp[1].setLayout(UtilFinestra.GRIDBAGLAYOUT);
+        jp[2].setLayout(UtilFinestra.GRIDBAGLAYOUT);
 
         // Composizione
         jp[0].add(jlTitolo);
@@ -213,7 +211,13 @@ public class DettagliPartita {
         gbc.anchor = GridBagConstraints.LINE_START;
         jp[1].add(jcbNumeri, gbc);
 
-        jp[2].add(jbProsegui);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0;
+        gbc.fill = 0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = UtilFinestra.DISTBASSO;
+        jp[2].add(jbProsegui, gbc);
     }
 
     /**
@@ -236,7 +240,7 @@ public class DettagliPartita {
         jf.addWindowListener(new GestoreFinestraND(jf));
 
         // Layout
-        jf.setLayout(UtilFinestra.LAYOUT);
+        jf.setLayout(UtilFinestra.BORDERLAYOUT);
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);

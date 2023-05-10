@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,7 +37,6 @@ public class InserimentoNumeri {
     private float importo;
     protected boolean[] selezionati = new boolean[UtilFinestra.NUMERI];
 
-    // elementi grafici
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel jp[] = new JPanel[UtilFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("INSERIMENTO NUMERI", JLabel.CENTER);
@@ -137,8 +137,8 @@ public class InserimentoNumeri {
          */
         public void mouseEntered(MouseEvent e) {
             JButton jbTmp = (JButton) e.getComponent();
-            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue();
-            jbNumeri[indice - 1].setForeground(UtilFinestra.VERDECHIARO);
+            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
+            jbNumeri[indice].setForeground(UtilFinestra.VERDECHIARO);
         }
 
         /**
@@ -148,10 +148,80 @@ public class InserimentoNumeri {
          */
         public void mouseExited(MouseEvent e) {
             JButton jbTmp = (JButton) e.getComponent();
-            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue();
-            if (!selezionati[indice - 1]) {
-                jbNumeri[indice - 1].setForeground(UtilFinestra.GRIGIO);
+            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
+            if (!selezionati[indice]) {
+                jbNumeri[indice].setForeground(UtilFinestra.GRIGIO);
             }
+        }
+
+        /**
+         * Invocato quando il pulsante è stato premuto
+         * (premuto e rilasciato)
+         * 
+         * @param e evento del mouse
+         */
+        public void mouseClicked(MouseEvent e) {
+            JButton jbTmp = (JButton) e.getComponent();
+            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
+            jbNumeri[indice].setBackground(UtilFinestra.BLU);
+            jbNumeri[indice].setForeground(UtilFinestra.VERDE);
+        }
+
+        /**
+         * Invocato quando il mouse preme sul pulsante e poi
+         * viene trascinato
+         * 
+         * @param e evento del mouse
+         */
+        public void mouseDragged(MouseEvent e) {
+            JButton jbTmp = (JButton) e.getComponent();
+            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
+            jbNumeri[indice].setBackground(UtilFinestra.BLU);
+            jbNumeri[indice].setForeground(UtilFinestra.BIANCO);
+        }
+
+        /**
+         * Invocato quando il cursore è stato spostato
+         * su un componente, ma nessun pulsante è stato premuto
+         * 
+         * @param e evento del mouse
+         */
+        public void mouseMoved(MouseEvent e) {
+            
+        }
+        
+        /**
+         * Invocato quando un pulsante viene premuto
+         * 
+         * @param e evento del mouse
+         */
+        public void mousePressed(MouseEvent e) {
+            JButton jbTmp = (JButton) e.getComponent();
+            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
+            jbNumeri[indice].setBackground(UtilFinestra.BLU);
+            jbNumeri[indice].setForeground(UtilFinestra.VERDE);
+        }
+
+        /**
+         * Invocato quando un pulsante viene rilasciato
+         * 
+         * @param e evento del mouse
+         */
+        public void mouseReleased(MouseEvent e) {
+            JButton jbTmp = (JButton) e.getComponent();
+            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
+            jbNumeri[indice].setBackground(UtilFinestra.BLU);
+            jbNumeri[indice].setForeground(UtilFinestra.BIANCO);
+        }
+
+        /**
+         * Invocato quando la rotellina del pulsante viene
+         * ruotata
+         * 
+         * @param e evento del mouse
+         */
+        public void mouseWheelMoved(MouseEvent e) {
+
         }
     }
 
@@ -186,7 +256,6 @@ public class InserimentoNumeri {
         jbProsegui.setForeground(UtilFinestra.BLU);
         jbProsegui.setBackground(UtilFinestra.GRIGIO);
         jbProsegui.setPreferredSize(UtilFinestra.DPULSANTE);
-        jbProsegui.setBorder(UtilFinestra.BPULSANTE);
         jbProsegui.setFont(UtilFinestra.FPULSANTE);
     }
 
@@ -222,11 +291,15 @@ public class InserimentoNumeri {
 
         // Imposta il layout dei pulsanti
         jp[1].setLayout(glNumeri);
+        jp[2].setLayout(UtilFinestra.GRIDBAGLAYOUT);
 
         // Composizione di pannelli
         jp[0].add(jlTitolo);
         setup();
-        jp[2].add(jbProsegui);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = UtilFinestra.DISTBASSO;
+        jp[2].add(jbProsegui, gbc);
     }
 
     /**
@@ -245,7 +318,7 @@ public class InserimentoNumeri {
         jf.addWindowListener(new GestoreFinestraND(jf));
 
         // Layout
-        jf.setLayout(UtilFinestra.LAYOUT);
+        jf.setLayout(UtilFinestra.BORDERLAYOUT);
         jf.add(jp[0], BorderLayout.NORTH);
         jf.add(jp[1], BorderLayout.CENTER);
         jf.add(jp[2], BorderLayout.SOUTH);
