@@ -4,7 +4,6 @@ import src.finestre.UtilFinestra;
 
 import javax.swing.JButton;
 
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 

@@ -82,6 +82,7 @@ public class InserimentoNumeri {
                     selezionati[i] = false;
                 }
             }
+            
             // resetta l'array dei numeri selezionati
             contatore = 0;
         }
@@ -161,10 +162,10 @@ public class InserimentoNumeri {
          * @param e evento del mouse
          */
         public void mouseClicked(MouseEvent e) {
-            JButton jbTmp = (JButton) e.getComponent();
-            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
-            jbNumeri[indice].setBackground(UtilFinestra.BLU);
-            jbNumeri[indice].setForeground(UtilFinestra.VERDE);
+            // JButton jbTmp = (JButton) e.getComponent();
+            // int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
+            // jbNumeri[indice].setBackground(UtilFinestra.BLU);
+            // jbNumeri[indice].setForeground(UtilFinestra.VERDE);
         }
 
         /**
@@ -174,10 +175,10 @@ public class InserimentoNumeri {
          * @param e evento del mouse
          */
         public void mouseDragged(MouseEvent e) {
-            JButton jbTmp = (JButton) e.getComponent();
-            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
-            jbNumeri[indice].setBackground(UtilFinestra.BLU);
-            jbNumeri[indice].setForeground(UtilFinestra.BIANCO);
+            // JButton jbTmp = (JButton) e.getComponent();
+            // int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
+            // jbNumeri[indice].setBackground(UtilFinestra.BLU);
+            // jbNumeri[indice].setForeground(UtilFinestra.BIANCO);
         }
 
         /**
@@ -196,10 +197,10 @@ public class InserimentoNumeri {
          * @param e evento del mouse
          */
         public void mousePressed(MouseEvent e) {
-            JButton jbTmp = (JButton) e.getComponent();
-            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
-            jbNumeri[indice].setBackground(UtilFinestra.BLU);
-            jbNumeri[indice].setForeground(UtilFinestra.VERDE);
+            // JButton jbTmp = (JButton) e.getComponent();
+            // int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
+            // jbNumeri[indice].setBackground(UtilFinestra.BLU);
+            // jbNumeri[indice].setForeground(UtilFinestra.VERDE);
         }
 
         /**
@@ -208,10 +209,10 @@ public class InserimentoNumeri {
          * @param e evento del mouse
          */
         public void mouseReleased(MouseEvent e) {
-            JButton jbTmp = (JButton) e.getComponent();
-            int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
-            jbNumeri[indice].setBackground(UtilFinestra.BLU);
-            jbNumeri[indice].setForeground(UtilFinestra.BIANCO);
+            // JButton jbTmp = (JButton) e.getComponent();
+            // int indice = Integer.valueOf(jbTmp.getActionCommand()).intValue() - 1;
+            // jbNumeri[indice].setBackground(UtilFinestra.BLU);
+            // jbNumeri[indice].setForeground(UtilFinestra.BIANCO);
         }
 
         /**
