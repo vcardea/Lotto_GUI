@@ -2,6 +2,7 @@ package src.finestre;
 
 import src.finestre.gestori.GestoreFinestraFN;
 import src.utente.Utente;
+import src.finestre.gestori.GestoreMouse;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -131,6 +132,7 @@ public class Login {
     private void componenti() {
         // Pulsante di login
         jbLogin.addActionListener(new GestorePulsante());
+        jbLogin.addMouseListener(new GestoreMouse(jbLogin));
     }
 
     /**

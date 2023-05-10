@@ -2,6 +2,7 @@ package src.finestre.gestori;
 
 import javax.swing.JButton;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -56,7 +57,7 @@ public class GestoreMouse extends MouseAdapter {
      * @param e evento del mouse
      */
     public void mouseEntered(MouseEvent e) {
-    
+        jb.setBackground(new Color(255, 0, 0));
     }
 
     /**
