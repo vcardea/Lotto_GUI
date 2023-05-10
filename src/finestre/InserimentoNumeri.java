@@ -28,12 +28,11 @@ import java.awt.event.MouseEvent;
  */
 public class InserimentoNumeri {
 
-    private static final byte NUMERI = 90;
-    private static boolean numeriScelti[] = new boolean[NUMERI]; 
+    private static boolean numeriScelti[] = new boolean[UtilFinestra.NUMERI]; 
     private static int contatore;
     private byte numeri = 0;
     private float importo;
-    protected boolean[] selezionati = new boolean[NUMERI];
+    protected boolean[] selezionati = new boolean[UtilFinestra.NUMERI];
 
     // elementi grafici
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
@@ -42,7 +41,7 @@ public class InserimentoNumeri {
     private JLabel jlUsername = new JLabel(Utente.username, JLabel.CENTER);
     private GridLayout glNumeri = new GridLayout(9, 10);
     private JButton jbProsegui = new JButton("Prosegui");
-    private JButton[] jbNumeri = new JButton[NUMERI];
+    private JButton[] jbNumeri = new JButton[UtilFinestra.NUMERI];
 
     protected static final Border BPULSANTE = BorderFactory.createCompoundBorder(
         BorderFactory.createLineBorder(UtilFinestra.BLU, 0),
@@ -74,12 +73,13 @@ public class InserimentoNumeri {
          * Reset dei dati 
          */
         private void reset() {
-            for (int i = 0; i < NUMERI; ++i)
+            for (int i = 0; i < UtilFinestra.NUMERI; ++i) {
                 if (numeriScelti[i]) {
                     numeriScelti[i] = false;
                     jbNumeri[i].setForeground(UtilFinestra.GRIGIO);
                     selezionati[i] = false;
                 }
+            }
             // resetta l'array dei numeri selezionati
             contatore = 0;
         }
@@ -193,18 +193,18 @@ public class InserimentoNumeri {
      */
     private void setup() {
         contatore = 0;
-        for (int i = 1; i <= NUMERI; i++) {
-            numeriScelti[i - 1] = false;
-            jbNumeri[i - 1] = new JButton(Integer.toString(i));
-            jbNumeri[i - 1].setActionCommand(Integer.toString(i));
-            jbNumeri[i - 1].addActionListener(new GestorePulsante());
-            jbNumeri[i - 1].addMouseListener(new GestoreMouse());
+        for (int i = 0; i < UtilFinestra.NUMERI; i++) {
+            numeriScelti[i] = false;
+            jbNumeri[i] = new JButton(Integer.toString(i + 1));
+            jbNumeri[i].setActionCommand(Integer.toString(i + 1));
+            jbNumeri[i].addActionListener(new GestorePulsante());
+            jbNumeri[i].addMouseListener(new GestoreMouse());
             // Stile pulsante
-            jbNumeri[i - 1].setForeground(UtilFinestra.GRIGIO);
-            jbNumeri[i - 1].setBackground(UtilFinestra.BLU);
-            jbNumeri[i - 1].setBorder(BPULSANTE);
-            jbNumeri[i - 1].setFont(UtilFinestra.FPULSANTE);
-            jp[1].add(jbNumeri[i - 1]);
+            jbNumeri[i].setForeground(UtilFinestra.GRIGIO);
+            jbNumeri[i].setBackground(UtilFinestra.BLU);
+            jbNumeri[i].setBorder(BPULSANTE);
+            jbNumeri[i].setFont(UtilFinestra.FPULSANTE);
+            jp[1].add(jbNumeri[i]);
         }
     }
 

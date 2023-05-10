@@ -28,6 +28,8 @@ public class UtilFinestra {
     protected static final ImageIcon ICONA = new ImageIcon("img/logo.png");
     protected static final String INFOFILE = "info/info.txt";
     
+    protected static final byte NUMERI = 90;
+    protected static final byte ESTRAZIONI = 20;
     protected static final byte PANNELLI = 3;
     
     protected static final Dimension RISOLUZIONE = Toolkit.getDefaultToolkit().getScreenSize();

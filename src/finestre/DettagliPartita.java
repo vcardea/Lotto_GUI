@@ -75,8 +75,13 @@ public class DettagliPartita {
                     } else {
                         in.apriFinestra();
                     }
+
+                    // Resetta i valori
                     in.setNumeri(numeri);
                     jtfImporto.setText("");
+                    jcbNumeri.setSelectedIndex(0);
+
+                    // Disattiva la finestra
                     jf.setVisible(false);
                 }
             }

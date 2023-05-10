@@ -20,6 +20,7 @@ import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import java.util.Collections;
 import java.util.Vector;
 
 /**
@@ -46,9 +47,7 @@ public class Finale {
         }
     }
 
-    private static final byte NUMERI = 90;
-    private static final byte ESTRAZIONI = 20;
-    private boolean[] checkEstrazioni = new boolean[NUMERI];
+    private boolean[] checkEstrazioni = new boolean[UtilFinestra.NUMERI];
     private Vector<Byte> numeriIndovinati = new Vector<Byte>();
     private Vector<Byte> numeriEstratti = new Vector<Byte>();
     private byte contNumeriVinti = 0; 
@@ -99,7 +98,7 @@ public class Finale {
         byte estrazione = 0;
 
         // Estrazione dei numeri pseudo-casuali
-        for (byte i = 0; i < ESTRAZIONI; i++) {
+        for (byte i = 0; i < UtilFinestra.ESTRAZIONI; i++) {
             do {
                 ripeti = false;
                 estrazione = (byte) (Math.random() * 90);
@@ -107,7 +106,7 @@ public class Finale {
                     ripeti = true;
                 else {
                     checkEstrazioni[estrazione] = true;
-                    numeriEstratti.addElement(estrazione);
+                    numeriEstratti.addElement((byte) (estrazione + 1));
                 }
             } while (!checkEstrazioni[estrazione] || ripeti);
         }
@@ -119,7 +118,7 @@ public class Finale {
      * @param numeriScelti array booleano con i numeri scelti dall'utente
      */
     private void contaIndovinati(boolean[] numeriScelti) {
-        for (byte i = 0; i < NUMERI; ++i) {
+        for (byte i = 0; i < UtilFinestra.NUMERI; ++i) {
             if (numeriScelti[i] && checkEstrazioni[i]) {
                 numeriIndovinati.addElement((byte) (i + 1));
                 ++contNumeriVinti;
@@ -201,9 +200,11 @@ public class Finale {
         // Aggiunge componenti al pannello
         GridBagConstraints gbc = new GridBagConstraints();
 
+        // Nord
         jp[0].add(jlTitolo);
         jp[0].add(jlUsername);
 
+        // Centro
         gbc.gridx = 0;
         gbc.gridy = 0;
         jp[1].add(jlVincita, gbc);
@@ -213,41 +214,33 @@ public class Finale {
         gbc.insets = new Insets(20, 0, 0, 0);
         jp[1].add(jlMostraVincita, gbc);
 
+        // Sud
         jp[2].add(jbStatistiche);
         jp[2].add(jbChiudi);
 
+        // Ovest
         jp[3].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 3, UtilFinestra.ALTEZZA));
         jp[3].add(jlEstratti, BorderLayout.NORTH);
         jp[3].add(jlNumeriEstratti, BorderLayout.CENTER);
-        for (int i = 0; i < ESTRAZIONI; i++) {
+        Collections.sort(numeriEstratti);
+        for (int i = 0; i < UtilFinestra.ESTRAZIONI; i++) {
             JLabel jbTmp = new JLabel(String.valueOf(numeriEstratti.elementAt(i)), JLabel.CENTER);
             jbTmp.setForeground(UtilFinestra.GRIGIO);
             jbTmp.setFont(UtilFinestra.FETICHETTA);
             jp[3].add(jbTmp, BorderLayout.CENTER);
         }
 
+        // Est
         jp[4].setPreferredSize(new Dimension(UtilFinestra.LARGHEZZA / 3, UtilFinestra.ALTEZZA));
         jp[4].add(jlIndovinati, BorderLayout.NORTH);
         jp[4].add(jlNumeriIndovinati, BorderLayout.CENTER);
+        Collections.sort(numeriIndovinati);
         for (int i = 0; i < numeriIndovinati.size(); i++) {
-            JLabel jbTmp = new JLabel(String.valueOf(numeriEstratti.elementAt(i)), JLabel.CENTER);
+            JLabel jbTmp = new JLabel(String.valueOf(numeriIndovinati.elementAt(i)), JLabel.CENTER);
             jbTmp.setForeground(UtilFinestra.GRIGIO);
             jbTmp.setFont(UtilFinestra.FETICHETTA);
             jp[4].add(jbTmp, BorderLayout.CENTER);
         }
-
-        // if(numeriIndovinati.size() > 0) {
-            // for (int i = 0; i < numeriIndovinati.size(); i++) {
-            //     JLabel jbTmp = new JLabel(String.valueOf(numeriEstratti.elementAt(i)), JLabel.CENTER);
-            //     jbTmp.setForeground(UtilFinestra.GRIGIO);
-            //     jp[4].add(jbTmp, BorderLayout.CENTER);
-            // }
-        // } else {
-        //     jp[4].setLayout(glNord);
-        //     JLabel jbTmp = new JLabel("Non hai indovinato nessun numero", JLabel.CENTER);
-        //     jbTmp.setForeground(UtilFinestra.GRIGIO);
-        //     jp[4].add(jbTmp, BorderLayout.CENTER);
-        // }
     }
 
     /**

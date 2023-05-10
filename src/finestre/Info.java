@@ -6,8 +6,11 @@ import src.finestre.gestori.GInfo;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.border.Border;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import java.awt.BorderLayout;
@@ -25,11 +28,16 @@ import java.awt.GridBagLayout;
 public class Info {
     
     // elementi grafici
-    private final Dimension INFO_DIMENSIONE = new Dimension(650, 300);
+    private final Dimension INFO_DIMENSIONE = new Dimension(650, 400);
+    private final Border BORDO = BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(UtilFinestra.BLU, 0),
+        BorderFactory.createEmptyBorder(0, 0, 0, 0)
+    );
     private JFrame jf = new JFrame(UtilFinestra.TITOLO);
     private JPanel[] jp = new JPanel[UtilFinestra.PANNELLI];
     private JLabel jlTitolo = new JLabel("INFORMAZIONI");
     private JTextArea jta = new JTextArea(15, 25);
+    private JScrollPane jsp = new JScrollPane(jta, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     private JButton jbChiudi = new JButton("Chiudi");
     private String info = new String("");
 
@@ -37,7 +45,6 @@ public class Info {
      * Costruttore
      */
     public Info() {
-        testo();
         stiliEColori();
         pannelli();
         componenti();
@@ -92,7 +99,7 @@ public class Info {
 
         // Composizione
         jp[0].add(jlTitolo);
-        jp[1].add(jta);
+        jp[1].add(jsp);
         jp[2].add(jbChiudi);
     }
 
@@ -101,10 +108,15 @@ public class Info {
      */
     private void componenti() {
         // Area di testo
-        jta.setPreferredSize(INFO_DIMENSIONE);
+        testo();
         jta.setWrapStyleWord(true);
         jta.setLineWrap(true);
+        jta.setHighlighter(null);
         jta.setEditable(false);
+
+        // JScrollPane
+        jsp.setPreferredSize(INFO_DIMENSIONE);
+        jsp.setBorder(BORDO);
 
         // Gestione pulsante chiusura
         jbChiudi.setActionCommand("chiudi");
