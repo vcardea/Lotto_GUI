@@ -19,6 +19,12 @@ import java.awt.Insets;
  * @author Alessandro Serio
  * 
  * @see Login
+ * @see Menu
+ * @see Info
+ * @see DettagliPartita
+ * @see InserimentoNumeri
+ * @see Finale
+ * @see Statistiche
  * 
  * @since 1.0.0
  */

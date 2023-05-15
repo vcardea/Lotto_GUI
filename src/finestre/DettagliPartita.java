@@ -28,6 +28,9 @@ import java.awt.event.ActionListener;
  * @author Matteo De Vito
  * @author Alessandro Serio
  * 
+ * @see UtilFinestra
+ * @see InserimentoNumeri
+ * 
  * @since 1.0.0
  */
 public class DettagliPartita {

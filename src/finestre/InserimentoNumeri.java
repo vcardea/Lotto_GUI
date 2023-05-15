@@ -28,6 +28,9 @@ import java.awt.event.MouseEvent;
  * @author Matteo De Vito
  * @author Alessandro Serio
  * 
+ * @see UtilFinestra
+ * @see Finale
+ * 
  * @since 1.0.0
  */
 public class InserimentoNumeri {

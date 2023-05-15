@@ -16,7 +16,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
-import java.util.function.IntBinaryOperator;
 import java.awt.event.ActionEvent;
 
 /**
@@ -26,6 +25,10 @@ import java.awt.event.ActionEvent;
  * @author Francesco Rizzello
  * @author Matteo De Vito
  * @author Alessandro Serio
+ * 
+ * @see UtilFinestra
+ * @see DettagliPartita
+ * @see Info
  * 
  * @since 1.0.0
  */

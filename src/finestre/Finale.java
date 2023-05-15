@@ -31,6 +31,9 @@ import java.util.Vector;
  * @author Matteo De Vito
  * @author Alessandro Serio
  * 
+ * @see UtilFinestra
+ * @see Statistiche
+ * 
  * @since 1.0.0
  */
 public class Finale {
