@@ -4,6 +4,7 @@ import src.log.Log;
 import src.utente.Utente;
 import src.calcoli.CalcoloVincita;
 import src.finestre.gestori.GestoreFinestraND;
+import src.finestre.gestori.GestoreMouse;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -288,10 +289,12 @@ public class Finale {
         // Pulsante statistiche
         jbStatistiche.setActionCommand("statistiche");
         jbStatistiche.addActionListener(new GestoreInterno());
+        jbStatistiche.addMouseListener(new GestoreMouse(jbStatistiche));
 
         // Pulsante di chiusura
         jbChiudi.setActionCommand("chiudi");
         jbChiudi.addActionListener(new GestoreInterno());
+        jbChiudi.addMouseListener(new GestoreMouse(jbChiudi));
     }
 
     /**

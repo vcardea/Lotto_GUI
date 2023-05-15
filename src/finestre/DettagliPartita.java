@@ -1,6 +1,7 @@
 package src.finestre;
 
 import src.finestre.gestori.GestoreFinestraND;
+import src.finestre.gestori.GestoreMouse;
 import src.utente.Utente;
 
 import javax.swing.JFrame;
@@ -230,6 +231,7 @@ public class DettagliPartita {
         // Gestione pulsante prosegui
         jbProsegui.setActionCommand("prosegui");
         jbProsegui.addActionListener(new GestoreInterno());
+        jbProsegui.addMouseListener(new GestoreMouse(jbProsegui));
     }
 
     /**

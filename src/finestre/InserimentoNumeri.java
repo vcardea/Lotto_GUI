@@ -1,6 +1,7 @@
 package src.finestre;
 
 import src.finestre.gestori.GestoreFinestraND;
+import src.finestre.gestori.GestoreMouse;
 import src.utente.Utente;
 
 import javax.swing.border.Border;
@@ -129,7 +130,7 @@ public class InserimentoNumeri {
     /**
      * Inner class per gestire il mouse
      */
-    private class GestoreMouse extends MouseAdapter {
+    private class GestoreMouseNumeri extends MouseAdapter {
 
         /**
          * Gestisce il passaggio del mouse sui numeri
@@ -270,7 +271,7 @@ public class InserimentoNumeri {
             jbNumeri[i] = new JButton(Integer.toString(i + 1));
             jbNumeri[i].setActionCommand(Integer.toString(i + 1));
             jbNumeri[i].addActionListener(new GestorePulsante());
-            jbNumeri[i].addMouseListener(new GestoreMouse());
+            jbNumeri[i].addMouseListener(new GestoreMouseNumeri());
             // Stile pulsante
             jbNumeri[i].setForeground(UtilFinestra.GRIGIO);
             jbNumeri[i].setBackground(UtilFinestra.BLU);
@@ -309,6 +310,7 @@ public class InserimentoNumeri {
     private void componenti() {
         // Ascoltatore pulsante prosegui
         jbProsegui.addActionListener(new GestorePulsante());
+        jbProsegui.addMouseListener(new GestoreMouse(jbProsegui));
     }
 
     /**

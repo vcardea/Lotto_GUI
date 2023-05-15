@@ -18,6 +18,8 @@ import java.awt.Insets;
  * @author Matteo De Vito
  * @author Alessandro Serio
  * 
+ * @see Login
+ * 
  * @since 1.0.0
  */
 public class UtilFinestra {

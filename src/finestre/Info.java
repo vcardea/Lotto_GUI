@@ -2,6 +2,7 @@ package src.finestre;
 
 import src.log.FileInput;
 import src.finestre.gestori.GestoreFinestraND;
+import src.finestre.gestori.GestoreMouse;
 import src.finestre.gestori.GInfo;
 
 import javax.swing.JFrame;
@@ -127,6 +128,7 @@ public class Info {
         // Gestione pulsante chiusura
         jbChiudi.setActionCommand("chiudi");
         jbChiudi.addActionListener(new GInfo(jf));
+        jbChiudi.addMouseListener(new GestoreMouse(jbChiudi));
     }
 
     /**

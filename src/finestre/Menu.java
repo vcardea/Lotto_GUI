@@ -1,6 +1,7 @@
 package src.finestre;
 
 import src.finestre.gestori.GestoreFinestra;
+import src.finestre.gestori.GestoreMouse;
 import src.finestre.gestori.GestoreUscita;
 import src.utente.Utente;
 
@@ -15,6 +16,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.util.function.IntBinaryOperator;
 import java.awt.event.ActionEvent;
 
 /**
@@ -150,14 +152,17 @@ public class Menu {
         // Gestione pulsante nuova partita
         jbNuovaPartita.setActionCommand("nuovapartita");
         jbNuovaPartita.addActionListener(new GestoreInterno());
+        jbNuovaPartita.addMouseListener(new GestoreMouse(jbNuovaPartita));
 
         // Gestione pulsante informazioni
         jbInfo.setActionCommand("info");
         jbInfo.addActionListener(new GestoreInterno());
+        jbInfo.addMouseListener(new GestoreMouse(jbInfo));
 
         // Gestione pulsante di uscita
         jbEsci.setActionCommand("esci");
         jbEsci.addActionListener(new GestoreUscita());
+        jbEsci.addMouseListener(new GestoreMouse(jbEsci));
     }
 
     /**
