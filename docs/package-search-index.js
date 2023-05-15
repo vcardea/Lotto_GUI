@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"src.calcoli"},{"l":"src.finestre"},{"l":"src.finestre.gestori"},{"l":"src.log"},{"l":"src.main"},{"l":"src.utente"}];updateSearchResults();
